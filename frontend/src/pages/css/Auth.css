@@ -1,0 +1,53 @@
+.login,
+.register {
+    width: 450px;
+    margin: 0 auto;
+    border-radius: 7px;
+    margin-top: 3rem;
+    overflow: hidden;
+    box-shadow: 7px 7px 12px #0000001a;
+    background-color: aquamarine;
+}
+
+.form-header {
+	padding: 1.2rem;
+	background: var(--secondary);
+	text-align: center;
+}
+
+form {
+    padding: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+form label {
+    margin-bottom: 0.5rem;
+}
+
+form input {
+    padding: 10px 1rem;
+    width: 100%;
+}
+form .profile-pic {
+	width: 125px;
+	height: 125px;
+	border-radius: 50%;
+	background: black;
+	margin: 0 auto;
+}
+form .profilePicLabel {
+	width: 30px;
+	height: 30px;
+	background: white;
+	border-radius: 50%;
+	position: absolute;
+	left: 56%;
+	top: 75%;
+	cursor: pointer;
+}

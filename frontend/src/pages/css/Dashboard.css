@@ -1,0 +1,18 @@
+
+
+.dashboard .wrapper {
+	display: grid;
+	grid-template-columns: repeat(3,1fr);
+	grid-gap: 1rem;
+}
+.dashboard .all-member h1 {
+	border-bottom: 1px solid #e6e6e6;
+	margin-bottom: 1rem;
+}
+.dashboard .item {
+	background: var(--dark);
+	color: white;
+	padding: 1rem;
+	border-radius: 7px;
+	margin-bottom: 1rem;
+}
