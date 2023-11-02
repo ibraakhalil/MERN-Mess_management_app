@@ -1,4 +1,4 @@
-import {SET_USER, USER_ERROR } from "../constants/types"
+import { SET_USER, USER_ERROR } from "../constants/types"
 
 
 const init = {
@@ -7,7 +7,7 @@ const init = {
     error: {}
 }
 
-export const authReducer = (state=init, action) => {
+export const authReducer = (state = init, action) => {
     switch (action.type) {
         case SET_USER:
             return {
@@ -20,7 +20,21 @@ export const authReducer = (state=init, action) => {
             return {
                 error: action.payload
             }
-    
+
+        default: return state
+    }
+}
+
+
+
+export const authReducer2 = (state = init, action) => {
+    switch (action.type) {
+        case SET_USER:
+            return {
+                ...state,
+                name: action.payload
+            }
+
         default: return state
     }
 }

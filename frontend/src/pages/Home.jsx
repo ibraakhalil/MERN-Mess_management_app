@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import './css/Home.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllUsers } from '../store/action/userAction'
+import NoticeBoard from '../components/NoticeBoard'
 const img1 = "https://saifulbinakalam.files.wordpress.com/2017/10/saiful-bin-a-kalam-passport-size-photo.jpg"
 
 function Home() {
@@ -20,6 +21,7 @@ function Home() {
           <h1>Mess Project</h1>
         </div>
       </div>
+      <NoticeBoard/>
       <div className='mess-members'>
         <h3>Total Mess Members</h3>
         <div className="wrapper">

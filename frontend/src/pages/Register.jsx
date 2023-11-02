@@ -76,6 +76,17 @@ function Register() {
         </div>
 
         <div className="form-group">
+          <label htmlFor="profession"> Profession: </label>
+          <input
+            type="text"
+            name="profession"
+            onChange={formik.handleChange} />
+          <div className="error-feedback">
+            <p>{error.profession}</p>
+          </div>
+        </div>
+
+        <div className="form-group">
           <label htmlFor="address"> Address: </label>
           <input
             type="text"

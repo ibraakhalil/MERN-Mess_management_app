@@ -1,0 +1,40 @@
+.sidebar {
+	width: 400px;
+	background: var(--primary);
+	margin: 2rem 0rem;
+}
+.user-info {
+	display: flex;
+	align-items: center;
+	padding: 1rem;
+}
+
+.user-info img {
+	width: 75px;
+	height: 75px;
+	margin-right: 1rem;
+}
+.user-info .inner h4 {
+	text-transform: uppercase;
+	font-size: 24px;
+}
+.user-info .inner p {
+	color: #3c6d7d;
+}
+.user-nav {
+	padding: 1rem;
+}
+.user-nav li {
+	padding: 7px 0rem;
+}
+
+
+
+
+
+
+
+
+
+
+

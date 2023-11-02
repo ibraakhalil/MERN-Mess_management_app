@@ -8,6 +8,7 @@ const getProfile = async (req, res, next) => {
 
     try {
         const user = await User.findById(userId)
+        console.log(__dirname)
         res.status(200).json({ user })
 
     } catch (e) {

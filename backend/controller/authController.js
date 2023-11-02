@@ -45,7 +45,8 @@ const loginUser = async (req, res, next) => {
     const error = {}
 
     try {
-        const user = await User.findOne({ phone })
+        const user = await User.findOne({ phone }) 
+
         if (!user) {
             error.phone = 'Member not found'
             return res.status(400).json({ error })
@@ -61,7 +62,8 @@ const loginUser = async (req, res, next) => {
                 name: user.name,
                 phone: user.phone,
                 email: user.email,
-                address: user.address
+                address: user.address,
+                profilePic: user.profilePic
             }
 
         }, JWTSECRET, { expiresIn: '2 days' })

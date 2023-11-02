@@ -13,7 +13,6 @@ function AdminProtected() {
     } else {
         return <Navigate to='/' />
     }
-
 }
 
 export default AdminProtected

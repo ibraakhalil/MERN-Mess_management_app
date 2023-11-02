@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { getProfile } from '../store/action/userAction'
+import Profile_sidebar from '../components/profile_sidebar'
 
 function Profile() {
   const dispatch = useDispatch()
@@ -16,15 +17,10 @@ function Profile() {
 
   return (
     <div className='profile'>
+      <Profile_sidebar user={user}/>
       <div className="container">
         <div className="info">
-          <div>
-            <img src="" alt="" />
-          </div>
-          <div>
-            <h3>{user.name}</h3>
-            <p>{user.phone}</p>
-          </div>
+          
 
         </div>
       </div>
