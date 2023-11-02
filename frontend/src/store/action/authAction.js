@@ -20,7 +20,7 @@ export const addMember = (user, navigate) => dispatch => {
 }
 
 export const userLogin = (user, navigate) => dispatch => {
-    Axios.post('/api/auth/login', user)
+    Axios.post('https://messmanager-cqw8jeipj-ibraakhalils-projects.vercel.app/api/auth/login', user)
     .then(res => {
         const token = res.data.token
         localStorage.setItem('token', token)
