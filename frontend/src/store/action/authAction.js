@@ -5,7 +5,7 @@ import { SET_USER, USER_ERROR } from '../constants/types'
 
 
 export const addMember = (user, navigate) => dispatch => {
-    Axios.post('/api/admin/register', user, {
+    Axios.post('https://messmanager-api.vercel.app/api/admin/register', user, {
         headers: {
             'Content-Type': `multipart/form-data;`
           }
@@ -20,7 +20,7 @@ export const addMember = (user, navigate) => dispatch => {
 }
 
 export const userLogin = (user, navigate) => dispatch => {
-    Axios.post('https://messmanager-cqw8jeipj-ibraakhalils-projects.vercel.app/api/auth/login', user)
+    Axios.post('https://messmanager-api.vercel.app/api/auth/login', user)
     .then(res => {
         const token = res.data.token
         localStorage.setItem('token', token)

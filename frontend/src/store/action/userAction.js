@@ -5,7 +5,7 @@ import { GET_ALL_USERS } from '../constants/types'
 
 
 export const getAllUsers = () => dispatch => {
-    Axios.get('/api/user/getallusers')
+    Axios.get('https://messmanager-api.vercel.app/api/user/getallusers')
         .then(res => {
             dispatch({
                 type: GET_ALL_USERS,
@@ -16,7 +16,7 @@ export const getAllUsers = () => dispatch => {
 }
 
 export const getProfile = (userId) => dispatch => {
-    Axios.get(`/api/user/profile/${userId}`)
+    Axios.get(`https://messmanager-api.vercel.app/api/user/profile/${userId}`)
         .then(res => {
             dispatch({
                 type: SET_PROFILE,
