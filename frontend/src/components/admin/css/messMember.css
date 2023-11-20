@@ -1,15 +1,17 @@
 
 
-.dashboard .wrapper {
+.admin .all-member .wrapper {
 	display: grid;
-	grid-template-columns: repeat(3,1fr);
+	grid-template-columns: repeat(3, 1fr);
 	grid-gap: 1rem;
 }
-.dashboard .all-member h1 {
+
+.admin .all-member h1 {
 	border-bottom: 1px solid #e6e6e6;
 	margin-bottom: 1rem;
 }
-.dashboard .item {
+
+.admin .all-member .item {
 	background: var(--dark);
 	color: white;
 	padding: 1rem;

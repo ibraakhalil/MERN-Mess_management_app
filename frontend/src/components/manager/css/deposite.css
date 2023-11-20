@@ -1,0 +1,38 @@
+
+.deposite .new_entry form {
+	background: var(--primary);
+	padding: 1rem;
+	border-radius: 7px;
+    margin-bottom: 1rem;
+}
+.deposite .new_entry form .wrapper {
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+	flex-wrap: wrap;
+}
+.deposite .new_entry form select {
+    flex-grow: 1.5;
+}
+.deposite .new_entry form input {
+    flex-grow: 1;
+    padding-left: 1rem;
+}
+
+.deposite .new_entry .entry_lists .lists_wrapper {
+	margin-bottom: 1rem;
+	display: flex;
+	flex-wrap: wrap;
+}
+.deposite .new_entry .entry_lists ul {
+	display: flex;
+	background: var(--background);
+	border-radius: 2px;
+	padding: 3px 1rem;
+	margin: 4px 0.5rem;
+	text-transform: capitalize;
+	font-size: 13px;
+	justify-content: space-between;
+	flex-grow: 1;
+	flex-basis: 400px;
+}

@@ -44,6 +44,7 @@ const loginUser = async (req, res, next) => {
     const { phone, password } = req.body
     const error = {}
 
+
     try {
         const user = await User.findOne({ phone }) 
 

@@ -1,8 +1,8 @@
 
-
 .home {
-	height: calc(100vh - 50px);
-	background: url(https://wallpaperaccess.com/full/1209651.jpg);
+	height: calc(100vh - 100px);
+	background: var(--background);
+	padding-top: 1px;
 }
 
 .home h1 {
@@ -10,43 +10,6 @@
 	text-align: center;
 	text-transform: uppercase;
 	padding: 9rem;
-}
-
-
-
-.mess-members {
-	background: #00000036;
-	border-radius: 7px;
-	padding: 1rem 2rem;
-	width: 80%;
-	margin: 5rem auto;
-}
-.mess-members > h3 {
-	border-bottom: 1px solid #80808052;
-	margin-bottom: 1rem;
-	font-weight: 400;
-}
-.mess-members .wrapper {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	grid-gap: 1.5rem;
-}
-.mess-members .wrapper .item {
-	background: var(--pure);
-	border-radius: 7px;
-	overflow: hidden;
-	height: 180px;
-}
-.mess-members .item img {
-	height: 70%;
-}
-.item .info {
-	padding: 0 0.5rem;
-}
-.item .info h4 {
-	font-weight: 300;
-	font-size: 14px;
-	text-transform: uppercase;
 }
 
 

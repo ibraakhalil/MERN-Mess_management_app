@@ -1,10 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 :root {
-    --primary: #00beff;
-    --secondary: #00e314;
+    --primary: #0055ff;
+    --smooth_p: #2872ff;
+    --secondary: #00ab0e;
+    --smooth_s: #54d35f;
     --pure: #fff;
     --dark: #000;
+    --background: #fff3f3;
+
+
+    --box-shadow: 7px 7px 7px #a2a0a031;
 }
 
 
@@ -35,6 +41,22 @@ button {
     cursor: pointer;
 }
 
+.btn1 {
+    background: var(--secondary);
+    color: var(--pure);
+}
+
+.btn2 {
+    background: var(--primary);
+    color: var(--pure);
+}
+
+.btn1:hover,
+.btn2:hover {
+    color: var(--dark);
+    transition: color 0.3s;
+}
+
 ul {
     list-style: none;
 }
@@ -44,7 +66,19 @@ a {
     color: blue;
 }
 
+select {
+    cursor: pointer;
+    text-transform: capitalize;
+    padding: 7px 12px;
+    border: 0;
+    border-radius: 5px;
+}
+
 .container {
-    width: 90%;
+    width: 85%;
     margin: 0 auto;
+}
+
+.min_height {
+    min-height: calc(100vh - 200px);
 }

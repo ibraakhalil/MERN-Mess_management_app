@@ -2,19 +2,21 @@ import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Home from '../pages/Home'
 import Login from '../pages/Login'
-import Register from '../pages/Register'
 import Error from '../pages/Error'
-import Dashboard from '../pages/Dashboard'
 import Protected from '../components/Protected'
 import AdminProtected from '../components/AdminProtected'
 import WhenLoggedOut from '../components/WhenLoggedOut'
 import Profile from '../pages/Profile'
 import EditProfile from '../pages/EditProfile'
+import ManagerPanel from '../pages/ManagerPanel'
+import Admin from '../pages/Admin'
 
 function routes() {
     return (
         <Routes>
             <Route exact path='/' element={<Home />} />
+
+            <Route path='/manager' element={<ManagerPanel />} />
 
             <Route path='/auth/' element={<WhenLoggedOut />}>
                 <Route path='login' element={<Login />} />
@@ -26,8 +28,7 @@ function routes() {
             </Route>
 
             <Route path='/admin/' element={<AdminProtected />}>
-                <Route path='dashboard' element={<Dashboard />} />
-                <Route path='register' element={<Register />} />
+                <Route path='' element={<Admin />} />
             </Route>
 
 

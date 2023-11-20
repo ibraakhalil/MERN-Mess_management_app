@@ -1,0 +1,144 @@
+
+.meal_chart {
+	background: var(--pure);
+	border-radius: 7px;
+	margin-top: 3rem;
+}
+.header_text {
+	text-align: center;
+	padding-top: 1rem;
+}
+.meal_chart .wrapper {
+	background: var(--background);
+	padding: 1rem;
+	margin: 1rem;
+	border-radius: 7px;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+	grid-gap: 1rem;
+}
+.meal_chart .item {
+	background: var(--primary);
+	border-radius: 7px;
+	cursor: pointer;
+}
+
+.meal_chart .item .date h1 {
+	color: var(--background);
+	text-align: center;
+}
+.meal_chart .item .date h1 span {
+	font-size: 16px;
+	font-weight: 300;
+	margin-left: 7px;
+	color: #ffe2e2;
+}
+
+.meal_chart .total_meal > div {
+	display: flex;
+	gap: 3px;
+	padding: 5px;
+}
+
+.meal_chart .total_meal > div p {
+	background: var(--dark);
+	padding: 0px 7px;
+	color: var(--pure);
+	border-radius: 3px;
+	display: flex;
+	align-items: center;
+	width: 60px;
+	justify-content: space-around;
+	font-size: 14px;
+}
+.meal_chart .total_meal > div p svg {
+	font-size: 16px;
+	margin-right: 5px;
+}
+
+.meal_chart .modal {
+	position: fixed;
+	background: #0003;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	cursor: crosshair;
+}
+.meal_chart .active .modal {
+	display: flex;
+}
+.meal_chart .modal .modal_items {
+	background: var(--pure);
+	cursor: auto;
+	padding: 1rem;
+	border-radius: 7px;
+}
+.modal_wrapper {
+	background: var(--background);
+	padding: 7px;
+	border-radius: 7px;
+	margin-bottom: 1rem;
+}
+.meal_chart .modal_header h1 {
+	margin-bottom: 10px;
+}
+.modal_header > div {
+	display: grid;
+	grid-template-columns: 2fr 1fr 1fr;
+	grid-gap: 5px;
+}
+.meal_chart .modal_header > div p {
+	background: var(--primary);
+	border-radius: 5px;
+	padding: 5px 10px;
+	color: var(--pure);
+	font-weight: 300;
+	font-size: 13px;
+	text-transform: uppercase;
+}
+.meal_chart .modal_header > div p span {
+	display: block;
+	font-weight: 600;
+	font-size: 24px;
+}
+.meal_chart .modal ul {
+	display: grid;
+	background: var(--pure);
+	border-radius: 5px;
+	padding: 4px 8px;
+	margin: 4px 0;
+	text-transform: capitalize;
+	font-size: 13px;
+	grid-template-columns: 1.2fr 0.1fr;
+}
+.meal_chart .modal ul li {
+	display: flex;
+}
+.meal_chart .modal ul li.count {
+	display: flex;
+	gap: 5px;
+}
+.meal_chart .modal ul li.count p {
+	background: #000;
+	padding: 0px 7px;
+	color: var(--pure);
+	border-radius: 3px;
+	display: flex;
+	align-items: center;
+	width: 60px;
+	justify-content: space-around;
+}
+
+.meal_chart .modal .close {
+	position: absolute;
+	top: 10%;
+	right: 10%;
+	font-size: 5vw;
+	color: var(--pure);
+	cursor: pointer;
+}
+

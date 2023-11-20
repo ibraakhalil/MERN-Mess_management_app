@@ -1,0 +1,82 @@
+.new_member {
+	margin: 0 auto;
+	border-radius: 7px;
+	overflow: hidden;
+	background-color: var(--background);
+	width: 90%;
+}
+
+.new_member form .wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+
+.form-header {
+	text-align: center;
+	margin-top: 0.5rem;
+}
+
+.new_member form {
+	padding: 1rem;
+}
+
+.new_member form button {
+	margin: 0 auto;
+	display: block;
+	margin-top: 1rem;
+}
+
+.new_member .form-group {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 1rem;
+	position: relative;
+	flex-basis: 280px;
+	flex-grow: 1;
+}
+
+.new_member form label {
+	margin-bottom: 0.5rem;
+	font-size: 14px;
+	color: gray;
+}
+
+.new_member form input {
+	padding: 10px 1rem;
+	width: 100%;
+}
+
+.new_member form .profile-pic {
+	width: 125px;
+	height: 125px;
+	border-radius: 50%;
+	background: black;
+	margin: 0 auto;
+}
+
+form .profilePicLabel {
+	width: 30px;
+	height: 30px;
+	background: white;
+	border-radius: 50%;
+	position: absolute;
+	left: 56%;
+	top: 75%;
+	cursor: pointer;
+}
+
+.error-feedback {
+	color: red;
+	font-size: 14px;
+	padding: 7px;
+	margin-left: 1rem;
+}
+
+.error-feedback::before {
+	content: '⚠';
+	width: 25px;
+	height: 25px;
+	position: absolute;
+	left: 5px;
+}

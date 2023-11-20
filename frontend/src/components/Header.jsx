@@ -21,25 +21,29 @@ function Header() {
                 <nav>
                     <ul>
                         <li>
-                            <NavLink to='/'>Home</NavLink>
+                            <NavLink to='/'>
+                                <h1 className='logo'>messefy</h1>
+                            </NavLink>
                         </li>
                     </ul>
                     <ul>
                         {!isAuthenticate && <>
                             <li>
-                                <NavLink to='/auth/login'>Login</NavLink>
+                                <NavLink to='/auth/login'>
+                                    <button className='btn2'>Login</button>
+                                </NavLink>
                             </li>
                         </>}
                         {isAuthenticate && <>
                             <li>
                                 <NavLink to={`/user/profile/${user.user._id}`}>Profile</NavLink>
                             </li>
+                            <li>
+                                <NavLink to='/manager'>Manager</NavLink>
+                            </li>
                             {user.user.phone === '01747015688' && <>
                                 <li>
-                                    <NavLink to='/admin/dashboard'>Dashboard</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to='/admin/register'>Add Member</NavLink>
+                                    <NavLink to='/admin'>Admin</NavLink>
                                 </li>
                             </>}
                             <li>

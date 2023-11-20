@@ -28,26 +28,26 @@ function Login() {
   })
 
   return (
-    <div className='login'>
+    <div className='login auth'>
       <div className="form-header">
         <h2>Login</h2>
       </div>
       <form onSubmit={formik.handleSubmit}>
         <div className="form-group">
           <label htmlFor="phone">Phone: </label>
-          <input type="text" name="phone" onChange={formik.handleChange} />
-          <div className="error-feedback">
+          <input type="text" name="phone" onChange={formik.handleChange} required />
+          {error.phone && <div className="error-feedback">
             <p>{error.phone}</p>
-          </div>
+          </div>}
         </div>
         <div className="form-group">
           <label htmlFor="password">Password : </label>
-          <input type="text" name="password" onChange={formik.handleChange} />
-          <div className="error-feedback">
+          <input type="password" name="password" onChange={formik.handleChange} required/>
+          {error.password && <div className="error-feedback">
             <p>{error.password}</p>
-          </div>
+          </div>}
         </div>
-        <button type="submit">Login</button>
+        <button className='btn2' type="submit">Login</button>
       </form>
     </div>
   )

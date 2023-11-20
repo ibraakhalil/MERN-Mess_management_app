@@ -1,0 +1,26 @@
+
+.admin_sidebar {
+	background: var(--primary);
+	padding: 8px;
+	margin-right: 1.5rem;
+	border-radius: 5px;
+	min-width: 180px;
+	min-height: 70vh;
+}
+.admin_sidebar li {
+	padding: 12px 1rem;
+	color: var(--pure);
+	font-size: 15px;
+	white-space: nowrap;
+	cursor: pointer;
+	margin-bottom: 5px;
+	border-radius: 5px;
+	padding-left: 10px;
+	font-weight: 300;
+}
+
+.admin_sidebar li:hover {
+	background: var(--pure);
+    color: var(--primary);
+}
+

@@ -1,0 +1,50 @@
+.activity {
+	background: var(--background);
+	width: 90%;
+	margin: 3rem auto;
+	padding: 1rem;
+    box-shadow: var(--box-shadow);
+}
+.activity h2 {
+	margin-left: 1rem;
+	margin-bottom: 2rem;
+}
+.activity .item img {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+}
+.activity .item {
+	display: flex;
+	justify-content: space-between;
+	background: var(--primary);
+	align-items: center;
+	margin: 12px 1rem;
+	padding: 0.6rem;
+	border-radius: 50px;
+	font-size: 14px;
+	color: var(--pure);
+	font-weight: 300;
+}
+.activity .item li {
+	width: 100%;
+	text-align: center;
+}
+.activity .item .img {
+	width: auto;
+	display: flex;
+	align-items: center;
+	padding-right: 2rem;
+}
+.activity .item .name {
+	text-align: left;
+    text-transform: capitalize;
+}
+.activity .item .name span {
+	color: #cacaca;
+	font-size: 13px;
+}
+
+
+
+

@@ -1,0 +1,29 @@
+.section {
+	margin-top: 3rem;
+	margin-bottom: 1rem;
+    box-shadow: var(--box-shadow);
+}
+.section ul {
+	display: flex;
+	justify-content: space-around;
+    gap: 3px;
+}
+.section ul li {
+	padding: 15px 1rem;
+	width: 100%;
+	text-align: center;
+	cursor: pointer;
+    background: var(--background);
+	user-select: none;
+}
+
+.section ul li.active {
+	background: var(--primary);
+	color: var(--pure);
+}
+
+.section ul li:hover {
+    background: var(--primary);
+    color: var(--pure);
+    transition: all 0.2s;
+}

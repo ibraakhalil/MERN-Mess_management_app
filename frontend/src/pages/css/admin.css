@@ -1,0 +1,14 @@
+
+.admin {
+	margin-top: 3rem;
+}
+.admin main {
+	width: 100%;
+}
+.admin .container {
+	display: flex;
+	background: var(--background);
+	padding: 1rem;
+	border-radius: 7px;
+	align-items: flex-start;
+}

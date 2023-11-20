@@ -18,6 +18,7 @@ export const authReducer = (state = init, action) => {
 
         case USER_ERROR:
             return {
+                ...state,
                 error: action.payload
             }
 

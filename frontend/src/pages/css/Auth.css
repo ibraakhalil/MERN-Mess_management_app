@@ -1,46 +1,54 @@
 .login,
 .register {
-    width: 450px;
-    margin: 0 auto;
-    border-radius: 7px;
-    margin-top: 3rem;
-    overflow: hidden;
-    box-shadow: 7px 7px 12px #0000001a;
-    background-color: aquamarine;
+	width: 450px;
+	margin: 0 auto;
+	border-radius: 7px;
+	margin-top: 3rem;
+	overflow: hidden;
+	box-shadow: var(--box-shadow);
+	background-color: var(--background);
 }
 
 .form-header {
-	padding: 1.2rem;
-	background: var(--secondary);
 	text-align: center;
+	margin-top: 1.3rem;
+}
+.auth form {
+	padding: 2rem;
 }
 
-form {
-    padding: 1rem;
+.auth form button {
+	margin: 0 auto;
+	display: block;
+	margin-top: 2rem;
 }
 
-.form-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1rem;
-    position: relative;
+.auth .form-group {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 1rem;
+	position: relative;
 }
 
-form label {
-    margin-bottom: 0.5rem;
+.auth form label {
+	margin-bottom: 0.5rem;
+	font-size: 14px;
+	color: gray;
 }
 
-form input {
-    padding: 10px 1rem;
-    width: 100%;
+.auth form input {
+	padding: 10px 1rem;
+	width: 100%;
 }
-form .profile-pic {
+
+.auth form .profile-pic {
 	width: 125px;
 	height: 125px;
 	border-radius: 50%;
 	background: black;
 	margin: 0 auto;
 }
+
 form .profilePicLabel {
 	width: 30px;
 	height: 30px;
@@ -50,4 +58,18 @@ form .profilePicLabel {
 	left: 56%;
 	top: 75%;
 	cursor: pointer;
+}
+
+.error-feedback {
+	color: red;
+	font-size: 14px;
+	padding: 7px;
+	margin-left: 1rem;
+}
+.error-feedback::before {
+	content: '⚠';
+	width: 25px;
+	height: 25px;
+	position: absolute;
+	left: 5px;
 }

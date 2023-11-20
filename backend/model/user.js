@@ -18,7 +18,11 @@ const userSchema = new Schema({
     profession: String,
     address: String,
     profilePic: String,
-    isManager: {
+    manager: {
+        type: Boolean,
+        default: false
+    },
+    admin: {
         type: Boolean,
         default: false
     }

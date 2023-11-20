@@ -1,11 +1,11 @@
 import Axios from 'axios'
-import { SET_PROFILE } from '../constants/types'
+import { API_URL, SET_PROFILE } from '../constants/types'
 import { setError } from './authAction'
 import { GET_ALL_USERS } from '../constants/types'
 
 
 export const getAllUsers = () => dispatch => {
-    Axios.get('https://messmanager-api.vercel.app/api/user/getallusers')
+    Axios.get(`${API_URL}/api/user/getallusers`)
         .then(res => {
             dispatch({
                 type: GET_ALL_USERS,
@@ -16,7 +16,7 @@ export const getAllUsers = () => dispatch => {
 }
 
 export const getProfile = (userId) => dispatch => {
-    Axios.get(`https://messmanager-api.vercel.app/api/user/profile/${userId}`)
+    Axios.get(`${API_URL}/api/user/profile/${userId}`)
         .then(res => {
             dispatch({
                 type: SET_PROFILE,

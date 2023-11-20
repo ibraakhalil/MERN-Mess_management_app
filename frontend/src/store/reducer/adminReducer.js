@@ -4,7 +4,7 @@ import { GET_ALL_USERS } from "../constants/types"
 
 const init = {
     users: [],
-    isLoading: true,
+    loading: true,
     error: {}
 }
 
@@ -15,7 +15,7 @@ export const adminReducer = (state = init, action) => {
                 ...state,
                 users: [...action.payload]
             }
-    
+
         default: return state
     }
 }
