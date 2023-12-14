@@ -1,18 +1,21 @@
 .sidebar {
-	width: 400px;
-	background: var(--primary);
-	margin: 2rem 0rem;
+	width: 350px;
+	background: var(--background);
+	border-radius: 7px;
 }
 .user-info {
 	display: flex;
 	align-items: center;
 	padding: 1rem;
+	flex-direction: column;
+	text-align: center;
 }
-
 .user-info img {
-	width: 75px;
-	height: 75px;
+	width: 100px;
+	height: 100px;
 	margin-right: 1rem;
+	border-radius: 50%;
+	margin-bottom: 0.6rem;
 }
 .user-info .inner h4 {
 	text-transform: uppercase;
@@ -20,15 +23,16 @@
 }
 .user-info .inner p {
 	color: #3c6d7d;
-}
-.user-nav {
-	padding: 1rem;
-}
-.user-nav li {
-	padding: 7px 0rem;
+	font-size: 14px;
+	font-weight: 300;
+	margin-top: 7px;
 }
 
-
+.user-info .bottom {
+	display: flex;
+	gap: 1rem;
+	margin-top: 2rem;
+}
 
 
 

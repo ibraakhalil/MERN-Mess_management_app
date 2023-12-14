@@ -14,12 +14,14 @@ export const DELETE_EXPENSES = 'DELETE_EXPENSES'
 
 export const GET_MEAL = 'GET_MEAL'
 export const POST_MEAL = 'POST_MEAL'
+export const GET_MEAL_MONTH_SUMMARY = 'GET_MEAL_MONTH_SUMMARY'
 
 
 export const POST_SET_MEAL_MONTH = 'POST_SET_MEAL_MONTH'
 export const GET_RUNNING_MEAL_MONTH = 'GET_RUNNING_MEAL_MONTH'
 
 
+export const GET_NOTICE = 'GET_NOTICE'
 
 
 

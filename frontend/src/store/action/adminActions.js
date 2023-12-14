@@ -4,8 +4,10 @@ import { getRunningMealMonth } from "./managerActions"
 
 
 
-export const postSetMealMonth = (data) => async dispatch => {
-    const res = await axios.post(`${API_URL}/api/admin/set-meal-month`, data)
-
-    if (res.statusText === "OK") dispatch(getRunningMealMonth())
+export const postSetMealMonth = (data) => dispatch => {
+    axios.post(`${API_URL}/api/admin/set-meal-month`, data)
+        .then(res => {
+            dispatch(getRunningMealMonth())
+        })
+        .catch(e => console.log(e.message))
 }

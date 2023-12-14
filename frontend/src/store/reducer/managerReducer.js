@@ -1,4 +1,4 @@
-import { GET_EXPENSES, GET_MEAL, GET_RUNNING_MEAL_MONTH, POST_EXPENSES } from "../constants/types";
+import { GET_EXPENSES, GET_MEAL, GET_MEAL_MONTH_SUMMARY, GET_RUNNING_MEAL_MONTH, POST_EXPENSES } from "../constants/types";
 
 
 
@@ -6,7 +6,8 @@ const init = {
     loading: true,
     runningMealMonth: null,
     expenses: [],
-    meals: []
+    meals: [],
+    summary: []
 }
 
 export const mangerReducer = (state = init, action) => {
@@ -31,6 +32,11 @@ export const mangerReducer = (state = init, action) => {
             return {
                 ...state,
                 meals: action.payload
+            }
+        case GET_MEAL_MONTH_SUMMARY:
+            return {
+                ...state,
+                summary: action.payload
             }
 
         default: return state

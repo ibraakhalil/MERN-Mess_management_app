@@ -5,10 +5,11 @@ import MessMember from '../components/admin/MessMember'
 import AddNewMember from '../components/admin/AddNewMember'
 import Dashboard from '../components/admin/Dashboard'
 import SetMealMonth from '../components/admin/SetMealMonth'
+import { AddNotice } from '../components/admin/AddNotice'
 
 
 function Admin() {
-  const components = [<Dashboard />, <MessMember />, <AddNewMember />, <SetMealMonth />]
+  const components = [<Dashboard />, <MessMember />, <AddNewMember />, <SetMealMonth />, <AddNotice/>]
   const [component, setComponent] = useState(components[0])
 
   const componentIndex = (index) => {

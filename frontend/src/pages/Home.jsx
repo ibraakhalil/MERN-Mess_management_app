@@ -2,18 +2,18 @@ import React from 'react'
 import './css/Home.css'
 import NoticeBoard from '../components/NoticeBoard'
 import MemberCard from '../components/MemberCard'
-import Activity from '../components/Activity'
+import { MealSummary } from '../components/home/MealSummary'
+import MealChart from '../components/manager/MealChart'
+
 
 function Home() {
-
   return (
     <>
       <div className='home'>
-        <div className="container">
-          <NoticeBoard />
-        </div>
+        <NoticeBoard />
       </div>
-      <Activity/>
+      <MealSummary />
+      <MealChart />
       <MemberCard />
     </>
   )

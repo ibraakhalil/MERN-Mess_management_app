@@ -1,34 +1,66 @@
 .mess-members {
-	background: #00000036;
+	background: var(--background);
 	border-radius: 7px;
-	padding: 1rem 2rem;
-	width: 80%;
-	margin: 5rem auto;
+	padding: 1rem;
 }
-.mess-members > h3 {
-	border-bottom: 1px solid #80808052;
-	margin-bottom: 1rem;
-	font-weight: 400;
-}
+
 .mess-members .wrapper {
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
 	grid-gap: 1.5rem;
 }
-.mess-members .wrapper .item {
-	background: var(--pure);
+.mess-members .wrapper .card {
+	background: var(--marin);
 	border-radius: 7px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 1rem;
+	position: relative;
+}
+.role {
+	background: yellow;
+	padding: 2px 7px;
+	font-size: 12px;
+	font-weight: 300;
+	position: absolute;
+	left: 13px;
+	border-radius: 3px;
+	text-transform: uppercase;
+	top: 13px;
+}
+.mess-members .card .img {
+	width: 50%;
+	border-radius: 50%;
 	overflow: hidden;
-	height: 180px;
+	margin-top: 2rem;
+	aspect-ratio: 1;
 }
-.mess-members .item .img {
-	height: 70%;
-}
-.item .info {
+.mess-members .card .info {
 	padding: 0 0.5rem;
+	color: var(--pure);
+	margin-top: 10px;
+	text-align: center;
+	width: 100%;
+	min-height: 75px;
 }
-.item .info h4 {
+.mess-members .card .info h4 {
 	font-weight: 300;
 	font-size: 14px;
 	text-transform: uppercase;
+}
+.mess-members .card .info p.address {
+	font-weight: 300;
+	font-size: 13px;
+	color: #b7b7b7;
+}
+
+.mess-members .card_btn {
+	display: flex;
+}
+.mess-members .card_btn button {
+	margin: 5px;
+	padding: 5px 9px;
+	font-size: 12px;
+	font-weight: 300;
 }

@@ -1,21 +1,15 @@
 
 .home {
-	height: calc(100vh - 100px);
+	min-height: calc(100vh - 100px);
 	background: var(--background);
 	padding-top: 1px;
+	padding-bottom: 3rem;
 }
 
-.home h1 {
-	font-size: 8vw;
+.home_all_headers {
 	text-align: center;
-	text-transform: uppercase;
-	padding: 9rem;
+	margin-top: 3rem;
+	font-weight: 500;
+	margin-bottom: 2rem;
 }
-
-
-
-
-
-
-
 

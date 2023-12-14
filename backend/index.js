@@ -13,7 +13,7 @@ app.use(express.json())
 app.use(cors())
 app.use('/public/upload', express.static('./public/upload'))
 
-app.use(router)
+app.use(router) 
 
 
 

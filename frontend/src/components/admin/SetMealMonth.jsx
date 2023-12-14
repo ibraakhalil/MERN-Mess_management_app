@@ -4,9 +4,8 @@ import moment from 'moment'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllUsers } from '../../store/action/userAction'
 import { postSetMealMonth } from '../../store/action/adminActions';
-import { getRunningMealMonth } from '../../store/action/managerActions'
+import { closeRunningMealMonth, getRunningMealMonth } from '../../store/action/managerActions'
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
 
 
 
@@ -37,20 +36,29 @@ function SetMealMonth() {
     dispatch(postSetMealMonth(data))
   }
 
+  const handleClose = (e) => {
+    dispatch(closeRunningMealMonth(runningMealMonth._id))
+  }
+
 
   return (
     <>
       {loading && <div className='loadin'>Loading...</div>}
-      {!loading && <div>
+      {!loading && <div className='meal_month'>
         {runningMealMonth?.isActive &&
           <div className='running_month'>
             <div className='top'>
               <h3>Running Month</h3>
-              <h1>{months[runningMealMonth.month - 1]}</h1>
+              <h1>{months[runningMealMonth.month - 1]}, 2023</h1>
             </div>
             <div className='details'>
               <h1>{runningMealMonth.manager.name}</h1>
-              <p>{moment(runningMealMonth.startDate).format('ll')}</p>
+              <div className="date">
+                <p> Start Date
+                  <span>{moment(runningMealMonth.startDate).format('ll')}</span>
+                </p>
+                <p onClick={handleClose}>Close</p>
+              </div>
             </div>
           </div>
         }

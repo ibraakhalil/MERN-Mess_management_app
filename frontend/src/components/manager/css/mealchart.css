@@ -70,6 +70,7 @@
 }
 .meal_chart .active .modal {
 	display: flex;
+	z-index: 100;
 }
 .meal_chart .modal .modal_items {
 	background: var(--pure);

@@ -1,23 +1,44 @@
 
 
-.running_month {
+.meal_month .running_month {
 	background: var(--primary);
 	padding: 1rem;
 	border-radius: 5px;
+	box-shadow: var(--box-shadow);
 }
-.running_month .top {
+.meal_month .running_month .top {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	color: var(--pure);
 }
-.running_month .top h1 {
+.meal_month .running_month .top h1 {
 	font-weight: 300;
 }
 
+.meal_month .running_month .date {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 2rem;
+}
+.meal_month .running_month .date p {
+	font-size: 12px;
+	background: var(--secondary);
+	color: var(--pure);
+	padding: 5px 1rem;
+	border-radius: 50px;
+	font-weight: 300;
+}
+.meal_month .running_month .date p:last-child {
+	background: red;
+	cursor: pointer;
 
-
-.set_manager {
+}
+.meal_month .running_month .date p span {
+	display: block;
+}
+.meal_month .set_manager {
 	background: var(--pure);
 	padding: 1rem;
 }

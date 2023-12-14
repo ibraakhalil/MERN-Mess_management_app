@@ -1,7 +1,8 @@
 import Axios from 'axios'
-import { API_URL, SET_PROFILE } from '../constants/types'
+import { API_URL, GET_NOTICE, SET_PROFILE } from '../constants/types'
 import { setError } from './authAction'
 import { GET_ALL_USERS } from '../constants/types'
+import axios from 'axios'
 
 
 export const getAllUsers = () => dispatch => {
@@ -18,6 +19,8 @@ export const getAllUsers = () => dispatch => {
 export const getProfile = (userId) => dispatch => {
     Axios.get(`${API_URL}/api/user/profile/${userId}`)
         .then(res => {
+
+            console.log(res.data)
             dispatch({
                 type: SET_PROFILE,
                 payload: res.data.user
@@ -26,8 +29,24 @@ export const getProfile = (userId) => dispatch => {
         .catch(e => dispatch(setError(e.response.data.error)))
 }
 
+export const getNotice = () => dispatch => {
+    axios.get(`${API_URL}/api/user/notice`).
+        then(res => {
+            dispatch({
+                type: GET_NOTICE,
+                payload: res.data
+            })
+        })
+}
+export const postNotice = (data) => dispatch => {
+    axios.post(`${API_URL}/api/user/notice`, data).
+        then(res => {
+            dispatch(getNotice())
+        })
+}
+
 export const profileUpdate = () => dispatch => {
-    
+
 }
 
 

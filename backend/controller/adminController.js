@@ -8,11 +8,14 @@ const getAllUsers = async (req, res, next) => {
     res.status(200).json(users)
 }
 
-
 const getRunningMealMonth = async (req, res, next) => {
     try {
 
         const runningManager = await SetMealMonth.find({ isActive: true })
+        .populate({
+            path: 'expenses'
+        })
+
         if (runningManager) {
             if (runningManager.length > 1) {
                 return res.json({ message: "Something need to fix" })

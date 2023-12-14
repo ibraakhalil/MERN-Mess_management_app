@@ -9,8 +9,9 @@
 }
 .summary .row2 {
 	display: grid;
-    grid-template-columns: 2fr 1fr;
-    margin-top: 1rem;
+	grid-template-columns: 2fr 1fr;
+	margin-top: 1rem;
+	align-items: baseline;
 }
 .summary .row1 .item {
 	background: var(--smooth_p);

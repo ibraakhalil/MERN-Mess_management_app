@@ -1,0 +1,23 @@
+.notice_form {
+	display: flex;
+	flex-direction: column;
+	align-items: baseline;
+}
+
+.notice_form label {
+    margin-bottom: 7px;
+}
+
+.notice_form textarea {
+    width: 100%;
+    resize: none;
+    outline: none;
+    padding: 7px;
+    border-radius: 7px;
+    border: 1px solid #b6b6b6;
+    color: gray;
+}
+
+.notice_form button {
+    margin-top: 1rem;
+}

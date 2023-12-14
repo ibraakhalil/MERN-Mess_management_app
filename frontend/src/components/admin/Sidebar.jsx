@@ -16,6 +16,7 @@ function Sidebar({ componentIndex }) {
         <li onClick={handleClick} data-index={1}>Mess Members</li>
         <li onClick={handleClick} data-index={2}>Add Members</li>
         <li onClick={handleClick} data-index={3}>Set Manager</li>
+        <li onClick={handleClick} data-index={4}>Add Notice</li>
       </ul>
     </div>
   )

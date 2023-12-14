@@ -4,7 +4,7 @@ const User = require('../model/user')
 const jwt = require('jsonwebtoken')
 const JWTSECRET = process.env.JWT_SECRET
 const { validationResult } = require('express-validator')
-
+ 
 
 const registerUser = async (req, res, next) => {
     const { name, phone, email, address } = req.body
@@ -21,7 +21,7 @@ const registerUser = async (req, res, next) => {
         password: '123456',
         email,
         address,
-        profilePic: req.file ? req.file.filename : 'default.jpg'
+        profilePic: req.file ? req.file.filename : 'default_profile.jpg'
     })
 
     try {
@@ -44,7 +44,6 @@ const loginUser = async (req, res, next) => {
     const { phone, password } = req.body
     const error = {}
 
-
     try {
         const user = await User.findOne({ phone }) 
 
@@ -64,7 +63,9 @@ const loginUser = async (req, res, next) => {
                 phone: user.phone,
                 email: user.email,
                 address: user.address,
-                profilePic: user.profilePic
+                profilePic: user.profilePic,
+                admin: user.admin,
+                manager: user.manager
             }
 
         }, JWTSECRET, { expiresIn: '2 days' })

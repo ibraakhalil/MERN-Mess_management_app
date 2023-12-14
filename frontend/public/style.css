@@ -8,6 +8,7 @@
     --pure: #fff;
     --dark: #000;
     --background: #fff3f3;
+    --marin: #4b4453 ;
 
 
     --box-shadow: 7px 7px 7px #a2a0a031;
@@ -64,6 +65,10 @@ ul {
 a {
     text-decoration: none;
     color: blue;
+}
+
+p {
+    font-weight: 300;
 }
 
 select {

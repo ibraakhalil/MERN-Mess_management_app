@@ -6,6 +6,8 @@ import Meal from '../components/manager/Meal'
 import Summary from '../components/manager/Summary'
 import { useDispatch, useSelector } from 'react-redux'
 import { getRunningMealMonth } from '../store/action/managerActions'
+import moment from 'moment'
+export const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 
 function ManagerPanel() {
@@ -16,6 +18,7 @@ function ManagerPanel() {
   useEffect(() => {
     dispatch(getRunningMealMonth())
   }, [dispatch])
+
 
   const handleClick = (e) => {
     const lists = document.querySelectorAll(".section ul li")
@@ -37,7 +40,21 @@ function ManagerPanel() {
           <div>
             <h1>Manager not set yet!</h1>
           </div>}
-        {runningMealMonth?.isActive && <>
+
+        {runningMealMonth?.isActive && <div className='manager_panel'>
+          <div className='running_manager'>
+            <div className='top'>
+              <h1>{runningMealMonth.manager.name}</h1>
+              <h1>{months[runningMealMonth.month - 1]}, 2023</h1>
+            </div>
+            <div className='details'>
+              <div className="date">
+                <p> Start Date
+                  <span>{moment(runningMealMonth.startDate).format('ll')}</span>
+                </p>
+              </div>
+            </div>
+          </div>
           <div className="section">
             <ul>
               <li className='active' onClick={handleClick}>Summary</li>
@@ -47,7 +64,7 @@ function ManagerPanel() {
             </ul>
           </div>
           {compo}
-        </>}
+        </div>}
       </div>}
     </>
   )

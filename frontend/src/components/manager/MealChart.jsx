@@ -7,11 +7,12 @@ import { BsMoonStarsFill, BsSunFill, BsXLg } from 'react-icons/bs'
 
 function MealChart() {
   const dispatch = useDispatch()
-  const { meals } = useSelector(state => state.manager)
-
+  const { manager: { meals }, auth } = useSelector(state => state)
+  const sortedMeals = meals.sort((a, b) => new Date(a.date) - new Date(b.date));
   useEffect(() => {
     dispatch(getMeal())
   }, [dispatch])
+
 
   const handleClick = (e) => {
     let item = e.target.parentElement.parentElement
@@ -31,13 +32,11 @@ function MealChart() {
     handleClose()
   }
 
-
-
   return (
-    <div className='meal_chart'>
-      <h1 className="header_text">Meal Chart</h1>
+    <div className='meal_chart container'>
+      <h1 className="home_all_headers">Meal Chart</h1>
       <div className="wrapper">
-        {meals.map((list, i) =>
+        {sortedMeals.map((list, i) =>
           <Fragment key={i}>
             <div className="item">
               <div className="date">
@@ -60,8 +59,7 @@ function MealChart() {
                   <div className='modal_header'>
                     <h1>{moment(list.date).format('ll')}</h1>
                     <div>
-                      <p>{list._id}</p>
-                      <p>Today Total <span>{list.totalDinner + list.totalLunch}</span></p>
+                      <p>Day Total <span>{list.totalDinner + list.totalLunch}</span></p>
                       <p>Lunch <span>{list.totalLunch}</span></p>
                       <p>Dinner <span>{list.totalDinner}</span></p>
                     </div>

@@ -1,0 +1,62 @@
+.meal_summary {
+	background: var(--background);
+	padding: 1rem;
+	margin-top: 2rem;
+	border-radius: 7px;
+}
+
+.meal_summary .row1 {
+	display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+.meal_summary .row1 .item {
+	background: var(--smooth_p);
+	padding: 1rem;
+	border-radius: 7px;
+	color: var(--pure);
+    margin: 0 0.5rem;
+}
+.meal_summary .row1 .item:nth-child(2) {
+	background: var(--smooth_s);
+}
+.meal_summary .item h3 {
+	text-transform: uppercase;
+	font-weight: 300;
+	font-size: 14px;
+	color: #e6e6e6;
+	text-align: left;
+}
+
+
+table {
+	width: 100%;
+	background: var(--background);
+	margin-top: 1rem;
+	font-size: 14px;
+}
+
+tr {
+	background: var(--pure);
+}
+th {
+	background: var(--primary);
+	color: var(--pure);
+	padding: 7px;
+	text-align: center;
+}
+td {
+	padding: 7px;
+	text-align: center;
+}
+td div {
+	display: flex;
+	align-items: center;
+}
+td img {
+	width: 36px;
+	height: 36px;
+	margin-right: 8px;
+}
+td .name {
+	text-transform: capitalize;
+}

@@ -1,19 +1,48 @@
-.section {
+.manager_panel {
 	margin-top: 3rem;
-	margin-bottom: 1rem;
-    box-shadow: var(--box-shadow);
 }
+.running_manager {
+	background: var(--primary);
+	padding: 14px 1rem;
+	color: var(--pure);
+	margin-bottom: 2px;
+}
+
+.running_manager .top {
+	display: flex;
+	justify-content: space-between;
+}
+
+.running_manager .top h1 {
+	font-size: 19px;
+	font-weight: 500;
+	margin-bottom: 5px;
+}
+.running_manager .details p {
+	font-size: 13px;
+}
+.running_manager .details p span {
+	margin-left: 7px;
+	color: #b5b5b5;
+}
+
+
+.section {
+	margin-bottom: 1rem;
+}
+
 .section ul {
 	display: flex;
 	justify-content: space-around;
-    gap: 3px;
+	gap: 3px;
 }
+
 .section ul li {
 	padding: 15px 1rem;
 	width: 100%;
 	text-align: center;
 	cursor: pointer;
-    background: var(--background);
+	background: var(--background);
 	user-select: none;
 }
 
@@ -23,7 +52,7 @@
 }
 
 .section ul li:hover {
-    background: var(--primary);
-    color: var(--pure);
-    transition: all 0.2s;
+	background: var(--primary);
+	color: var(--pure);
+	transition: all 0.2s;
 }
