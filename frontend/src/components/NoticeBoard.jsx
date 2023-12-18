@@ -25,7 +25,6 @@ function NoticeBoard() {
               <strong>{notices[0]?.role}</strong>
               <p>{notices[0]?.name}</p>
             </div>
-
           </div>
         </div>
         <div className='previous_notice'>

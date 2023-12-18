@@ -19,14 +19,24 @@ export const getAllUsers = () => dispatch => {
 export const getProfile = (userId) => dispatch => {
     Axios.get(`${API_URL}/api/user/profile/${userId}`)
         .then(res => {
-
-            console.log(res.data)
             dispatch({
                 type: SET_PROFILE,
-                payload: res.data.user
+                payload: res.data
             })
         })
         .catch(e => dispatch(setError(e.response.data.error)))
+}
+export const editProfile = (data, id, navigate) => dispatch => {
+    console.log(data, id);
+    axios.post(`${API_URL}/api/user/profile/edit/${id}`, data, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    })
+        .then(res => {
+            navigate(`/user/profile/${id}`)
+        })
+        .catch(e => console.log(e.message))
 }
 
 export const getNotice = () => dispatch => {
@@ -43,10 +53,6 @@ export const postNotice = (data) => dispatch => {
         then(res => {
             dispatch(getNotice())
         })
-}
-
-export const profileUpdate = () => dispatch => {
-
 }
 
 

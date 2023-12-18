@@ -2,27 +2,32 @@ import React from 'react'
 import './css/profile.css'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { getProfile } from '../store/action/userAction'
 import ProfileSidebar from '../components/ProfileSidebar'
 
 function Profile() {
   const dispatch = useDispatch()
   const { userId } = useParams()
-  const { user } = useSelector(state => state.auth)
-  const profile = user.user
+  const { profile } = useSelector(state => state.user)
+
+  useEffect(() => {
+    dispatch(getProfile(userId))
+  }, [dispatch])
 
   return (
     <div className='container'>
       <div className="profile">
-        <ProfileSidebar user={user} />
+        <ProfileSidebar profile={profile} />
         <div className="info">
           <ul className='details'>
             <li><span>Full Name</span> {profile.name}</li>
             <li><span>Email Address</span> {profile.email}</li>
             <li><span>Phone Number</span> {profile.phone}</li>
             <li><span>Address</span> {profile.address}</li>
-            <button className='btn2'>Edit</button>
+            <button className='btn2'>
+              <Link to={`/user/profile/edit/${profile._id}`}>Edit</Link>
+            </button>
           </ul>
         </div>
       </div>

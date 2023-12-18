@@ -23,6 +23,15 @@ export const closeRunningMealMonth = (mealMonth_id) => dispatch => {
         })
         .catch(e => console.log(e.message))
 }
+export const getMealMonthSummary = () => dispatch => {
+    axios.get(`${API_URL}/api/user/meal-month-summary`)
+    .then(res => {
+        dispatch({
+            type: GET_MEAL_MONTH_SUMMARY,
+            payload: res.data
+        })
+    })
+}
 
 
 export const getExpense = () => dispatch => {
@@ -78,16 +87,6 @@ export const deleteMeal = (mealId) => dispatch => {
         .then(res => {
             dispatch(getMeal())
         })
-}
-
-export const getMealMonthSummary = () => dispatch => {
-    axios.get(`${API_URL}/manager/meal-month-summary`)
-    .then(res => {
-        dispatch({
-            type: GET_MEAL_MONTH_SUMMARY,
-            payload: res.data
-        })
-    })
 }
 
 export const addDeposite = (data) => dispatch => {

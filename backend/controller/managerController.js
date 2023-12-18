@@ -90,53 +90,57 @@ const deleteMeal = async (req, res, next) => {
     }
 }
 const getMealMonthSummary = async (req, res, next) => {
-    const users = await User.find()
-    const mealMonth = await SetMealMonth.find({ isActive: true })
-        .populate({
-            path: 'mealLists',
-            select: 'meals'
+    try {
+        const users = await User.find()
+        const mealMonth = await SetMealMonth.find({ isActive: true })
+            .populate({
+                path: 'mealLists',
+                select: 'meals'
+            })
+            .populate({
+                path: 'expenses',
+                select: 'amount'
+            })
+        const mealLists = mealMonth[0].mealLists
+        const deposites = mealMonth[0].deposites
+        const allMeals = []
+        mealLists.map(mealList => {
+            mealList.meals.map(meal => {
+                let member = {
+                    _id: meal._id,
+                    name: meal.name,
+                    dinner: meal.dinner * 0.75,
+                    lunch: meal.lunch * 1.25
+                }
+                allMeals.push(member)
+            })
         })
-        .populate({
-            path: 'expenses',
-            select: 'amount'
-        })
-    const mealLists = mealMonth[0].mealLists
-    const deposites = mealMonth[0].deposites
-    const allMeals = []
-    mealLists.map(mealList => {
-        mealList.meals.map(meal => {
-            let member = {
-                _id: meal._id,
-                name: meal.name,
-                dinner: meal.dinner * 0.75,
-                lunch: meal.lunch * 1.25
-            }
-            allMeals.push(member)
-        })
-    })
 
-    let summary = {
-        individualDatas: [],
-        totalCosts: mealMonth[0].expenses.reduce((a, b) => a + b.amount, 0),
-        mealRate: () => this.totalCosts / this.totalMeals,
-    }
-
-    users.map(user => {
-        const memberMeals = allMeals.filter(meal => user.name === meal.name)
-        const memberDeposites = deposites.filter(deposite => user.name === deposite.name)
-        const memberProccessData = {
-            _id: user._id,
-            name: user.name,
-            totalMeal: memberMeals.reduce((a, b) => a + (b.lunch + b.dinner), 0),
-            totalDiposite: memberDeposites.reduce((a, b) => a + b.amount, 0),
+        let summary = {
+            individualDatas: [],
+            totalCosts: mealMonth[0].expenses.reduce((a, b) => a + b.amount, 0),
+            mealRate: () => this.totalCosts / this.totalMeals,
         }
-        summary.individualDatas.push(memberProccessData)
-    })
 
-    summary.totalMeals = summary.individualDatas.reduce((a, b) => a + b.totalMeal, 0)
-    summary.mealRate = (summary.totalCosts / summary.totalMeals).toFixed(2)
+        users.map(user => {
+            const memberMeals = allMeals.filter(meal => user.name === meal.name)
+            const memberDeposites = deposites.filter(deposite => user.name === deposite.name)
+            const memberProccessData = {
+                _id: user._id,
+                name: user.name,
+                totalMeal: memberMeals.reduce((a, b) => a + (b.lunch + b.dinner), 0),
+                totalDiposite: memberDeposites.reduce((a, b) => a + b.amount, 0),
+            }
+            summary.individualDatas.push(memberProccessData)
+        })
 
-    res.status(200).json(summary)
+        summary.totalMeals = summary.individualDatas.reduce((a, b) => a + b.totalMeal, 0)
+        summary.mealRate = (summary.totalCosts / summary.totalMeals).toFixed(2)
+
+        res.status(200).json(summary)
+    } catch (e) {
+        next(e)
+    }
 }
 
 const addDeposite = async (req, res, next) => {

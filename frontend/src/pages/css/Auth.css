@@ -49,7 +49,7 @@
 	margin: 0 auto;
 }
 
-form .profilePicLabel {
+.auth form .profilePicLabel {
 	width: 30px;
 	height: 30px;
 	background: white;

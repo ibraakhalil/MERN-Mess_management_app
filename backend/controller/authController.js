@@ -15,13 +15,14 @@ const registerUser = async (req, res, next) => {
         }
         return res.status(400).json({ error: errors.mapped() })
     }
+    return console.log(req.body);
     const newMember = new User({
         name,
         phone,
         password: '123456',
         email,
         address,
-        profilePic: req.file ? req.file.filename : 'default_profile.jpg'
+        profilePic: req.file ? req.file.filename : 'default_profile_pic.jpg'
     })
 
     try {

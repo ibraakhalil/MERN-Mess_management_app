@@ -5,7 +5,7 @@ import { GET_ALL_USERS, GET_NOTICE, SET_PROFILE } from "../constants/types"
 const init = {
     isLoading: true,
     notices: [],
-    user: {},
+    profile: {},
     users: [],
     error: {}
 }
@@ -16,7 +16,7 @@ export const userReducer = (state = init, action) => {
             return {
                 ...state,
                 isLoading: false,
-                user: action.payload
+                profile: action.payload
             }
         case GET_ALL_USERS:
             return {

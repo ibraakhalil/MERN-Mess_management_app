@@ -8,7 +8,7 @@ const { isLoggedIn, adminProtected } = require('../utils/userAuthorization');
 router.use("/api/auth", authRouter)
 router.use("/api/user", userRouter)
 router.use("/api/admin", isLoggedIn, adminProtected, adminRouter)
-router.use("/manager", isLoggedIn, managerRouter)
+router.use("/manager", managerRouter)
 
 
 

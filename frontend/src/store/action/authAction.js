@@ -5,6 +5,7 @@ import { API_URL, SET_USER, USER_ERROR } from '../constants/types'
 
 
 export const addMember = (user, navigate) => dispatch => {
+    console.log(user);
     Axios.post(`${API_URL}/api/admin/register`, user, {
         headers: {
             'Content-Type': `multipart/form-data;`
