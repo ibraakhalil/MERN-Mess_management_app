@@ -8,7 +8,6 @@ const getProfile = async (req, res, next) => {
     
     try {
         const profile = await User.findOne({ _id: userId })
-        console.log(profile);
         res.status(200).json(profile)
     } catch (e) {
         next(e)
