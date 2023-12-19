@@ -11,6 +11,8 @@ function Profile() {
   const { userId } = useParams()
   const { profile } = useSelector(state => state.user)
 
+  console.log(profile);
+
   useEffect(() => {
     dispatch(getProfile(userId))
   }, [dispatch, userId])
