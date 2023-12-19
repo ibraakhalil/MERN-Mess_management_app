@@ -12,9 +12,9 @@ const getProfile = async (req, res, next) => {
 
         const filePath = path.join(process.cwd(), 'public/upload', profile.profilePic)
 
-        const fileStringify = readFileSync(filePath, 'utf-8')
+        const fileStringify = readFileSync(filePath)
 
-        console.log(fileStringify);
+        console.log(!!fileStringify);
 
         res.status(200).json(profile)
     } catch (e) {

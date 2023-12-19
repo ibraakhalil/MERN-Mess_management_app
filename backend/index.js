@@ -13,6 +13,8 @@ app.use(express.json())
 app.use(cors())
 app.use('/public' , express.static(path.join(__dirname, 'public')))
 
+console.log('This is from index.js');
+
 app.use(router)
 
 
