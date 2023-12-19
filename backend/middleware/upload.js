@@ -1,16 +1,10 @@
 const multer = require('multer')
 const path = require('path')
-const fs = require('fs')
 
 
 const storage = multer.diskStorage({
-    destination: function (req, file, callback) {
-        fs.mkdir("/tmp", (err) => {
-            if (err) {
-                logger.error("mkdir tmp %o", err);
-            }
-            callback(null, "/tmp");
-        });
+    destination: (req, file, cb) => {
+        cb(null, '/tmp')
     },
     filename: (req, file, cb) => {
         cb(null, file.fieldname + Date.now() + file.originalname.replace(/\s+/g, '-').toLowerCase())
@@ -25,7 +19,7 @@ const upload = multer({
     fileFilter: (req, file, cb) => {
         const type = /jpeg|jpg|png/
         const extName = type.test(path.extname(file.originalname).toLowerCase())
-        if (extName) {
+        if(extName) {
             cb(null, true)
         } else {
             cb(new Error('Unsupported file'))
