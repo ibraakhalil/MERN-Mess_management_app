@@ -15,7 +15,6 @@ const registerUser = async (req, res, next) => {
         }
         return res.status(400).json({ error: errors.mapped() })
     }
-    return console.log(req.body);
     const newMember = new User({
         name,
         phone,

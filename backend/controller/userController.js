@@ -1,12 +1,14 @@
+const { Types } = require("mongoose")
 const Notice = require("../model/notice")
 const User = require("../model/user")
 const fs = require('fs')
 
 const getProfile = async (req, res, next) => {
     const userId = req.params.userId
+    
     try {
-        const user = await User.findOne({ _id: userId })
-        res.status(200).json(user)
+        const profile = await User.findOne({ _id: userId })
+        res.status(200).json(profile)
     } catch (e) {
         next(e)
     }

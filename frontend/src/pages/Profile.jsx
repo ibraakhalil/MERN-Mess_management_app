@@ -13,7 +13,8 @@ function Profile() {
 
   useEffect(() => {
     dispatch(getProfile(userId))
-  }, [dispatch])
+  }, [dispatch, userId])
+
 
   return (
     <div className='container'>

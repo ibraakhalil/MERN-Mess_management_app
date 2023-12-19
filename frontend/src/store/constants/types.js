@@ -1,5 +1,5 @@
-export const API_URL = 'https://messmanager-api.vercel.app'
-// export const API_URL = 'http://localhost:5000'
+// export const API_URL = 'https://messmanager-api.vercel.app'
+export const API_URL = 'http://localhost:5000'
 
 export const SET_USER = 'SET_USER'
 export const USER_ERROR = 'USER_ERROR'

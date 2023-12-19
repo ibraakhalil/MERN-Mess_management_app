@@ -27,7 +27,6 @@ export const getProfile = (userId) => dispatch => {
         .catch(e => dispatch(setError(e.response.data.error)))
 }
 export const editProfile = (data, id, navigate) => dispatch => {
-    console.log(data, id);
     axios.post(`${API_URL}/api/user/profile/edit/${id}`, data, {
         headers: {
             'Content-Type': 'multipart/form-data'
@@ -40,8 +39,8 @@ export const editProfile = (data, id, navigate) => dispatch => {
 }
 
 export const getNotice = () => dispatch => {
-    axios.get(`${API_URL}/api/user/notice`).
-        then(res => {
+    axios.get(`${API_URL}/api/user/notice`)
+        .then(res => {
             dispatch({
                 type: GET_NOTICE,
                 payload: res.data
@@ -49,8 +48,8 @@ export const getNotice = () => dispatch => {
         })
 }
 export const postNotice = (data) => dispatch => {
-    axios.post(`${API_URL}/api/user/notice`, data).
-        then(res => {
+    axios.post(`${API_URL}/api/user/notice`, data)
+        .then(res => {
             dispatch(getNotice())
         })
 }
