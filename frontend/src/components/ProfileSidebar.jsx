@@ -8,7 +8,7 @@ function ProfileSidebar({ profile }) {
         <>
             {profile && <div className="sidebar">
                 <div className="user-info">
-                    <img src={`${API_URL}/public/upload/${profile.profilePic || 'default_profile_pic.jpg'}`} alt="profile_pic" />
+                    <img src={profile.profilePic} alt="profile_pic" />
                     <div className="inner">
                         <h4>{profile.name}</h4>
                         <p>{profile.address}</p>

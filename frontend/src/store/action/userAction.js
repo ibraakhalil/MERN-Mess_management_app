@@ -27,11 +27,7 @@ export const getProfile = (userId) => dispatch => {
         .catch(e => dispatch(setError(e.response.data.error)))
 }
 export const editProfile = (data, id, navigate) => dispatch => {
-    axios.post(`${API_URL}/api/user/profile/edit/${id}`, data, {
-        headers: {
-            'Content-Type': 'multipart/form-data'
-        }
-    })
+    axios.post(`${API_URL}/api/user/profile/edit/${id}`, data)
         .then(res => {
             navigate(`/user/profile/${id}`)
         })

@@ -8,7 +8,7 @@ const { getMealMonthSummary } = require('../controller/managerController')
 
 
 router.get('/profile/:userId', getProfile)
-router.post('/profile/edit/:userId', isLoggedIn , upload.single('profilePic'), updateProfile)
+router.post('/profile/edit/:userId', isLoggedIn, updateProfile)
 router.get('/getallusers', getAllUsers)
 
 router.get('/get-running-meal-month', getRunningMealMonth)

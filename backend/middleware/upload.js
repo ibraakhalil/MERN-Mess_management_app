@@ -3,16 +3,15 @@ const path = require('path')
 
 
 const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, '/public/upload')
-    },
+    // destination: (req, file, cb) => {
+    //     cb(null, '/public/upload')
+    // },
     filename: (req, file, cb) => {
         cb(null, file.fieldname + Date.now() + file.originalname.replace(/\s+/g, '-').toLowerCase())
     }
 })
 
 const upload = multer({
-    storage,
     limits: {
         fileSize: 1024 * 1024 * 2
     },

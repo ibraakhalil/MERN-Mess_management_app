@@ -3,7 +3,6 @@ import './css/editProfile.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { editProfile, getProfile } from '../store/action/userAction'
-import { API_URL } from '../store/constants/types'
 
 function EditProfile() {
   const { userId } = useParams()
@@ -18,23 +17,34 @@ function EditProfile() {
 
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     let data = {
       name: nameRef.current.value,
       email: emailRef.current.value,
       address: addressRef.current.value,
-      profilePic: selectedImg,
+      profilePic: null
     }
 
-    dispatch(editProfile(data, userId, navigate))
+    if (selectedImg) {
+      let reader = new FileReader()
+      reader.readAsDataURL(selectedImg)
+      reader.onload = () => {
+        data.profilePic = reader.result
+        dispatch(editProfile(data, userId, navigate))
+        console.log(data);
+      }
+      reader.onerror = (err) => console.log(err);
+    } else {
+      dispatch(editProfile(data, userId, navigate))
+    }
   }
-
 
   useEffect(() => {
     dispatch(getProfile(userId))
-    profilePic && setProfileImg(`${API_URL}/public/upload/${profilePic}`)
+    profilePic && setProfileImg(profilePic)
   }, [dispatch, profilePic])
 
+  
   return (
     <div className="container">
       <div className="auth edit_profile">

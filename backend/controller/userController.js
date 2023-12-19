@@ -1,34 +1,36 @@
 const { Types } = require("mongoose")
 const Notice = require("../model/notice")
 const User = require("../model/user")
+const cloudinary = require("../utils/cloudinary")
+const path = require('path')
+
 
 const getProfile = async (req, res, next) => {
     const userId = req.params.userId
-    
     try {
         const profile = await User.findOne({ _id: userId })
-
         res.status(200).json(profile)
     } catch (e) {
         next(e)
     }
 }
 const updateProfile = async (req, res, next) => {
-    const { name, email, address } = req.body
+    const { name, email, address, profilePic } = req.body
     const { userId } = req.params
+    const opts = {
+        overwrite: true,
+        invalidate: true,
+        resource_type: 'image'
+    }
     try {
-        const user = await User.findOne({ _id: userId })
-        const filePath = `public/upload/${user.profilePic}`
-        if (req.file && fs.existsSync(filePath) && user.profilePic !== 'default_profile_pic.jpg') {
-            fs.unlink(filePath, e => console.log(e))
-        }
-
+        const defaultPicPath = path.join(__dirname, '../public/upload/default_profile_pic.jpg')
+        const uploadResult = profilePic && await cloudinary.uploader.upload(profilePic, opts)
         const updatedProfile = await User.findOneAndUpdate(
             { _id: userId },
             {
                 $set: {
                     name, email, address,
-                    profilePic: req.file ? req.file.filename : user.profilePic
+                    profilePic: profilePic ? uploadResult.secure_url : defaultPicPath
                 }
             },
             { new: true }
