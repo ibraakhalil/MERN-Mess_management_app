@@ -1,20 +1,12 @@
 const { Types } = require("mongoose")
 const Notice = require("../model/notice")
 const User = require("../model/user")
-const {readFileSync} = require('fs')
-const path = require('path')
 
 const getProfile = async (req, res, next) => {
     const userId = req.params.userId
     
     try {
         const profile = await User.findOne({ _id: userId })
-
-        const filePath = path.join(process.cwd(), 'tmp', profile.profilePic)
-
-        const fileStringify = readFileSync(filePath)
-
-        console.log(!!fileStringify);
 
         res.status(200).json(profile)
     } catch (e) {
