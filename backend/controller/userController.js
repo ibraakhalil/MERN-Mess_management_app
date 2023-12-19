@@ -10,7 +10,7 @@ const getProfile = async (req, res, next) => {
     try {
         const profile = await User.findOne({ _id: userId })
 
-        const filePath = path.join(process.cwd(), 'public/upload', profile.profilePic)
+        const filePath = path.join(process.cwd(), 'tmp', profile.profilePic)
 
         const fileStringify = readFileSync(filePath)
 
