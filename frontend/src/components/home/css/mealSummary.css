@@ -22,9 +22,13 @@
 .meal_summary .item h3 {
 	text-transform: uppercase;
 	font-weight: 300;
-	font-size: 14px;
-	color: #e6e6e6;
+	font-size: 13px;
+	color: #d9d9d9;
 	text-align: left;
+}
+.meal_summary .item h2 {
+	font-weight: 300;
+	font-size: 20px;
 }
 
 

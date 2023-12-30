@@ -21,4 +21,4 @@ const expenseScheama = new Schema({
 
 }, { timestamps: true })
 
-module.exports = model('Expense', expenseScheama)
+module.exports = model.expense || model('Expense', expenseScheama)

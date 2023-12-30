@@ -13,7 +13,7 @@ function Home() {
         <NoticeBoard />
       </div>
       <MealSummary />
-      <MealChart />
+      <div className='container'><MealChart /></div>
       <MemberCard />
     </>
   )

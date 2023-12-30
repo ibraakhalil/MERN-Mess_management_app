@@ -4,7 +4,6 @@ import Activity from '../Activity'
 import { useDispatch, useSelector } from 'react-redux'
 import { getMealMonthSummary } from '../../store/action/managerActions'
 
-
 function Summary() {
     const dispatch = useDispatch()
     const { manager: { runningMealMonth, summary } } = useSelector(state => state)
@@ -13,12 +12,13 @@ function Summary() {
         dispatch(getMealMonthSummary())
     }, [dispatch])
 
+
     return (
         <div className='summary'>
             <div className="row1">
                 <div className="item">
                     <h3>Meal Rate</h3>
-                    <h2>{summary.mealRate} tk</h2>
+                    <h2>{summary.mealRate || 0.00} tk</h2>
                 </div>
                 <div className="item">
                     <h3>Total Meal</h3>

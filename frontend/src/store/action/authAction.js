@@ -4,7 +4,7 @@ import setAuthHeaders from '../../utils/setAuthHeaders'
 import { API_URL, SET_USER, USER_ERROR } from '../constants/types'
 
 
-export const addMember = (user, navigate) => dispatch => {
+export const addMember = (user, navigator) => dispatch => {
     console.log(user);
     Axios.post(`${API_URL}/api/admin/register`, user, {
         headers: {
@@ -12,7 +12,7 @@ export const addMember = (user, navigate) => dispatch => {
         }
     })
         .then(res => {
-            if (res.statusText === "OK") navigate('/')
+            navigator()
         })
         .catch(e => {
             dispatch(setError(e.response.data.error))

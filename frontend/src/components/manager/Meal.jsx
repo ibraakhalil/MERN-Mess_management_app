@@ -61,7 +61,7 @@ function Expense() {
     dispatch(postMeal(newMeal))
     setEntryLists([])
     setMembers(users)
-    dispatch(getMeal())
+    dispatch(getMeal(runningMealMonth._id))
   }
 
 

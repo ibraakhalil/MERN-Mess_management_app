@@ -1,0 +1,11 @@
+.comingsoon {
+    height: calc(100vh - 200px);
+}
+
+.comingsoon h1 {
+    text-align: center;
+    padding: 3rem;
+}
+
+
+

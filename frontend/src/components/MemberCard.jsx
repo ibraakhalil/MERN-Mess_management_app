@@ -6,7 +6,6 @@ import './css/MemberCard.css'
 
 
 function MemberCard() {
-    const img1 = "https://saifulbinakalam.files.wordpress.com/2017/10/saiful-bin-a-kalam-passport-size-photo.jpg"
     const dispatch = useDispatch()
     const { users } = useSelector(state => state.user)
 
@@ -24,7 +23,7 @@ function MemberCard() {
                         <div key={i} className="card">
                             <div className='role'>Member</div>
                             <div className='img'>
-                                <img src={img1} alt="" />
+                                <img src={member.profilePic} alt="" />
                             </div>
                             <div className="info">
                                 <h4>{member.name}</h4>

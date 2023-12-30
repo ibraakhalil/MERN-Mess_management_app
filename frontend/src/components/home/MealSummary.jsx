@@ -24,7 +24,7 @@ export function MealSummary() {
                     <div className="row1">
                         <div className="item">
                             <h3>Manager</h3>
-                            <h2>{runningMealMonth?.manager.name}</h2>
+                            <h2>{runningMealMonth?.manager?.name}</h2>
                         </div>
                         <div className="item">
                             <h3>Month</h3>
@@ -47,7 +47,7 @@ export function MealSummary() {
                         </tr>
                     </thead>
                     <tbody>
-                        {summary.individualDatas?.map((user) =>
+                        {summary?.individualDatas?.map((user) =>
                             <tr key={user._id}>
                                 <td>
                                     <div>
@@ -58,10 +58,13 @@ export function MealSummary() {
                                     </div>
                                 </td>
                                 <td>{user.totalMeal}</td>
-                                <td>{((user.totalMeal) * summary.mealRate).toFixed()}</td>
+                                <td>{((user.totalMeal) * summary?.mealRate || 0).toFixed()}</td>
                                 <td>{user.totalDiposite}</td>
-                                <td>{user.totalDiposite - ((user.totalMeal) * summary.mealRate).toFixed()}</td>
-                            </tr>)}
+                                <td>
+                                    {user.totalDiposite - ((user.totalMeal) * summary?.mealRate || 0).toFixed()}
+                                </td>
+                            </tr>
+                        )}
                     </tbody>
                 </table>
             </div>

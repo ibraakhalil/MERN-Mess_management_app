@@ -24,4 +24,4 @@ const mealShema = new Schema({
 }, { timestamps: true })
 
 
-module.exports = model('Meal', mealShema)
+module.exports = model.meal || model('Meal', mealShema)

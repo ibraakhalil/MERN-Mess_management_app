@@ -26,7 +26,7 @@ export function AddNotice() {
                 <button className="btn1" onClick={handlePublish} >Publish</button>
             </div>
             <div className="latest_notice">
-                {notices.map(notice => <div className='item'>
+                {notices.map((notice, i) => <div key={i} className='item'>
                     <div>
                         <h4>{notice.name}</h4>
                         <p>{notice.role}</p>

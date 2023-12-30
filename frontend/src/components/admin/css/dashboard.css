@@ -1,0 +1,25 @@
+.dashboard .row1 {
+	display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+.dashboard .row1 .item {
+	background: var(--smooth_p);
+	padding: 1rem;
+	border-radius: 7px;
+	color: var(--pure);
+    margin: 0 0.5rem;
+}
+.dashboard .row1 .item:nth-child(2) {
+	background: var(--smooth_s);
+}
+.dashboard .item h3 {
+	text-transform: uppercase;
+	font-weight: 300;
+	font-size: 13px;
+	color: #d9d9d9;
+	text-align: left;
+}
+.dashboard .item h2 {
+	font-weight: 300;
+	font-size: 20px;
+}

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik'
 import { useDispatch, useSelector } from 'react-redux'
 import { addMember } from '../../store/action/authAction'
+import MessMember from './MessMember'
 
 function AddNewMember() {
   const dispatch = useDispatch()
@@ -21,6 +22,7 @@ function AddNewMember() {
     initialValues: init,
     onSubmit: (values) => {
       dispatch(addMember(values, navigate))
+      navigate('/')
     }
   })
 

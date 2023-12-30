@@ -7,12 +7,11 @@ import { BsMoonStarsFill, BsSunFill, BsXLg } from 'react-icons/bs'
 
 function MealChart() {
   const dispatch = useDispatch()
-  const { manager: { meals }, auth } = useSelector(state => state)
+  const { manager: { meals, runningMealMonth } } = useSelector(state => state)
   const sortedMeals = meals.sort((a, b) => new Date(a.date) - new Date(b.date));
   useEffect(() => {
-    dispatch(getMeal())
-  }, [dispatch])
-
+    runningMealMonth && dispatch(getMeal(runningMealMonth?._id))
+  }, [runningMealMonth, dispatch])
 
   const handleClick = (e) => {
     let item = e.target.parentElement.parentElement
@@ -33,7 +32,7 @@ function MealChart() {
   }
 
   return (
-    <div className='meal_chart container'>
+    <div className='meal_chart'>
       <h1 className="home_all_headers">Meal Chart</h1>
       <div className="wrapper">
         {sortedMeals.map((list, i) =>

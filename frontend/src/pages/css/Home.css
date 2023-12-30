@@ -1,7 +1,7 @@
 
 .home {
 	min-height: calc(100vh - 100px);
-	background: var(--background);
+	background: var(--pure);
 	padding-top: 1px;
 	padding-bottom: 3rem;
 }

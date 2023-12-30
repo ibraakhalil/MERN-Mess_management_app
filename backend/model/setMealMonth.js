@@ -47,4 +47,4 @@ const setMealMonthSchmema = new Schema({
 }, { timestamps: true })
 
 
-module.exports = model('SetMealMonth', setMealMonthSchmema)
+module.exports = model.setmealmonth || model('SetMealMonth', setMealMonthSchmema)

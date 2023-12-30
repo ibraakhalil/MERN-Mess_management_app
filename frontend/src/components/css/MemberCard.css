@@ -35,6 +35,10 @@
 	overflow: hidden;
 	margin-top: 2rem;
 	aspect-ratio: 1;
+	background: black;
+}
+.mess-members .card .img img {
+	height: 100%;
 }
 .mess-members .card .info {
 	padding: 0 0.5rem;

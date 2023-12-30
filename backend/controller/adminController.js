@@ -12,9 +12,9 @@ const getRunningMealMonth = async (req, res, next) => {
     try {
 
         const runningManager = await SetMealMonth.find({ isActive: true })
-        .populate({
-            path: 'expenses'
-        })
+            .populate({
+                path: 'expenses'
+            })
 
         if (runningManager) {
             if (runningManager.length > 1) {
@@ -24,7 +24,7 @@ const getRunningMealMonth = async (req, res, next) => {
         }
 
         res.status(200).json(null)
-        
+
     } catch (e) {
         next(e)
     }
@@ -38,7 +38,17 @@ const postSetMealMonth = async (req, res, next) => {
     })
 
     try {
-        await newMonth.save()
+        const savedManager = await newMonth.save()
+        await User.findOneAndUpdate(
+            { _id: savedManager.manager._id },
+            {
+                $set: {
+                    "manager": true,
+                    "role": 'manager'
+                }
+            },
+            { new: true }
+        )
         res.status(201).json({ success: true })
 
     } catch (e) {

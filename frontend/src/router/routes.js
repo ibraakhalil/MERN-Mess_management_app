@@ -10,6 +10,8 @@ import Profile from '../pages/Profile'
 import EditProfile from '../pages/EditProfile'
 import ManagerPanel from '../pages/ManagerPanel'
 import Admin from '../pages/Admin'
+import Setting from '../pages/Setting'
+import ComingSoon from '../pages/ComingSoon'
 
 function routes() {
     return (
@@ -32,6 +34,8 @@ function routes() {
             </Route>
 
 
+            <Route path='/setting' element={<Setting />} />
+            <Route path='/comingsoon' element={<ComingSoon />} />
             <Route path='/*' element={<Error />} />
         </Routes>
     )

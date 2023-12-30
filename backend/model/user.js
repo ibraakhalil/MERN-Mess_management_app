@@ -18,6 +18,10 @@ const userSchema = new Schema({
     profession: String,
     address: String,
     profilePic: String,
+    role: {
+        type: String,
+        default: 'member'
+    },
     manager: {
         type: Boolean,
         default: false
@@ -30,4 +34,4 @@ const userSchema = new Schema({
 }, { timestamps: true })
 
 
-module.exports = model('User', userSchema)
+module.exports = model.user || model('User', userSchema)

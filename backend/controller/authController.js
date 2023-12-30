@@ -65,7 +65,8 @@ const loginUser = async (req, res, next) => {
                 address: user.address,
                 profilePic: user.profilePic,
                 admin: user.admin,
-                manager: user.manager
+                manager: user.manager,
+                role: user.role
             }
 
         }, JWTSECRET, { expiresIn: '2 days' })

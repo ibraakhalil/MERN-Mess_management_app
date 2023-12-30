@@ -23,4 +23,8 @@
 	background: var(--pure);
     color: var(--primary);
 }
+.admin_sidebar li.active {
+	background: var(--pure);
+    color: var(--primary);
+}
 

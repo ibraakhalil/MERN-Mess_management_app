@@ -4,9 +4,10 @@
 	background-color: var(--background);
 }
 
-.header .logo {
+.header .logo h1 {
 	font-size: 28px;
 	color: var(--primary);
+	text-transform: uppercase;
 }
 
 .header nav {
@@ -14,17 +15,126 @@
 	justify-content: space-between;
 	align-items: center;
 	height: 100px;
+	position: relative;
 }
 .header nav ul {
-	display: flex;
 	font-size: 14px;
 }
-.header nav ul a {
-	padding: 7px 1rem;
-	text-transform: uppercase;
+
+.user {
+	display: flex;
+	align-items: center;
+	column-gap: 20px;
+	justify-content: center;
 }
-.header nav ul a.active {
+.user li {
+	display: flex;
+	justify-content: center;
+}
+.user li a {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.user li a svg {
+	font-size: 16px;
+	cursor: pointer;
+	color: #ababab;
+}
+.user li a:hover svg {
+	color: #717171;
+}
+.user .user_details {
+	border-radius: 5px;
+	overflow: hidden;
+	cursor: pointer;
+	font-weight: 300;
+	text-transform: capitalize;
+	background: var(--pure);
+	padding: 5px;
+	gap: 7px;
+	user-select: none;
+	transition: all 0.2s;
+}
+.user .user_details:hover {
+	box-shadow: var(--box-shadow);
+}
+.user .user_details img {
+	width: 32px;
+	aspect-ratio: 1/1;
+	border-radius: 5px;
+	overflow: hidden;
+	background: var(--background);
+}
+.user .user_details > div {
+	display: flex;
+	flex-direction: column;
+}
+.user .user_details p {
+	font-size: 12px;;
+}
+.user .user_details small {
+	font-size: 10px;
+	color: gray;
+}
+.user .user_details svg {
+	font-size: 11px;
+	margin-top: 4px;
+	margin-right: 5px;
+	color: gray;
+	transform: rotate(0deg);
+	transition: all 0.3s;
+}
+.user .user_details.active svg {
+	transform: rotate(180deg);
+}
+.user .user_details:hover svg {
+	animation: arrayanim infinite ease 1s;
+}
+@keyframes arrayanim {
+	0% {margin-top: 4px;}
+	50% {margin-top: 8px;;}
+	100% {margin-top: 4px;}
+  }
+
+.header_dropdown {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	right: 0rem;
+	border-radius: 7px;
+	box-shadow: var(--box-shadow);
+	top: 75%;
+	gap: 1px;
+	background: var(--background);
+	overflow: hidden;
+}
+.header_dropdown li {
+	display: flex;
+	align-items: center;
+	background-color: var(--pure);
+	color: var(--pure);
+	padding: 0 10px;
+}
+.header_dropdown li svg {
 	color: var(--dark);
+}
+.header_dropdown li a {
+	padding: 6px 14px;
+	display: block;
+	font-size: 14px;
+	font-weight: 300;
+	color: var(--dark);
+	width: 100px;
+}
+.header_dropdown li:hover {
+	background-color: var(--primary);
+}
+.header_dropdown li:hover svg {
+	color: var(--pure);
+}
+.header_dropdown li:hover a {
+	color: var(--pure);
 }
 
 

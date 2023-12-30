@@ -6,7 +6,7 @@ router.get('/expenses', getExpense)
 router.post('/expenses', isLoggedIn, postExpense)
 router.delete('/expenses/:id', isLoggedIn, deleteExpense)
 
-router.get('/meal', getMeal)
+router.get('/meal/:mealMonthId', getMeal)
 router.post('/meal', isLoggedIn, postMeal)
 router.delete('/meal/:id', isLoggedIn, deleteMeal)
 

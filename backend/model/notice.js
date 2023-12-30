@@ -21,4 +21,4 @@ const noticeShema = new Schema({
 }, { timestamps: true })
 
 
-module.exports = model("Notice", noticeShema)
+module.exports = model.notice || model("Notice", noticeShema)

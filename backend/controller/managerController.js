@@ -46,9 +46,9 @@ const deleteExpense = async (req, res, next) => {
 
 
 const getMeal = async (req, res, next) => {
+    const { mealMonthId } = req.params
     try {
-        const meal = await Meal.find()
-
+        const meal = await Meal.find({ mealMonth: mealMonthId })
         res.status(201).json(meal)
     } catch (err) {
         next(err)
@@ -89,6 +89,7 @@ const deleteMeal = async (req, res, next) => {
         next(e)
     }
 }
+
 const getMealMonthSummary = async (req, res, next) => {
     try {
         const users = await User.find()
@@ -101,6 +102,10 @@ const getMealMonthSummary = async (req, res, next) => {
                 path: 'expenses',
                 select: 'amount'
             })
+
+        if (!mealMonth) {
+            return res.status(401).json({ message: "Meal month not yet set!" })
+        }
         const mealLists = mealMonth[0].mealLists
         const deposites = mealMonth[0].deposites
         const allMeals = []
@@ -171,7 +176,17 @@ const closeRunningMealMonth = async (req, res, next) => {
             },
             { new: true }
         )
-        res.status(201).json(closedMonth)
+        await User.findOneAndUpdate(
+            { _id: closedMonth.manager._id },
+            {
+                $set: {
+                    "manager": false,
+                    'role': 'member'
+                }
+            },
+            { new: true }
+        )
+        res.status(201).json({ success: "Meal Month Closed Successfully" })
 
     } catch (e) {
         next(e)
