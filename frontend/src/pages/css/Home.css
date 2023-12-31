@@ -2,14 +2,13 @@
 .home {
 	min-height: calc(100vh - 100px);
 	background: var(--pure);
-	padding-top: 1px;
 	padding-bottom: 3rem;
 }
 
 .home_all_headers {
 	text-align: center;
-	margin-top: 3rem;
-	font-weight: 500;
+	margin-top: 4rem;
+	font-weight: 400;
 	margin-bottom: 2rem;
 }
 

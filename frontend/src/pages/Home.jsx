@@ -8,14 +8,18 @@ import MealChart from '../components/manager/MealChart'
 
 function Home() {
   return (
-    <>
-      <div className='home'>
-        <NoticeBoard />
-      </div>
+    <div className='home container'>
+      <NoticeBoard />
+
+      <h1 className='home_all_headers'>Meal Month Summary</h1>
       <MealSummary />
-      <div className='container'><MealChart /></div>
+
+      <h1 className='home_all_headers'>Meal Chart</h1>
+      <MealChart />
+
+      <h1 className='home_all_headers'>Member Information</h1>
       <MemberCard />
-    </>
+    </div>
   )
 }
 

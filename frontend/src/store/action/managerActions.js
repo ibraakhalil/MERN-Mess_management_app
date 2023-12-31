@@ -23,13 +23,14 @@ export const closeRunningMealMonth = (mealMonth_id) => dispatch => {
         })
         .catch(e => console.log(e.message))
 }
-export const getMealMonthSummary = () => dispatch => {
+export const getMealMonthSummary = (setLoading) => dispatch => {
     axios.get(`${API_URL}/api/user/meal-month-summary`)
         .then(res => {
             dispatch({
                 type: GET_MEAL_MONTH_SUMMARY,
                 payload: res.data
             })
+            setLoading(false)
         })
         .catch(e => console.log(e.message))
 }
@@ -77,7 +78,7 @@ export const getMeal = (mealMonthId) => dispatch => {
 export const postMeal = (data) => dispatch => {
     axios.post(`${API_URL}/manager/meal`, data)
         .then(res => {
-            dispatch(getMeal())
+            dispatch(getMeal(data.mealMonth))
         })
         .catch(e => {
             console.log(e)

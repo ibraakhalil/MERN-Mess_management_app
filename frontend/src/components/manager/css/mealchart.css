@@ -9,9 +9,8 @@
 	padding-top: 1rem;
 }
 .meal_chart .wrapper {
-	background: var(--background);
-	padding: 1rem;
-	margin: 1rem;
+	background: var(--pure);
+	padding: 0.7rem;
 	border-radius: 7px;
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));

@@ -9,6 +9,7 @@ function MealChart() {
   const dispatch = useDispatch()
   const { manager: { meals, runningMealMonth } } = useSelector(state => state)
   const sortedMeals = meals.sort((a, b) => new Date(a.date) - new Date(b.date));
+
   useEffect(() => {
     runningMealMonth && dispatch(getMeal(runningMealMonth?._id))
   }, [runningMealMonth, dispatch])
@@ -33,7 +34,6 @@ function MealChart() {
 
   return (
     <div className='meal_chart'>
-      <h1 className="home_all_headers">Meal Chart</h1>
       <div className="wrapper">
         {sortedMeals.map((list, i) =>
           <Fragment key={i}>

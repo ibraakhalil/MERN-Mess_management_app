@@ -133,6 +133,8 @@ const getMealMonthSummary = async (req, res, next) => {
             const memberProccessData = {
                 _id: user._id,
                 name: user.name,
+                profilePic: user.profilePic,
+                role: user.role,
                 totalMeal: memberMeals.reduce((a, b) => a + (b.lunch + b.dinner), 0),
                 totalDiposite: memberDeposites.reduce((a, b) => a + b.amount, 0),
             }

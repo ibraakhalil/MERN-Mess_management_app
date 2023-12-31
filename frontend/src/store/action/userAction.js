@@ -26,21 +26,27 @@ export const getProfile = (userId) => dispatch => {
         })
         .catch(e => dispatch(setError(e.response.data.error)))
 }
-export const editProfile = (data, id, navigate) => dispatch => {
+export const editProfile = (data, id, navigate, setLoading) => dispatch => {
     axios.post(`${API_URL}/api/user/profile/edit/${id}`, data)
         .then(res => {
             navigate(`/user/profile/${id}`)
+            setLoading(false)
         })
         .catch(e => console.log(e.message))
 }
 
-export const getNotice = () => dispatch => {
+export const getNotice = (setLoading) => dispatch => {
     axios.get(`${API_URL}/api/user/notice`)
         .then(res => {
             dispatch({
                 type: GET_NOTICE,
                 payload: res.data
             })
+
+            setLoading(false)
+        })
+        .catch(e => {
+            console.log(e.message);
         })
 }
 export const postNotice = (data) => dispatch => {

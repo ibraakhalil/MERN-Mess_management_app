@@ -1,21 +1,23 @@
 import React, { useRef, useState } from 'react'
 import './css/meal.css'
-import { useDispatch, useSelector } from 'react-redux'
-import { BsMoonStarsFill, BsSunFill, BsTrashFill } from 'react-icons/bs'
+import moment from 'moment'
 import MealChart from './MealChart'
-import { getMeal, postMeal } from '../../store/action/managerActions'
+import { useDispatch, useSelector } from 'react-redux'
+import { BsMoonStarsFill, BsPlusSquareFill, BsSmartwatch, BsSunFill, BsTrashFill } from 'react-icons/bs'
+import { postMeal } from '../../store/action/managerActions'
 
 
 function Expense() {
-  const [show, setShow] = useState({ entry: false, delete: false })
+  const dispatch = useDispatch()
   let { user: { users }, manager: { runningMealMonth } } = useSelector(state => state)
+  const [show, setShow] = useState({ entry: false, delete: false })
+  const [dateField, setDateField] = useState(new Date())
   const [entryLists, setEntryLists] = useState([])
   const [members, setMembers] = useState(users)
   const memberValue = useRef()
   const dateValue = useRef()
   const launchValue = useRef()
   const dinnerValue = useRef()
-  const dispatch = useDispatch()
 
   const handleEntryShow = (e) => {
     setShow({
@@ -26,7 +28,7 @@ function Expense() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    let inputs = document.querySelectorAll('.meal .new_entry form input')
+    let inputs = document.querySelectorAll('.meal .new_entry form .will_reset input')
     let memberId = memberValue.current.value
     let member = users.filter((user) => user._id === memberId)[0]
     let launch = launchValue.current.value
@@ -61,26 +63,31 @@ function Expense() {
     dispatch(postMeal(newMeal))
     setEntryLists([])
     setMembers(users)
-    dispatch(getMeal(runningMealMonth._id))
   }
 
 
   return (
     <div className='meal'>
       <h3>New Entry</h3>
-      {!show.entry && <button onClick={handleEntryShow} className='btn2'> &#8853; Add Meal</button>}
+      {!show.entry && <button onClick={handleEntryShow} className='btn2'> <BsPlusSquareFill /> Add New Meal</button>}
       {show.entry &&
         <div className='new_entry'>
           <form onSubmit={handleSubmit}>
             <div className='wrapper'>
-              <div>
+
+              <div className='date_field'>
+                <input type="date" name='date' onChange={(e) => setDateField(e.target.value)} defaultValue={new Date().toISOString().slice(0, 10)} ref={dateValue} required />
+              </div>
+
+              <div className='will_reset'>
                 <select name="name" id="name_select" ref={memberValue}>
                   {members.map((user, i) =>
                     <option key={i} value={user._id} >{user.name}</option>
                   )}
                 </select>
               </div>
-              <div className='meal_entry'>
+
+              <div className='meal_entry will_reset'>
                 <input type="number" name='launch' defaultValue={1} ref={launchValue} placeholder='Launch' required />
                 <input type="number" name='dinner' defaultValue={1} ref={dinnerValue} placeholder='Dinner' required />
               </div>
@@ -91,10 +98,9 @@ function Expense() {
           </form>
           <div className="entry_lists">
             <div className='entry_header'>
-              <h2>Meal List</h2>
-              <input type="date" name='date' defaultValue={new Date().toISOString().slice(0, 10)} ref={dateValue} required />
+              <h2><BsSmartwatch /> {moment(dateField).format('ll')}</h2>
             </div>
-            {entryLists.length === 0 && <div className='entryLists_empty'>😴</div>}
+            {entryLists.length === 0 && <div className='empty_msg'>Empty List</div>}
             <div className='lists_wrapper'>
               {entryLists.map((list, i) =>
                 <ul key={i}>

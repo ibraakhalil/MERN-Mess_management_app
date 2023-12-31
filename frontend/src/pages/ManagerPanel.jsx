@@ -12,11 +12,12 @@ export const months = ['January', 'February', 'March', 'April', 'May', 'June', '
 
 function ManagerPanel() {
   const [compo, setCompo] = useState(<Summary />)
+  const [loading2, setLoading2] = useState(false)
   const dispatch = useDispatch()
   const { runningMealMonth, loading } = useSelector(state => state.manager)
 
   useEffect(() => {
-    dispatch(getRunningMealMonth())
+    dispatch(getRunningMealMonth(setLoading2))
   }, [dispatch])
 
 

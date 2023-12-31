@@ -15,27 +15,24 @@ function MemberCard() {
     }, [dispatch])
 
     return (
-        <div className="container">
-            <h1 className='home_all_headers'>Mess Member Information</h1>
-            <div className='mess-members'>
-                <div className="wrapper">
-                    {users.map((member, i) =>
-                        <div key={i} className="card">
-                            <div className='role'>Member</div>
-                            <div className='img'>
-                                <img src={member.profilePic} alt="" />
-                            </div>
-                            <div className="info">
-                                <h4>{member.name}</h4>
-                                <p className='address'>{member.address}</p>
-                            </div>
-                            <div className='card_btn'>
-                                <button className='btn2'>Message</button>
-                                <button className=''>Follow</button>
-                            </div>
+        <div className='mess-members'>
+            <div className="wrapper">
+                {users.map((member, i) =>
+                    <div key={i} className="card">
+                        <div className='role'>{member.role}</div>
+                        <div className='img'>
+                            <img src={member.profilePic} alt="" />
                         </div>
-                    )}
-                </div>
+                        <div className="info">
+                            <h4>{member.name}</h4>
+                            <p className='address'>{member.address}</p>
+                        </div>
+                        <div className='card_btn'>
+                            <button className='btn2'>Message</button>
+                            <button className=''>Follow</button>
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     )

@@ -54,7 +54,7 @@ function Deposite() {
           <div className='entry_header'>
             <h2>Running Month Deposite</h2>
           </div>
-          {runningMealMonth.deposites.length === 0 && <div className='entryLists_empty'>😴</div>}
+          {runningMealMonth.deposites.length === 0 && <div className='empty_msg'>Empty</div>}
           <div className='lists_wrapper'>
             {runningMealMonth.deposites.map((deposite, i) =>
               <ul key={i}>

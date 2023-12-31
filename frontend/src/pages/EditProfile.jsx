@@ -6,6 +6,7 @@ import { editProfile, getProfile } from '../store/action/userAction'
 
 function EditProfile() {
   const { userId } = useParams()
+  const [loading, setLoading] = useState(false)
   const [selectedImg, setSelectedImg] = useState('')
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -18,6 +19,7 @@ function EditProfile() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    setLoading(true)
     let data = {
       name: nameRef.current.value,
       email: emailRef.current.value,
@@ -30,12 +32,11 @@ function EditProfile() {
       reader.readAsDataURL(selectedImg)
       reader.onload = () => {
         data.profilePic = reader.result
-        dispatch(editProfile(data, userId, navigate))
-        console.log(data);
+        dispatch(editProfile(data, userId, navigate, setLoading))
       }
       reader.onerror = (err) => console.log(err);
     } else {
-      dispatch(editProfile(data, userId, navigate))
+      dispatch(editProfile(data, userId, navigate, setLoading))
     }
   }
 
@@ -44,7 +45,7 @@ function EditProfile() {
     profilePic && setProfileImg(profilePic)
   }, [dispatch, profilePic])
 
-  
+
   return (
     <div className="container">
       <div className="auth edit_profile">
@@ -106,7 +107,9 @@ function EditProfile() {
             </div>}
           </div>
 
-          <button type="submit">Update</button>
+          <button type="submit">
+            {loading ? 'Updating...' : 'Update'}
+          </button>
         </form>
       </div>
     </div>
