@@ -19,7 +19,7 @@
 	padding: 1rem;
 	position: relative;
 }
-.role {
+.mess-members .role {
 	background: yellow;
 	padding: 2px 7px;
 	font-size: 11px;

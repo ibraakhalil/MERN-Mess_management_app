@@ -5,7 +5,7 @@ import { months } from '../../pages/ManagerPanel'
 import moment from 'moment'
 import { useDispatch, useSelector } from 'react-redux'
 import { getMealMonthSummary, getRunningMealMonth } from '../../store/action/managerActions'
-const memberpic = "https://i.postimg.cc/9X8gm5WX/handsome-young-man-with-new-stylish-haircut.jpg"
+
 
 export function MealSummary() {
     const dispatch = useDispatch()
@@ -16,6 +16,7 @@ export function MealSummary() {
         dispatch(getRunningMealMonth())
         dispatch(getMealMonthSummary(setLoading))
     }, [dispatch])
+
 
     return (
         <div className="meal_summary">
@@ -35,7 +36,9 @@ export function MealSummary() {
                     </div>
                 </div>
             </div>
-            {loading && <div className='loading'>Loading...</div>}
+            {loading && <div className='loading'>
+                <img src="/resource/dna.svg" alt="" />
+            </div>}
             {!loading && <table>
                 <thead>
                     <tr>

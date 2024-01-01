@@ -15,23 +15,25 @@ function NoticeBoard() {
   }, [dispatch, loading])
 
   return (
-      <div className='notice_board'>
-        <h1 className='home_all_headers'>Recent Notice</h1>
-        {loading && <div className='loading'>Loading...</div>}
-        {!loading && <div className="notice">
-          <p>{notices[0]?.notice}</p>
-          <div className='notice_bottom'>
-            <p>{moment(notices[0]?.createdAt).fromNow()}</p>
-            <div>
-              <strong>{notices[0]?.role}</strong>
-              <p>{notices[0]?.name}</p>
-            </div>
+    <div className='notice_board'>
+      <h1 className='home_all_headers'>Recent Notice</h1>
+      {loading && <div className='loading'>
+        <img src="/resource/flame.svg" alt="" />
+      </div>}
+      {!loading && <div className="notice">
+        <p>{notices[0]?.notice}</p>
+        <div className='notice_bottom'>
+          <p>{moment(notices[0]?.createdAt).fromNow()}</p>
+          <div>
+            <strong>{notices[0]?.role}</strong>
+            <p>{notices[0]?.name}</p>
           </div>
-        </div>}
-        <div className='previous_notice'>
-          {/* <button className='btn2'>Previous Notice →</button> */}
         </div>
+      </div>}
+      <div className='previous_notice'>
+        {/* <button className='btn2'>Previous Notice →</button> */}
       </div>
+    </div>
   )
 }
 

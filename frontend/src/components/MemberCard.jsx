@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllUsers } from '../store/action/userAction'
 import './css/MemberCard.css'
@@ -8,15 +8,19 @@ import './css/MemberCard.css'
 function MemberCard() {
     const dispatch = useDispatch()
     const { users } = useSelector(state => state.user)
+    const [loading, setLoading] = useState(true)
 
 
     useEffect(() => {
-        dispatch(getAllUsers())
+        dispatch(getAllUsers(setLoading))
     }, [dispatch])
 
     return (
         <div className='mess-members'>
-            <div className="wrapper">
+            {loading && <div className='loading'>
+                <img src="/resource/dna.svg" alt="" />
+            </div>}
+            {!loading && <div className="wrapper">
                 {users.map((member, i) =>
                     <div key={i} className="card">
                         <div className='role'>{member.role}</div>
@@ -33,7 +37,7 @@ function MemberCard() {
                         </div>
                     </div>
                 )}
-            </div>
+            </div>}
         </div>
     )
 }

@@ -63,13 +63,14 @@ export const deleteExpense = (expenseid) => dispatch => {
 }
 
 
-export const getMeal = (mealMonthId) => dispatch => {
+export const getMeal = (mealMonthId, setLoading) => dispatch => {
     axios.get(`${API_URL}/manager/meal/${mealMonthId}`)
         .then(res => {
             dispatch({
                 type: GET_MEAL,
                 payload: res.data
             })
+            setLoading(false)
         })
         .catch(e => {
             console.log(e.message)

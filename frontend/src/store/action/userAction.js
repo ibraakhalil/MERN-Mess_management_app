@@ -5,13 +5,14 @@ import { GET_ALL_USERS } from '../constants/types'
 import axios from 'axios'
 
 
-export const getAllUsers = () => dispatch => {
+export const getAllUsers = (setLoading) => dispatch => {
     Axios.get(`${API_URL}/api/user/getallusers`)
         .then(res => {
             dispatch({
                 type: GET_ALL_USERS,
                 payload: res.data
             })
+            setLoading(false)
         })
         .catch(e => console.log(e.message))
 }

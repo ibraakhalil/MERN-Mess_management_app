@@ -1,17 +1,19 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import './css/mealchart.css'
 import { deleteMeal, getMeal } from '../../store/action/managerActions'
 import { useDispatch, useSelector } from 'react-redux'
 import moment from 'moment'
 import { BsMoonStarsFill, BsSunFill, BsXLg } from 'react-icons/bs'
 
+
 function MealChart() {
+  const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
   const { manager: { meals, runningMealMonth } } = useSelector(state => state)
   const sortedMeals = meals.sort((a, b) => new Date(a.date) - new Date(b.date));
 
   useEffect(() => {
-    runningMealMonth && dispatch(getMeal(runningMealMonth?._id))
+    runningMealMonth && dispatch(getMeal(runningMealMonth?._id, setLoading))
   }, [runningMealMonth, dispatch])
 
   const handleClick = (e) => {
@@ -34,7 +36,10 @@ function MealChart() {
 
   return (
     <div className='meal_chart'>
-      <div className="wrapper">
+      {loading && <div className='loading'>
+        <img src='/resource/dna.svg' alt="" />
+      </div>}
+      {!loading && <div className="wrapper">
         {sortedMeals.map((list, i) =>
           <Fragment key={i}>
             <div className="item">
@@ -85,7 +90,7 @@ function MealChart() {
             </div>
           </Fragment>
         )}
-      </div>
+      </div>}
     </div>
   )
 }

@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik'
 import { useDispatch, useSelector } from 'react-redux'
 import { addMember } from '../../store/action/authAction'
-import MessMember from './MessMember'
 
 function AddNewMember() {
   const dispatch = useDispatch()
@@ -32,15 +31,6 @@ function AddNewMember() {
         <h2>New Member Form</h2>
       </div>
       <form onSubmit={formik.handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="profilePic">Profile Pic: </label>
-          <input
-            type="file"
-            name="profilePic"
-            id="profilePic"
-            onChange={(e) => { formik.setFieldValue('profilePic', e.currentTarget.files[0]) }} />
-        </div>
-
         <div className='wrapper'>
           <div className="form-group">
             <label htmlFor="name"> Name: </label>

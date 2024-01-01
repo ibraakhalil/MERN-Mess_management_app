@@ -23,14 +23,14 @@ const updateProfile = async (req, res, next) => {
         resource_type: 'image'
     }
     try {
-        const defaultPicPath = path.join(__dirname, '../public/upload/default_profile_pic.jpg')
+        const user = await User.findOne({ _id: userId })
         const uploadResult = profilePic && await cloudinary.uploader.upload(profilePic, opts)
         const updatedProfile = await User.findOneAndUpdate(
             { _id: userId },
             {
                 $set: {
                     name, email, address,
-                    profilePic: profilePic ? uploadResult.secure_url : defaultPicPath
+                    profilePic: profilePic ? uploadResult.secure_url : user.profilePic
                 }
             },
             { new: true }
