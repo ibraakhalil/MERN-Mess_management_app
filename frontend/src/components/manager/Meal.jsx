@@ -53,7 +53,6 @@ function Expense() {
           name: list.member.name,
           lunch: Number(list.launch),
           dinner: Number(list.dinner)
-
         }
       })
     }

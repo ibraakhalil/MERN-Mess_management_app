@@ -5,7 +5,6 @@ import { API_URL, SET_USER, USER_ERROR } from '../constants/types'
 
 
 export const addMember = (user, navigator) => dispatch => {
-    console.log(user);
     Axios.post(`${API_URL}/api/admin/register`, user, {
         headers: {
             'Content-Type': `multipart/form-data;`
@@ -19,7 +18,7 @@ export const addMember = (user, navigator) => dispatch => {
         })
 }
 
-export const userLogin = (user, navigate) => dispatch => {
+export const userLogin = (user, navigate, setLoading) => dispatch => {
     Axios.post(`${API_URL}/api/auth/login`, user)
         .then(res => {
             const token = res.data.token
@@ -30,6 +29,8 @@ export const userLogin = (user, navigate) => dispatch => {
                 type: SET_USER,
                 payload: user
             })
+            setLoading(false)
+            navigate(`/user/profile/${user.user._id}`)
         })
         .catch(e => {
             dispatch(setError(e.response.data.error))

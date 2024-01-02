@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './css/Activity.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllUsers } from '../store/action/userAction'
@@ -6,10 +6,12 @@ import { getAllUsers } from '../store/action/userAction'
 function Activity() {
     const memberpic = "https://i.postimg.cc/9X8gm5WX/handsome-young-man-with-new-stylish-haircut.jpg"
 
+    const [loading, setLoading] = useState(true)
+
     const dispatch = useDispatch()
     const { users } = useSelector(state => state.user)
     useEffect(() => {
-        dispatch(getAllUsers())
+        dispatch(getAllUsers(setLoading))
     }, [dispatch])
 
 

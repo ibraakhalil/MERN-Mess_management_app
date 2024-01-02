@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './css/setManager.css'
 import moment from 'moment'
 import { useDispatch, useSelector } from 'react-redux'
@@ -10,6 +11,7 @@ const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
 
 
 function SetMealMonth() {
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const { user: { users }, manager: { runningMealMonth, loading } } = useSelector(state => state)
   const dateRef = useRef()
@@ -37,7 +39,7 @@ function SetMealMonth() {
   }
 
   const handleClose = (e) => {
-    dispatch(closeRunningMealMonth(runningMealMonth._id))
+    dispatch(closeRunningMealMonth(runningMealMonth._id, navigate))
   }
 
 

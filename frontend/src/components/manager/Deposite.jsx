@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllUsers } from '../../store/action/userAction'
 import './css/deposite.css'
@@ -8,13 +8,14 @@ import moment from 'moment'
 
 
 function Deposite() {
+  const [loading, setLoading] = useState(false)
   const dispatch = useDispatch()
   const { user: { users }, manager: { runningMealMonth } } = useSelector(state => state)
   const memberValue = useRef()
   const amountValue = useRef()
 
   useEffect(() => {
-    return dispatch(getAllUsers())
+    return dispatch(getAllUsers(setLoading))
   }, [dispatch])
 
 

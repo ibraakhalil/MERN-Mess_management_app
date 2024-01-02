@@ -1,14 +1,12 @@
-import { useFormik } from 'formik'
-import React from 'react'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { userLogin } from '../store/action/authAction'
 import './css/Auth.css'
-import { useNavigate } from 'react-router-dom'
-
-
-
+import { useFormik } from 'formik'
 
 function Login() {
+  const [loading, setLoading] = useState(false)
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { error } = useSelector(state => state.auth)
@@ -19,11 +17,8 @@ function Login() {
       password: ''
     },
     onSubmit: (values) => {
-
-      console.log("Login Cliked")
-      
-      dispatch(userLogin(values, navigate))
-
+      setLoading(true)
+      dispatch(userLogin(values, navigate, setLoading))
     }
   })
 
@@ -47,7 +42,7 @@ function Login() {
             <p>{error.password}</p>
           </div>}
         </div>
-        <button className='btn2' type="submit">Login</button>
+        <button className='btn2' type="submit">{loading ? 'Login...' : 'Login'}</button>
       </form>
     </div>
   )

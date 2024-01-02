@@ -2,24 +2,24 @@ import axios from "axios"
 import { API_URL, GET_EXPENSES, GET_MEAL, GET_MEAL_MONTH_SUMMARY, GET_RUNNING_MEAL_MONTH, POST_EXPENSES } from "../constants/types"
 
 
-export const getRunningMealMonth = () => async dispatch => {
+export const getRunningMealMonth = (setLoading) => async dispatch => {
     axios.get(`${API_URL}/api/user/get-running-meal-month`)
         .then(res => {
             dispatch({
                 type: GET_RUNNING_MEAL_MONTH,
                 payload: res.data
             })
+            setLoading(false)
         })
         .catch(e => {
             console.log(e.message)
         })
 }
-export const closeRunningMealMonth = (mealMonth_id) => dispatch => {
+export const closeRunningMealMonth = (mealMonth_id, navigate) => dispatch => {
     axios.get(`${API_URL}/manager/close-meal/${mealMonth_id}`)
         .then(res => {
-
-            console.log(res.data)
             dispatch(getRunningMealMonth())
+            navigate('/')
         })
         .catch(e => console.log(e.message))
 }

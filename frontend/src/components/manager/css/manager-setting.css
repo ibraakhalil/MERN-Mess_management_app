@@ -1,0 +1,44 @@
+.manager_setting ul li {
+	margin-bottom: 5px;
+	border-radius: 7px;
+	padding: 12px 1rem;
+	background: linear-gradient(129deg, #e6e6e6, #fff);
+	box-shadow: 5px 5px 6px #e8e8e8, -5px -5px 6px #ffffff;
+}
+.manager_setting h3 {
+	font-weight: 300;
+	font-size: 16px;
+	margin-bottom: 7px;
+}
+.manager_setting button {
+	background: red;
+	color: var(--pure);
+	padding: 4px 0.5rem;
+	font-size: 12px;
+}
+
+.manager_setting .rate {
+	display: flex;
+	gap: 1rem;
+}
+.manager_setting .rate input {
+	width: 70px;
+}
+.manager_setting .rate p {
+	font-size: 12px;
+    margin-left: 3px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
