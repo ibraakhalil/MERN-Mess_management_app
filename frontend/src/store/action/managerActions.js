@@ -76,20 +76,21 @@ export const getMeal = (mealMonthId, setLoading) => dispatch => {
             console.log(e.message)
         })
 }
-export const postMeal = (data) => dispatch => {
+export const postMeal = (data, setLoading) => dispatch => {
     axios.post(`${API_URL}/manager/meal`, data)
         .then(res => {
-            dispatch(getMeal(data.mealMonth))
+            dispatch(getMeal(data.mealMonth, setLoading))
         })
         .catch(e => {
-            console.log(e)
+            console.log(e.message)
         })
 }
 export const deleteMeal = (mealId) => dispatch => {
     axios.delete(`${API_URL}/manager/meal/${mealId}`)
         .then(res => {
-            dispatch(getMeal())
+            dispatch(getMeal(res.data.mealMonth_id))
         })
+        .catch(e => e.message)
 }
 
 export const addDeposite = (data) => dispatch => {

@@ -7,6 +7,7 @@ import { decodeToken, isExpired } from 'react-jwt'
 import { SET_USER } from './store/constants/types';
 import setAuthHeaders from './utils/setAuthHeaders';
 
+
 const token = localStorage.getItem('token')
 if (token) {
   if (isExpired(token)) {

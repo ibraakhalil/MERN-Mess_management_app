@@ -1,17 +1,20 @@
 .profile {
+    margin-top: 2rem;
+}
+.profile_wrapper {
 	display: flex;
-	gap: 1rem;
-    margin-top: 3rem;
 }
-.profile .info {
+.profile .component {
 	flex-grow: 1;
+	background: var(--background);
+	border-radius: 7px;
 }
-.info .details {
+.profile .details {
 	background: var(--background);
 	border-radius: 7px;
 	padding: 7px;
 }
-.info .details li {
+.profile .details li {
 	padding: 14px 1rem;
 	text-transform: capitalize;
 	font-size: 14px;
@@ -21,21 +24,19 @@
     margin-bottom: 5px;
     border-radius: 3px;
 }
-.info .details li span {
+.profile .details li span {
 	width: 160px;
 	display: inline-block;
 	font-weight: 500;
     color: var(--dark);
 }
 
-.info .details button {
-    margin: 7px 7px;
+.profile .component {
+	flex-grow: 1;
+	background: var(--background);
+	border-radius: 7px;
+	padding: 7px;
 }
-
-.info .details button a {
-    color: var(--pure);
-}
-
 
 
 

@@ -12,17 +12,19 @@ import { GiReceiveMoney } from "react-icons/gi";
 import { RiMoneyDollarCircleFill } from "react-icons/ri";
 import { FaCog, FaPlusSquare } from "react-icons/fa";
 import ManagerSetting from '../components/manager/ManagerSetting'
+import { getTemporaryMeal } from '../store/action/userAction'
 export const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 
 function ManagerPanel() {
   const [compo, setCompo] = useState(<Summary />)
-  const [loading2, setLoading2] = useState(false)
+  const [loading, setLoading] = useState(false)
   const dispatch = useDispatch()
-  const { runningMealMonth, loading } = useSelector(state => state.manager)
+  const { runningMealMonth } = useSelector(state => state.manager)
 
   useEffect(() => {
-    dispatch(getRunningMealMonth(setLoading2))
+    dispatch(getRunningMealMonth(setLoading))
+    dispatch(getTemporaryMeal(setLoading))
   }, [dispatch])
 
 

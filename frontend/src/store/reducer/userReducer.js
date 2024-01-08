@@ -1,4 +1,4 @@
-import { GET_ALL_USERS, GET_NOTICE, SET_PROFILE } from "../constants/types"
+import { GET_ALL_USERS, GET_NOTICE, GET_TEMPORARY_MEAL, SET_PROFILE } from "../constants/types"
 
 
 
@@ -7,7 +7,8 @@ const init = {
     notices: [],
     profile: {},
     users: [],
-    error: {}
+    error: {},
+    temporaryMeal: null
 }
 
 export const userReducer = (state = init, action) => {
@@ -29,6 +30,12 @@ export const userReducer = (state = init, action) => {
                 ...state,
                 notices: [...action.payload],
                 isLoading: false
+            }
+        case GET_TEMPORARY_MEAL:
+            return {
+                ...state,
+                isLoading: false,
+                temporaryMeal: action.payload
             }
 
         default: return state

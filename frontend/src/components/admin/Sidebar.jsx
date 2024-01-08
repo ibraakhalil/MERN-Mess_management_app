@@ -24,8 +24,8 @@ function Sidebar({ componentIndex }) {
     <div className='admin_sidebar'>
       <ul className='wrapper'>
         <li className='active' onClick={handleClick} data-index={0}>Dashboard</li>
-        <li onClick={handleClick} data-index={1}>Add Member</li>
-        <li onClick={handleClick} data-index={2}>Mess Members</li>
+        <li onClick={handleClick} data-index={1}>Mess Members</li>
+        <li onClick={handleClick} data-index={2}>Add Member </li>
         <li onClick={handleClick} data-index={3}>Set Manager</li>
         <li onClick={handleClick} data-index={4}>Add Notice</li>
       </ul>

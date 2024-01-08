@@ -11,7 +11,7 @@ function EditProfile() {
   const [selectedImg, setSelectedImg] = useState('')
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const { error, profile: { name, email, phone, address, role, profilePic } } = useSelector(state => state.user)
+  const { error, profile: { name, email, phone, address, profilePic } } = useSelector(state => state.user)
   const [profileImg, setProfileImg] = useState('')
   const nameRef = useRef()
   const emailRef = useRef()
@@ -42,9 +42,9 @@ function EditProfile() {
   }
 
   useEffect(() => {
-    dispatch(getProfile(userId))
+    dispatch(getProfile(userId, setLoading))
     profilePic && setProfileImg(profilePic)
-  }, [dispatch, profilePic])
+  }, [dispatch, profilePic, userId])
 
 
   return (

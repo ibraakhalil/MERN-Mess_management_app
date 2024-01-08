@@ -1,19 +1,13 @@
 const { Schema, model } = require('mongoose')
 
 
-const mealSchema = new Schema({
+const tempMealSchema = new Schema({
     date: Date,
-    totalLunch: Number,
-    totalDinner: Number,
-    mealMonth: {
-        type: Schema.Types.ObjectId,
-        ref: "SetMealMonth"
-    },
     meals: [
         {
             _id: {
                 type: Schema.Types.ObjectId,
-                ref: "User",
+                ref: 'User'
             },
             name: String,
             lunch: Number,
@@ -24,4 +18,7 @@ const mealSchema = new Schema({
 }, { timestamps: true })
 
 
-module.exports = model.meal || model('Meal', mealSchema)
+module.exports = model.temporaryMeal || model('TemporaryMeal', tempMealSchema)
+
+
+

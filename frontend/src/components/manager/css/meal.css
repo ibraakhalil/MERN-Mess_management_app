@@ -17,6 +17,7 @@
 .meal .new_entry {
 	display: flex;
 	gap: 1rem;
+	flex-wrap: wrap;
 }
 .meal .new_entry form {
 	width: 230px;

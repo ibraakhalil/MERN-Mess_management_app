@@ -16,7 +16,7 @@
 	margin-top: 5px;
 }
 
-.manager_sidebar {
+.manager_panel .manager_sidebar {
 	flex-basis: 220px;
 	min-width: 220px;
 	border-radius: 7px;
@@ -25,7 +25,7 @@
 	background: var(--background);
 }
 
-.running_manager {
+.manager_panel .running_manager {
 	background: var(--primary);
 	padding: 14px 1rem;
 	color: var(--pure);
@@ -35,39 +35,39 @@
 	border-bottom-left-radius: 0;
 }
 
-.top {
+.manager_panel .top {
 	display: flex;
 	flex-direction: column;
 	margin-bottom: 12px;
 }
 
-.top small {
+.manager_panel .top small {
 	color: #c2c2c2;
 	font-weight: 300;
 	font-size: 13px;
 }
 
-.running_manager .top h1 {
+.manager_panel .running_manager .top h1 {
 	font-size: 18px;
 	font-weight: 300;
 }
 
-.running_manager .details p {
+.manager_panel .running_manager .details p {
 	font-size: 13px;
 }
 
-.running_manager .details p span {
+.manager_panel .running_manager .details p span {
 	margin-left: 7px;
 	color: #b5b5b5;
 }
 
-.section {
+.manager_panel .section {
 	padding: 0 7px;
 	overflow: hidden;
 	padding-bottom: 1rem;
 }
 
-.section ul li {
+.manager_panel .section ul li {
 	padding: 12px 1rem;
 	width: 100%;
 	cursor: pointer;
@@ -83,13 +83,13 @@
 	font-size: 18px;
 	margin-right: 9px;
 }
-.section ul li.active {
+.manager_panel .section ul li.active {
 	background: var(--pure);
 	color: var(--dark);
 	box-shadow: 5px 5px 10px #e6dbdb, -5px -5px 10px #ffff
 }
 
-.section ul li:hover {
+.manager_panel .section ul li:hover {
 	background: var(--pure);
 	color: var(--dark);
 	transition: all 0.2s;

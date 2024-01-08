@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './css/expense.css'
 import moment from 'moment'
+import { BsPlusSquareFill } from 'react-icons/bs'
 import { useSelector, useDispatch } from 'react-redux'
 import { deleteExpense, getExpense, postExpenses } from '../../store/action/managerActions'
 
@@ -51,7 +52,7 @@ function Expense() {
   return (
     <div className='expense'>
       <h3>New Entry</h3>
-      {!show.entry && <button onClick={handleEntry} className='btn1'> &#8853; Add Expense</button>}
+      {!show.entry && <button onClick={handleEntry} className='btn1'> <BsPlusSquareFill /> Add Expense</button>}
       {show.entry && <form className='new_entry' onSubmit={handleSubmit}>
         <div className='wrapper'>
           <div>

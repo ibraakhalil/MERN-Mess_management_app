@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './css/addNewMember.css'
 import { useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik'
@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addMember } from '../../store/action/authAction'
 
 function AddNewMember() {
+  const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { error } = useSelector(state => state.auth)
@@ -20,7 +21,7 @@ function AddNewMember() {
   const formik = useFormik({
     initialValues: init,
     onSubmit: (values) => {
-      dispatch(addMember(values, navigate))
+      dispatch(addMember(values, navigate, setLoading))
       navigate('/')
     }
   })

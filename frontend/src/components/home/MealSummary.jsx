@@ -13,9 +13,17 @@ export function MealSummary() {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        dispatch(getRunningMealMonth())
+        dispatch(getRunningMealMonth(setLoading))
         dispatch(getMealMonthSummary(setLoading))
     }, [dispatch])
+
+    const handlePrev = (e) => {
+        console.log('previous');
+    }
+    const handleNext = (e) => {
+        console.log('Next');
+    }
+
 
 
     return (
@@ -70,6 +78,13 @@ export function MealSummary() {
                     )}
                 </tbody>
             </table>}
+            <div className='bottom_section'>
+                <div className='next_prev'>
+                    <button className='btn2' onClick={handlePrev}>Previous</button>
+                    <button className='btn2' onClick={handleNext}>Next</button>
+                </div>
+
+            </div>
         </div>
     )
 }

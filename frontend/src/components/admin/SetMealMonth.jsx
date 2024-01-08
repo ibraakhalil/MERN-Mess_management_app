@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './css/setManager.css'
 import moment from 'moment'
@@ -11,16 +11,17 @@ const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
 
 
 function SetMealMonth() {
+  const [loading, setLoading] = useState(true)
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const { user: { users }, manager: { runningMealMonth, loading } } = useSelector(state => state)
+  const { user: { users }, manager: { runningMealMonth } } = useSelector(state => state)
   const dateRef = useRef()
   const monthRef = useRef()
   const managerRef = useRef()
 
   useEffect(() => {
-    dispatch(getAllUsers())
-    dispatch(getRunningMealMonth())
+    dispatch(getAllUsers(setLoading))
+    dispatch(getRunningMealMonth(setLoading))
   }, [dispatch])
 
 
@@ -35,7 +36,7 @@ function SetMealMonth() {
       }
     }
 
-    dispatch(postSetMealMonth(data))
+    dispatch(postSetMealMonth(data, setLoading))
   }
 
   const handleClose = (e) => {

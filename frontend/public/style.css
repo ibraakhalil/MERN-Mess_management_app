@@ -8,7 +8,8 @@
     --pure: #fff;
     --dark: #000;
     --background: #fff3f3;
-    --marin: #4b4453 ;
+    --marin: #4b4453;
+    --danger: #ff2200;
 
 
     --box-shadow: 7px 7px 7px #a2a0a031;
@@ -33,6 +34,7 @@ input {
     border-radius: 3px;
     border: 0;
     outline: none;
+    width: 100%;
 }
 
 button {
@@ -40,6 +42,10 @@ button {
     border: none;
     border-radius: 3px;
     cursor: pointer;
+}
+
+button:disabled {
+	cursor: not-allowed;
 }
 
 .btn1 {
@@ -78,12 +84,19 @@ select {
     border: 0;
     border-radius: 5px;
 }
-
 .container {
     width: 85%;
     margin: 0 auto;
 }
-
 .min_height {
     min-height: calc(100vh - 200px);
 }
+
+@media only screen and (max-width: 600px) {
+    .container {
+        width: 90%;
+    }
+} 
+
+
+

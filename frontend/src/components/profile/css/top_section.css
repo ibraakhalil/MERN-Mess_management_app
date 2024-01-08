@@ -1,0 +1,57 @@
+.profile .top_section {
+	background: var(--background);
+	border-radius: 7px;
+	padding: 9px;
+	margin-bottom: 1rem;
+	box-shadow: var(--box-shadow);
+}
+
+.ts_wrapper {
+	display: flex;
+	justify-content: space-between;
+}
+
+.user_info {
+	display: flex;
+}
+
+.user_info img {
+	width: 100px;
+	height: 100px;
+	margin-right: 1rem;
+	border-radius: 7px;
+}
+
+.user_info .inner h4 {
+	text-transform: uppercase;
+	font-size: 24px;
+}
+
+.user_info .inner p {
+	color: #3c6d7d;
+	font-size: 14px;
+	font-weight: 300;
+}
+.profile .social {
+	margin-top: 1rem;
+}
+.profile .social svg {
+	margin-right: 8px;
+	font-size: 20px;
+	color: var(--dark);
+}
+.bottom {
+	display: flex;
+	align-items: end;
+}
+.bottom button a {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	color: var(--pure);
+	font-size: 12px;
+	font-weight: 300;
+}
+.bottom button a svg {
+	font-size: 11px;
+}

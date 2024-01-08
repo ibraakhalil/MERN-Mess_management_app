@@ -18,6 +18,13 @@ const userSchema = new Schema({
     profession: String,
     address: String,
     profilePic: String,
+    social: {
+        facebook: String,
+        x: String,
+        instragram: String,
+        whatsapp: String,
+        linkedin: String
+    },
     role: {
         type: String,
         default: 'member'

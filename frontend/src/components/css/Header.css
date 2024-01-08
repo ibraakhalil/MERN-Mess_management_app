@@ -139,3 +139,18 @@
 
 
 
+
+@media only screen and (max-width: 600px) {
+	.user .user_details {
+		padding: 3px;
+	}
+	.user .user_details > div {
+		display: none;
+	}
+	.user .user_details img {
+		width: 28px;
+	}
+	.user .user_details svg {
+		display: none;
+	}
+}

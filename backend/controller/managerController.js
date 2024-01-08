@@ -77,14 +77,18 @@ const postMeal = async (req, res, next) => {
 }
 const deleteMeal = async (req, res, next) => {
     const meal_id = req.params.id
-    console.log(meal_id)
     try {
         const deletedMeal = await Meal.findOneAndDelete({ _id: meal_id })
-        await SetMealMonth.findOneAndUpdate(
+
+        const upadatedMealMonth = await SetMealMonth.findOneAndUpdate(
             { _id: deletedMeal.mealMonth },
-            { $pull: { "mealLists": deletedMeal._id } }
+            { $pull: { "mealLists": deletedMeal._id } },
+            { new: true }
         )
-        res.status(201).json({ message: "Delete Success" })
+        res.status(201).json({
+            message: "Delete Success",
+            mealMonth_id: upadatedMealMonth._id
+        })
     } catch (e) {
         next(e)
     }

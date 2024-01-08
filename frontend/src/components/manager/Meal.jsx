@@ -1,15 +1,17 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './css/meal.css'
 import moment from 'moment'
 import MealChart from './MealChart'
 import { useDispatch, useSelector } from 'react-redux'
 import { BsMoonStarsFill, BsPlusSquareFill, BsSmartwatch, BsSunFill, BsTrashFill } from 'react-icons/bs'
 import { postMeal } from '../../store/action/managerActions'
+import { deleteTempMeal, getTemporaryMeal } from '../../store/action/userAction'
 
 
 function Expense() {
+  const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
-  let { user: { users }, manager: { runningMealMonth } } = useSelector(state => state)
+  let { user: { users, temporaryMeal }, manager: { runningMealMonth } } = useSelector(state => state)
   const [show, setShow] = useState({ entry: false, delete: false })
   const [dateField, setDateField] = useState(new Date())
   const [entryLists, setEntryLists] = useState([])
@@ -18,6 +20,13 @@ function Expense() {
   const dateValue = useRef()
   const launchValue = useRef()
   const dinnerValue = useRef()
+
+  useEffect(() => {
+    dispatch(getTemporaryMeal(setLoading))
+    const mapedUsersId = temporaryMeal?.meals.map(item => item._id)
+    mapedUsersId && setMembers(members.filter((user) => !mapedUsersId.includes(user._id)))
+    mapedUsersId && setEntryLists(temporaryMeal.meals)
+  }, [dispatch])
 
   const handleEntryShow = (e) => {
     setShow({
@@ -30,12 +39,15 @@ function Expense() {
     e.preventDefault()
     let inputs = document.querySelectorAll('.meal .new_entry form .will_reset input')
     let memberId = memberValue.current.value
-    let member = users.filter((user) => user._id === memberId)[0]
-    let launch = launchValue.current.value
-    let dinner = dinnerValue.current.value
-    const data = { member, launch, dinner }
+    let filteredMember = users.filter((user) => user._id === memberId)[0]
+    const memberData = {
+      _id: filteredMember._id,
+      name: filteredMember.name,
+      lunch: launchValue.current.value,
+      dinner: dinnerValue.current.value
+    }
 
-    setEntryLists([...entryLists, data])
+    setEntryLists([...entryLists, memberData])
     setMembers(members.filter((user) => user._id !== memberId))
     inputs.forEach((input) => input.value = 0)
   }
@@ -47,19 +59,13 @@ function Expense() {
       date,
       totalLunch: 0,
       totalDinner: 0,
-      meals: entryLists.map(list => {
-        return {
-          _id: list.member._id,
-          name: list.member.name,
-          lunch: Number(list.launch),
-          dinner: Number(list.dinner)
-        }
-      })
+      meals: entryLists
     }
-    newMeal.meals.forEach(item => newMeal.totalLunch += item.lunch)
-    newMeal.meals.forEach(item => newMeal.totalDinner += item.dinner)
+    newMeal.meals.forEach(item => newMeal.totalLunch += Number(item.lunch))
+    newMeal.meals.forEach(item => newMeal.totalDinner += Number(item.dinner))
 
-    dispatch(postMeal(newMeal))
+    dispatch(postMeal(newMeal, setLoading))
+    temporaryMeal && dispatch(deleteTempMeal(temporaryMeal._id))
     setEntryLists([])
     setMembers(users)
   }
@@ -101,21 +107,21 @@ function Expense() {
             </div>
             {entryLists.length === 0 && <div className='empty_msg'>Empty List</div>}
             <div className='lists_wrapper'>
-              {entryLists.map((list, i) =>
+              {entryLists.map((item, i) =>
                 <ul key={i}>
-                  <li>{list.member.name}</li>
+                  <li>{item.name}</li>
                   <li>
                     <p className='lunch'>
-                      <BsSunFill /> {list.launch}
+                      <BsSunFill /> {item.lunch}
                     </p>
                     <p className='dinner'>
-                      <BsMoonStarsFill /> {list.dinner}
+                      <BsMoonStarsFill /> {item.dinner}
                     </p>
                   </li>
                   <li>
                     <span className='remove' onClick={() => {
-                      setMembers([...members, list.member])
-                      setEntryLists(entryLists.filter(entry => entry.member._id !== list.member._id))
+                      setMembers([...members, users.filter(user => item._id === user._id)[0]])
+                      setEntryLists(entryLists.filter(entry => entry._id !== item._id))
                     }}>
                       <BsTrashFill />
                     </span>

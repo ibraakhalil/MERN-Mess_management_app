@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './css/messMember.css'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -6,11 +6,12 @@ import { getAllUsers } from '../../store/action/userAction'
 
 
 function MessMember() {
+    const [loading, setLoading] = useState(true)
     const dispatch = useDispatch()
     const { users } = useSelector(state => state.user)
   
     useEffect(() => {
-      dispatch(getAllUsers())
+      dispatch(getAllUsers(setLoading))
     }, [dispatch])
   
   return (

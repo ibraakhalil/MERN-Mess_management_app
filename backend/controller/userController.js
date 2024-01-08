@@ -1,8 +1,7 @@
-const { Types } = require("mongoose")
 const Notice = require("../model/notice")
 const User = require("../model/user")
+const TemporaryMeal = require('../model/temporaryMeal')
 const cloudinary = require("../utils/cloudinary")
-const path = require('path')
 
 
 const getProfile = async (req, res, next) => {
@@ -42,6 +41,7 @@ const updateProfile = async (req, res, next) => {
     }
 }
 
+
 const getNotice = async (req, res, next) => {
     try {
         const notices = await Notice.find()
@@ -62,5 +62,66 @@ const postNotice = async (req, res, next) => {
 }
 
 
+const getTemporaryMeal = async (req, res, next) => {
+    try {
+        const date = new Date(new Date().toISOString().slice(0, 10))
+        const tempMeal = await TemporaryMeal.findOne({ date })
+        return res.status(201).json(tempMeal)
+    } catch (e) {
+        next(e)
+    }
+}
+const setTemporaryMeal = async (req, res, next) => {
+    const { _id, name, date, lunch, dinner } = req.body
+    const newTempMeal = new TemporaryMeal({
+        date,
+        meals: [{ _id, name, lunch, dinner }]
+    })
 
-module.exports = { getProfile, updateProfile, getNotice, postNotice }
+    try {
+        const tempMeal = await TemporaryMeal.findOne({ date })
+
+        if (tempMeal) {
+            const existMeal = tempMeal.meals.filter(item => item._id.toHexString() === _id)
+            if (existMeal.length > 0) {
+                return res.status(401).json({ error: 'Your Todays Meal Already Exist!' })
+            }
+
+            const upadatedTempMeal = await TemporaryMeal.findOneAndUpdate(
+                { _id: tempMeal._id },
+                { $push: { 'meals': { _id, name, lunch, dinner } } },
+                { new: true }
+            )
+            return res.status(201).json(upadatedTempMeal)
+        }
+
+        const savedTempMeal = await newTempMeal.save()
+        return res.status(201).json(savedTempMeal)
+
+    } catch (e) { next(e) }
+}
+const removeMyTempMeal = async (req, res, next) => {
+    const { mealId, userId } = req.params
+    try {
+        const tempMeal = await TemporaryMeal.findOne({ _id: mealId })
+        const filteredMeal = tempMeal?.meals.filter(item => item._id.toHexString() === userId)[0]
+        await TemporaryMeal.findOneAndUpdate(
+            { _id: mealId },
+            { $pull: { 'meals': filteredMeal } }
+        )
+        return res.status(201).json({ msg: 'Your temporary meal had removed' })
+    } catch (e) {
+        next(e)
+    }
+}
+const deleteTempMeal = async (req, res, next) => {
+    const { id } = req.params
+    try {
+        await TemporaryMeal.deleteOne({ _id: id })
+        return res.status(201).json({ msg: 'Temporary meal had Deleted' })
+    } catch (e) {
+        next(e)
+    }
+}
+
+module.exports = { getProfile, updateProfile, getNotice, postNotice, getTemporaryMeal, setTemporaryMeal, removeMyTempMeal, deleteTempMeal }

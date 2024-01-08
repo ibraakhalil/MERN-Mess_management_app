@@ -6,6 +6,7 @@ export const USER_ERROR = 'USER_ERROR'
 
 export const SET_PROFILE = 'SET_PROFILE'
 export const GET_ALL_USERS = 'GET_ALL_USERS'
+export const GET_TEMPORARY_MEAL = 'GET_TEMPORARY_MEAL'
 
 export const GET_EXPENSES = 'GET_EXPENSES'
 export const POST_EXPENSES = 'POST_EXPENSES'

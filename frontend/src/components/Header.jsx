@@ -12,6 +12,7 @@ function Header() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { isAuthenticate, user } = useSelector(state => state.auth)
+
     const handleLogout = (e) => {
         dispatch(logOut(navigate))
     }

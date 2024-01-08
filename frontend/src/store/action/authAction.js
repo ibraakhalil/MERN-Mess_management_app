@@ -3,7 +3,6 @@ import { decodeToken } from 'react-jwt'
 import setAuthHeaders from '../../utils/setAuthHeaders'
 import { API_URL, SET_USER, USER_ERROR } from '../constants/types'
 
-
 export const addMember = (user, navigator) => dispatch => {
     Axios.post(`${API_URL}/api/admin/register`, user, {
         headers: {
@@ -24,13 +23,16 @@ export const userLogin = (user, navigate, setLoading) => dispatch => {
             const token = res.data.token
             localStorage.setItem('token', token)
             setAuthHeaders()
-            const user = decodeToken(token)
+            const decodedUser = decodeToken(token)
             dispatch({
                 type: SET_USER,
-                payload: user
+                payload: decodedUser
             })
             setLoading(false)
-            navigate(`/user/profile/${user.user._id}`)
+            return decodedUser
+        })
+        .then((res) => {
+            navigate(`/user/profile/${res.user._id}`)
         })
         .catch(e => {
             dispatch(setError(e.response.data.error))
@@ -44,10 +46,11 @@ export const setError = (error) => {
     }
 }
 
-export const logOut = (navigate) => {
+export const logOut = (navigate) => async dispatch => {
     localStorage.removeItem('token')
-    return {
+    await dispatch({
         type: SET_USER,
         payload: {}
-    }
+    })
+    navigate(`/auth/login`)
 }
