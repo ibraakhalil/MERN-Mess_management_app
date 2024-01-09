@@ -44,6 +44,7 @@ export const getExpense = () => dispatch => {
                 payload: res.data
             })
         })
+        .catch(e => console.log(e.message))
 }
 export const postExpenses = (data) => dispatch => {
     axios.post(`${API_URL}/manager/expenses`, data)
@@ -53,6 +54,7 @@ export const postExpenses = (data) => dispatch => {
                 payload: res.data
             })
         })
+        .catch(e => console.log(e.message))
 }
 export const deleteExpense = (expenseid) => dispatch => {
     axios.delete(`${API_URL}/manager/expenses/${expenseid}`)
@@ -100,4 +102,5 @@ export const addDeposite = (data) => dispatch => {
             console.log(res.data)
             dispatch(getRunningMealMonth())
         })
+        .catch(e => console.log(e.message))
 }

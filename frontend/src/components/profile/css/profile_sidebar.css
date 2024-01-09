@@ -5,7 +5,7 @@
 	overflow: hidden;
 	height: auto;
 	background: var(--background);
-    margin-right: 7px;
+	margin-right: 7px;
 }
 
 .items {
@@ -28,15 +28,25 @@
 	column-gap: 7px;
 }
 
+.items li:hover {
+	background: var(--pure);
+	color: var(--dark);
+	transition: all 0.2s;
+	box-shadow: 5px 5px 10px #e6dbdb, -5px -5px 10px #ffffff;
+}
+
 .items li.active {
 	background: var(--pure);
 	color: var(--dark);
 	box-shadow: 5px 5px 10px #e6dbdb, -5px -5px 10px #ffff
 }
 
-.items li:hover {
-	background: var(--pure);
-	color: var(--dark);
-	transition: all 0.2s;
-	box-shadow: 5px 5px 10px #e6dbdb, -5px -5px 10px #ffffff;
+
+
+
+@media only screen and (max-width: 600px) {
+	.profile_sidebar {
+		margin-right: 0;
+		margin-bottom: 1rem;
+	}
 }

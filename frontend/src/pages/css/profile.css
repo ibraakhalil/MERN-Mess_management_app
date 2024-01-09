@@ -1,34 +1,40 @@
 .profile {
-    margin-top: 2rem;
+	margin-top: 2rem;
+	position: relative;
 }
+
 .profile_wrapper {
 	display: flex;
 }
+
 .profile .component {
 	flex-grow: 1;
 	background: var(--background);
 	border-radius: 7px;
 }
+
 .profile .details {
 	background: var(--background);
 	border-radius: 7px;
 	padding: 7px;
 }
+
 .profile .details li {
 	padding: 14px 1rem;
 	text-transform: capitalize;
 	font-size: 14px;
 	color: var(--marin);
-    font-weight: 300;
-    background: var(--pure);
-    margin-bottom: 5px;
-    border-radius: 3px;
+	font-weight: 300;
+	background: var(--pure);
+	margin-bottom: 5px;
+	border-radius: 3px;
 }
-.profile .details li span {
+
+.profile .details li strong {
 	width: 160px;
 	display: inline-block;
 	font-weight: 500;
-    color: var(--dark);
+	color: var(--dark);
 }
 
 .profile .component {
@@ -39,6 +45,16 @@
 }
 
 
+@media only screen and (max-width: 600px) {
+	.profile_wrapper {
+		flex-direction: column;
+	}
+	.profile .details li {
+		display: grid;
+		grid-template-columns: 1fr 2fr;
+	}
+	.profile .details li strong {
+		width: 140px;
+	}
 
-
-
+}

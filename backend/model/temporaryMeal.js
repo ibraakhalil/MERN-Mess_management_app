@@ -7,11 +7,20 @@ const tempMealSchema = new Schema({
         {
             _id: {
                 type: Schema.Types.ObjectId,
-                ref: 'User'
+                ref: 'User',
+                required: true
             },
             name: String,
-            lunch: Number,
-            dinner: Number
+            lunch: {
+                type: Number,
+                required: true,
+                default: 0
+            },
+            dinner: {
+                type: Number,
+                required: true,
+                default: 0
+            }
         }
     ]
 

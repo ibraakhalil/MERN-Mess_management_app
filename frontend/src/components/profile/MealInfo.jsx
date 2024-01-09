@@ -72,12 +72,12 @@ function MealInfo() {
                             <p>Manager Set Your Meal</p>
                         </div>}
                     </div>
-                    {(tempMeal.length > 0 || mealToday) && <div className='temp_meal'>
+                    {((tempMeal.length > 0) || !!mealToday) && <div className='temp_meal'>
                         <div>
-                            <p>Lunch <span>{tempMeal[0]?.lunch || mealToday.lunch}</span></p>
-                            <p>Dinner <span>{tempMeal[0]?.dinner || mealToday.dinner}</span></p>
+                            <p>Lunch <span>{tempMeal[0]?.lunch.toString() || mealToday?.lunch}</span></p>
+                            <p>Dinner <span>{tempMeal[0]?.dinner.toString() || mealToday?.dinner}</span></p>
                         </div>
-                        <button onClick={handleRemove} disabled={(!!mealToday || remainingTime[0] <= 0)}><FaMinus /></button>
+                        {!mealToday && <button onClick={handleRemove} disabled={remainingTime[0] <= 0}><FaMinus /></button>}
                     </div>}
                     {(!tempMeal.length > 0) && !mealToday && <>
                         {(remainingTime[0] <= 0) && <div className='time_over'>

@@ -73,6 +73,9 @@ function EditProfile() {
                 ref={nameRef}
                 required />
               <p className='phone'>{phone}</p>
+              <div className="warning">
+                <p>&#9888; Maximum photo size is 50 KB</p>
+              </div>
             </div>
           </div>
           <div className="form-group">

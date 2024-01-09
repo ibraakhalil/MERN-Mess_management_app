@@ -96,6 +96,10 @@ select {
     .container {
         width: 90%;
     }
+    button {
+        padding: 5px 0.8rem;
+        font-size: 12px;
+    }
 } 
 
 

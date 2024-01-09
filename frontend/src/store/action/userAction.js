@@ -56,6 +56,7 @@ export const postNotice = (data) => dispatch => {
         .then(res => {
             dispatch(getNotice())
         })
+        .catch(e => console.log(e.message))
 }
 
 export const getTemporaryMeal = (setLoading) => dispatch => {

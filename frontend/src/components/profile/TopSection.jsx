@@ -24,7 +24,9 @@ function TopSection({ profile }) {
                 </div>
                 <div className="bottom">
                     <button className='btn2'>
-                        <Link to={`/user/profile/edit/${profile._id}`}> <FaPen /> Edit Profile</Link>
+                        <Link to={`/user/profile/edit/${profile._id}`}>
+                            <FaPen /> <span>Edit Profile</span>
+                        </Link>
                     </button>
                 </div>
             </div>

@@ -3,10 +3,10 @@ import React from 'react'
 function UserInfo({ profile }) {
     return (
         <ul className='details'>
-            <li><span>Full Name</span> {profile.name}</li>
-            <li><span>Email Address</span> {profile.email}</li>
-            <li><span>Phone Number</span> {profile.phone}</li>
-            <li><span>Address</span> {profile.address}</li>
+            <li><strong>Full Name</strong> <span>{profile.name}</span></li>
+            <li><strong>Email Address</strong> <span>{profile.email}</span></li>
+            <li><strong>Phone Number</strong> <span>{profile.phone}</span></li>
+            <li><strong>Address</strong> <span>{profile.address}</span></li>
         </ul>
     )
 }
