@@ -7,7 +7,7 @@ import Routers from './router/routes'
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/">
       <Header />
       <Routers/>
       <Footer />

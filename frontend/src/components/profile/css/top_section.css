@@ -45,7 +45,7 @@
 
 .bottom {
 	display: flex;
-	align-items: end;
+	align-items: flex-end;
 }
 
 .bottom button a {
