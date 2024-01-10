@@ -3,41 +3,49 @@
 	padding: 1rem;
 	border-radius: 7px;
 }
+
 .summary .row1 {
 	display: grid;
-    grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(3, 1fr);
 }
+
 .summary .row2 {
 	display: grid;
 	grid-template-columns: 2fr 1fr;
 	margin-top: 1rem;
 	align-items: baseline;
 }
+
 .summary .row1 .item {
 	background: var(--smooth_p);
 	padding: 1rem;
 	border-radius: 7px;
 	color: var(--pure);
-    margin: 0 0.5rem;
+	margin: 0 0.5rem;
 }
+
 .summary .row1 .item:nth-child(2) {
 	background: var(--smooth_s);
 }
-.summary .row2 > .item {
+
+.summary .row2>.item {
 	background: var(--smooth_p);
-    border-radius: 7px;
-    margin: 0 0.5rem;
+	border-radius: 7px;
+	margin: 0 0.5rem;
 }
-.summary .row2 > .item:last-child {
-    background: var(--smooth_s);
-    padding: 1rem;
+
+.summary .row2>.item:last-child {
+	background: var(--smooth_s);
+	padding: 1rem;
 }
+
 .summary .item h3 {
 	text-transform: uppercase;
 	font-weight: 300;
 	font-size: 14px;
-    color: #e6e6e6;
+	color: #e6e6e6;
 }
+
 .summary .row2 .members_headers {
 	display: flex;
 	justify-content: space-between;
@@ -45,10 +53,12 @@
 	align-items: center;
 	margin-bottom: 7px;
 }
+
 .summary .row2 .members_headers .btn1 {
 	font-size: 12px;
 	padding: 5px 1rem;
 }
+
 .summary .row2 .item:first-child h3 {
 	font-weight: 400;
 	font-size: 16px;
@@ -56,7 +66,7 @@
 }
 
 
-.summary .row2 .item > ul {
+.summary .row2 .item>ul {
 	display: flex;
 	justify-content: space-around;
 	background: var(--primary);
@@ -64,37 +74,71 @@
 	border-radius: 7px;
 	padding: 3px;
 }
-.summary .row2 .item > ul li {
+
+.summary .row2 .item>ul li {
 	width: 100%;
 	text-align: center;
 	color: var(--pure);
 	font-size: 14px;
 }
+
 .summary .activity {
 	margin: 0rem auto;
 	padding: 0rem;
-    width: 100%;
-    background: none;
+	width: 100%;
+	background: none;
 }
+
 .summary .activity .item {
 	margin: 8px 1rem;
 	padding: 5px;
 	font-size: 13px;
-    border-radius: 10px;
+	border-radius: 10px;
 }
+
 .summary .activity .item .img {
 	padding-right: 1rem;
-    padding-left: 3px;
+	padding-left: 3px;
 }
+
 .summary .activity .item img {
 	width: 35px;
 	height: 35px;
 }
+
 .summary .activity .item .name span {
 	display: none;
 }
 
 
 
+@media only screen and (max-width: 600px) {
+	.summary {
+		padding: 0.5rem;
+		border-radius: 0px 0px 7px 7px;
+	}
+	.summary .row1 {
+		display: flex;
+		gap: 7px;
+		flex-wrap: wrap;
+	}
 
+	.summary .row1 .item {
+		margin: 0;
+		flex-grow: 1;
+	}
 
+	.summary .row2 {
+		grid-template-columns: 1fr;
+		margin-top: 0.5rem;
+		gap: 7px;
+	}
+
+	.summary .row2>.item {
+		margin: 0;
+	}
+
+	.summary .row2>.item:first-child {
+		order: 2;
+	}
+}

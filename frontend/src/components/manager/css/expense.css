@@ -101,3 +101,14 @@
 	margin: 1rem;
 }
 
+
+@media only screen and (max-width: 600px) {
+	.expense .new_entry .wrapper {
+		flex-wrap: wrap;
+	}
+	.expense .new_entry .wrapper > div {
+		flex-grow: 1;
+		min-width: 200px;
+	}
+}
+

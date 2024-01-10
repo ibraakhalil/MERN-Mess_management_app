@@ -142,3 +142,16 @@
 	cursor: pointer;
 }
 
+
+
+@media only screen and (max-width: 600px) {
+	.meal_chart .modal {
+		width: 100vw;
+		height: 100vh;
+		align-items: baseline;
+		padding-top: 6rem;
+	}
+	.meal_chart .modal .close {
+		top: 6%;
+	}
+}

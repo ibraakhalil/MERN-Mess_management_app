@@ -19,6 +19,7 @@ export const months = ['January', 'February', 'March', 'April', 'May', 'June', '
 function ManagerPanel() {
   const [compo, setCompo] = useState(<Summary />)
   const [loading, setLoading] = useState(false)
+  const [toggle, setToggle] = useState(true)
   const dispatch = useDispatch()
   const { runningMealMonth } = useSelector(state => state.manager)
 
@@ -38,6 +39,7 @@ function ManagerPanel() {
       list.classList.remove('active')
     })
     e.target.classList.add('active')
+    setToggle(!toggle)
   }
 
   return (
@@ -51,8 +53,9 @@ function ManagerPanel() {
           </div>
         }
 
-        {runningMealMonth?.isActive && <div className='manager_panel'>
+        {runningMealMonth?.isActive && <div className={`manager_panel ${toggle ? 'active' : ''}`}>
           <div className="manager_sidebar">
+            {/* <div className="sidebar_toggle"><FaPlusSquare /></div> */}
             <div className='running_manager'>
               <div className='top'>
                 <h1>{runningMealMonth.manager.name}</h1>
@@ -65,6 +68,7 @@ function ManagerPanel() {
                     <span>{moment(runningMealMonth.startDate).format('ll')}</span>
                   </p>
                 </div>
+                <div className="hamburger" onClick={() => setToggle(!toggle)}>&#9780;</div>
               </div>
             </div>
             <div className="section">

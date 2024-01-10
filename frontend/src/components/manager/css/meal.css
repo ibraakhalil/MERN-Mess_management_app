@@ -205,3 +205,14 @@
 	margin: 1rem;
 }
 
+
+
+@media only screen and (max-width: 600px) {
+	.new_entry .entry_lists {
+		min-width: 260px;
+	}
+	.meal .new_entry form {
+		flex-grow: 1;
+	}
+}
+

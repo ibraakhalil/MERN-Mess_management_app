@@ -4,13 +4,19 @@
 	gap: 1rem;
 }
 
+.sidebar_toggle {
+	display: none;
+}
+
 .manager_msg {
 	text-align: center;
 	margin-top: 3rem;
 }
+
 .manager_msg h2 {
 	font-weight: 400;
 }
+
 .manager_msg p {
 	font-size: 14px;
 	margin-top: 5px;
@@ -61,28 +67,36 @@
 	color: #b5b5b5;
 }
 
+.manager_panel .running_manager .hamburger {
+	display: none;
+}
+
 .manager_panel .section {
-	padding: 0 7px;
+	padding:7px;
 	overflow: hidden;
 	padding-bottom: 1rem;
+	transition: all 0.2s;
 }
 
 .manager_panel .section ul li {
 	padding: 12px 1rem;
 	width: 100%;
 	cursor: pointer;
-	-webkit-user-select: none;
 	user-select: none;
 	border-radius: 5px;
 	font-size: 14px;
 	margin-bottom: 5px;
 	display: flex;
 	align-items: center;
+	height: auto;
+	transition: all 0.2s;
 }
+
 .manager_panel li svg {
 	font-size: 18px;
 	margin-right: 9px;
 }
+
 .manager_panel .section ul li.active {
 	background: var(--pure);
 	color: var(--dark);
@@ -98,4 +112,75 @@
 
 .manager_panel .components {
 	flex-grow: 1;
+}
+
+
+
+
+@media only screen and (max-width: 600px) {
+	.manager_panel {
+		margin-top: 1.5rem;
+		flex-direction: column;
+		gap: 0;
+	}
+
+	/* .sidebar_toggle {
+		position: absolute;
+		left: 100%;
+		background: var(--primary);
+		display: flex;
+		padding: 1px;
+		color: var(--pure);
+		height: 80px;
+		border-radius: 0px 7px 7px 0px;
+		top: 0;
+	} */
+	.manager_panel .running_manager {
+		margin-bottom: 0px;
+	}
+
+	.manager_panel .running_manager {
+		padding: 10px 0.8rem;
+	}
+
+	.manager_panel .running_manager .details {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.manager_panel .running_manager .hamburger {
+		padding: 0px 5px;
+		background: #05050540;
+		color: var(--pure);
+		border-radius: 4px;
+		cursor: pointer;
+		display: block;
+	}
+
+	.manager_panel .manager_sidebar {
+		overflow: unset;
+		flex-basis: unset;
+		margin-bottom: 7px;
+		border-radius: 0;
+	}
+	.manager_panel.active .manager_sidebar {
+		margin-bottom: 0px;
+	}
+
+	.manager_panel.active .section {
+		padding: 0 7px;
+		padding-bottom: 0;
+		margin-bottom: 7px;
+	}
+
+	.manager_panel.active .section ul li {
+		padding: 0px 1rem;
+		margin-bottom: 0px;
+		height: 0;
+	}
+
+	/* .manager_panel .running_manager {
+		border-radius: 0px;
+	} */
 }

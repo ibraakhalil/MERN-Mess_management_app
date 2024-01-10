@@ -88,9 +88,6 @@ select {
     width: 85%;
     margin: 0 auto;
 }
-.min_height {
-    min-height: calc(100vh - 200px);
-}
 
 @media only screen and (max-width: 600px) {
     .container {
