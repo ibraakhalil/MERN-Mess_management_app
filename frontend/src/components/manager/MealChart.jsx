@@ -9,7 +9,7 @@ import { BsMoonStarsFill, BsSunFill, BsXLg } from 'react-icons/bs'
 function MealChart() {
   const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
-  const { manager: { meals, runningMealMonth } } = useSelector(state => state)
+  const { meals, runningMealMonth } = useSelector(state => state.manager)
   const sortedMeals = meals.sort((a, b) => new Date(a.date) - new Date(b.date));
 
   useEffect(() => {

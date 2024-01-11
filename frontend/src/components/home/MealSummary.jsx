@@ -9,7 +9,7 @@ import { getMealMonthSummary, getRunningMealMonth } from '../../store/action/man
 
 export function MealSummary() {
     const dispatch = useDispatch()
-    const { manager: { runningMealMonth, summary } } = useSelector(state => state)
+    const { runningMealMonth, summary } = useSelector(state => state.manager)
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {

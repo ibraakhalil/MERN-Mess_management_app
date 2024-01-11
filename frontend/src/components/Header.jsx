@@ -8,7 +8,6 @@ import { IoNotifications } from "react-icons/io5";
 import { FaCog, FaShieldAlt, FaUser } from "react-icons/fa";
 
 function Header() {
-    const [loading, setLoading] = useState(true)
     const [dropdown, setDropdown] = useState(false)
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -49,14 +48,14 @@ function Header() {
                                 <li>
                                     <Link onClick={() => setDropdown(false)} to='/comingsoon'><FaEnvelope /></Link>
                                 </li>
-                                {!loading && <li className={`user_details ${dropdown ? 'active' : ''}`} onClick={handleDropdown}>
+                                <li className={`user_details ${dropdown ? 'active' : ''}`} onClick={handleDropdown}>
                                     <img src={user.user?.profilePic} alt="user_pic" />
                                     <div>
                                         <p>{user.user.name}</p>
                                         <small>{user.user.role}</small>
                                     </div>
                                     <FaAngleDown />
-                                </li>}
+                                </li>
                             </div>
                             {dropdown && <div className='header_dropdown'>
                                 <li>
