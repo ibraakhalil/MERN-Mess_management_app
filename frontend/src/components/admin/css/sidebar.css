@@ -28,3 +28,9 @@
     color: var(--primary);
 }
 
+@media only screen and (max-width: 600px) {
+	.admin_sidebar {
+		margin-right: 10px;
+	}
+}
+

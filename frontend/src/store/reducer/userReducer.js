@@ -4,7 +4,7 @@ import { GET_ALL_USERS, GET_NOTICE, GET_TEMPORARY_MEAL, SET_PROFILE } from "../c
 
 const init = {
     isLoading: true,
-    notices: [],
+    notices: null,
     profile: {},
     users: [],
     error: {},

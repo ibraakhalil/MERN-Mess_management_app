@@ -23,3 +23,16 @@
 	font-weight: 300;
 	font-size: 20px;
 }
+
+@media only screen and (max-width: 600px) {
+	.dashboard .row1 {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 7px;
+	}
+	
+.dashboard .row1 .item {
+	flex-grow: 1;
+	margin: 0;
+}
+}

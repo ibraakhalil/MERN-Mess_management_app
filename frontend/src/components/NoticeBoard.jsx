@@ -12,7 +12,8 @@ function NoticeBoard() {
 
   useEffect(() => {
     dispatch(getNotice(setLoading))
-  }, [dispatch, loading])
+  }, [dispatch])
+
 
   return (
     <div className='notice_board'>

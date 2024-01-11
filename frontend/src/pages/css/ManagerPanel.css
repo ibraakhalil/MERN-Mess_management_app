@@ -118,6 +118,40 @@
 
 
 @media only screen and (max-width: 600px) {
+
+	  .ham {
+		cursor: pointer;
+		-webkit-tap-highlight-color: transparent;
+		transition: transform 200ms;
+		user-select: none;
+		width: 30px;
+	  }	
+	  .hamRotate.active {
+		transform: rotate(45deg);
+	  }
+	  .hamRotate180.active {
+		transform: rotate(180deg);
+	  }
+	  .line {
+		fill:none;
+		transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+		stroke: var(--pure);
+		stroke-width:5.5;
+		stroke-linecap:round;
+	  }
+	  .ham1 .top {
+		stroke-dasharray: 40 139;
+	  }
+	  .ham1 .bottom {
+		stroke-dasharray: 40 180;
+	  }
+	  .ham1.active .top {
+		stroke-dashoffset: -98px;
+	  }
+	  .ham1.active .bottom {
+		stroke-dashoffset: -138px;
+	  }
+	  
 	.manager_panel {
 		margin-top: 1.5rem;
 		flex-direction: column;
@@ -150,12 +184,10 @@
 	}
 
 	.manager_panel .running_manager .hamburger {
-		padding: 0px 5px;
 		background: #05050540;
-		color: var(--pure);
 		border-radius: 4px;
 		cursor: pointer;
-		display: block;
+		display: flex;
 	}
 
 	.manager_panel .manager_sidebar {
