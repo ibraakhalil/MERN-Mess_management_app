@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import './css/addNotice.css'
 import { useRef } from 'react'
-import { getNotice, postNotice } from '../../store/action/userAction'
+import { postNotice } from '../../store/action/userAction'
 
 export function AddNotice() {
     const dispatch = useDispatch()
@@ -18,6 +18,8 @@ export function AddNotice() {
         dispatch(postNotice(data))
     }
 
+    console.log(notices);
+
     return (
         <div>
             <div className="notice_form">
@@ -26,7 +28,7 @@ export function AddNotice() {
                 <button className="btn1" onClick={handlePublish} >Publish</button>
             </div>
             <div className="latest_notice">
-                {notices.map((notice, i) => <div key={i} className='item'>
+                {notices?.map((notice, i) => <div key={i} className='item'>
                     <div>
                         <h4>{notice.name}</h4>
                         <p>{notice.role}</p>

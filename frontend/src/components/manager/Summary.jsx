@@ -4,15 +4,14 @@ import Activity from '../Activity'
 import { useDispatch, useSelector } from 'react-redux'
 import { getMealMonthSummary } from '../../store/action/managerActions'
 
-function Summary() {
+function Summary({ id }) {
     const [loading, setLoading] = useState(true)
     const dispatch = useDispatch()
-    const { manager: { summary } } = useSelector(state => state)
+    const { summary } = useSelector(state => state.manager)
 
     useEffect(() => {
-        dispatch(getMealMonthSummary(setLoading))
-    }, [dispatch, loading])
-
+        dispatch(getMealMonthSummary(id, setLoading))
+    }, [id])
 
     return (
         <div className='summary'>

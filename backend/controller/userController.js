@@ -1,5 +1,6 @@
 const Notice = require("../model/notice")
 const User = require("../model/user")
+const SetMealMonth = require('../model/setMealMonth')
 const TemporaryMeal = require('../model/temporaryMeal')
 const cloudinary = require("../utils/cloudinary")
 
@@ -56,6 +57,18 @@ const postNotice = async (req, res, next) => {
     try {
         await newNotice.save()
         res.status(201).json({ message: 'Notice Published Successfully' })
+    } catch (e) {
+        next(e)
+    }
+}
+
+const getMealMonth = async (req, res, next) => {
+    const id = req.params.id
+    try {
+        const mealMonth = await SetMealMonth.findById(id)
+
+        res.status(201).json(mealMonth)
+
     } catch (e) {
         next(e)
     }
@@ -124,4 +137,4 @@ const deleteTempMeal = async (req, res, next) => {
     }
 }
 
-module.exports = { getProfile, updateProfile, getNotice, postNotice, getTemporaryMeal, setTemporaryMeal, removeMyTempMeal, deleteTempMeal }
+module.exports = { getProfile, updateProfile, getNotice, postNotice, getMealMonth, getTemporaryMeal, setTemporaryMeal, removeMyTempMeal, deleteTempMeal }

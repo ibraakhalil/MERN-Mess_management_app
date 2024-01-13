@@ -23,8 +23,8 @@ export const closeRunningMealMonth = (mealMonth_id, navigate) => dispatch => {
         })
         .catch(e => console.log(e.message))
 }
-export const getMealMonthSummary = (setLoading) => dispatch => {
-    axios.get(`${API_URL}/api/user/meal-month-summary`)
+export const getMealMonthSummary = (id, setLoading) => dispatch => {
+    axios.get(`${API_URL}/api/user/meal-month-summary/${id}`)
         .then(res => {
             dispatch({
                 type: GET_MEAL_MONTH_SUMMARY,

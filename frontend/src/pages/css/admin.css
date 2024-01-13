@@ -12,9 +12,12 @@
 	border-radius: 7px;
 	align-items: flex-start;
 }
-
+	
 
 @media only screen and (max-width: 600px) {
+	.admin {
+		margin-top: 1.5rem;
+	}
 	.admin .container {
 		padding: 7px;
 	}

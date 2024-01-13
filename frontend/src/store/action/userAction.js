@@ -37,6 +37,14 @@ export const editProfile = (data, id, navigate, setLoading) => dispatch => {
         .catch(e => console.log(e.message))
 }
 
+export const getMealMonth = (id) => dispatch => {
+    axios.get(`${API_URL}/api/user/meal_month/${id}`)
+        .then(res => {
+            console.log(res.data);
+        })
+        .catch(e => console.log(e.message))
+}
+
 export const getNotice = (setLoading) => dispatch => {
     axios.get(`${API_URL}/api/user/notice`)
         .then(res => {

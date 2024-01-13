@@ -1,5 +1,4 @@
 
-
 .admin .all-member .wrapper {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
@@ -18,3 +17,20 @@
 	border-radius: 7px;
 	margin-bottom: 1rem;
 }
+
+
+@media only screen and (max-width: 600px) {
+	.admin .all-member .wrapper {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+	.admin .all-member .item {
+		flex-grow: 1;
+		margin-bottom: 0rem;
+	}
+}
+
+
+
+

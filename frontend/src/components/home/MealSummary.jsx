@@ -4,18 +4,17 @@ import './css/mealSummary.css'
 import { months } from '../../pages/ManagerPanel'
 import moment from 'moment'
 import { useDispatch, useSelector } from 'react-redux'
-import { getMealMonthSummary, getRunningMealMonth } from '../../store/action/managerActions'
+import { getMealMonthSummary } from '../../store/action/managerActions'
 
 
-export function MealSummary() {
+export function MealSummary({ id }) {
     const dispatch = useDispatch()
-    const { runningMealMonth, summary } = useSelector(state => state.manager)
+    const summary = useSelector(state => state.manager.summary)
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        dispatch(getRunningMealMonth(setLoading))
-        dispatch(getMealMonthSummary(setLoading))
-    }, [dispatch])
+        id && dispatch(getMealMonthSummary(id, setLoading))
+    }, [id])
 
     const handlePrev = (e) => {
         console.log('previous');
@@ -25,22 +24,21 @@ export function MealSummary() {
     }
 
 
-
     return (
         <div className="meal_summary">
             <div className='top_head'>
                 <div className="row1">
                     <div className="item">
                         <h3>Manager</h3>
-                        <h2>{runningMealMonth?.manager?.name}</h2>
+                        <h2>{summary?.mealMonth?.manager.name}</h2>
                     </div>
                     <div className="item">
                         <h3>Month</h3>
-                        <h2>{months[runningMealMonth?.month - 1]}</h2>
+                        <h2>{months[summary?.mealMonth?.month - 1]}</h2>
                     </div>
                     <div className="item">
                         <h3>Start Date</h3>
-                        <h2>{moment(runningMealMonth?.startDate).format('ll')}</h2>
+                        <h2>{moment(summary?.mealMonth?.startDate).format('ll')}</h2>
                     </div>
                 </div>
             </div>
@@ -76,12 +74,22 @@ export function MealSummary() {
                             </td>
                         </tr>
                     )}
+                    <tr className='total'>
+                        <td className='td1'>Total</td>
+                        <td>{summary?.totalMeals}</td>
+                        <td>{summary?.totalCosts}</td>
+                        <td>{summary?.totalDeposite}</td>
+                        <td>--</td>
+                    </tr>
                 </tbody>
             </table>}
             <div className='bottom_section'>
                 <div className='next_prev'>
                     <button className='btn2' onClick={handlePrev}>Previous</button>
                     <button className='btn2' onClick={handleNext}>Next</button>
+                </div>
+                <div className="details">
+                    <button className='btn1'><Link to={`/meal_month/${summary?.mealMonth?._id}`}>Details</Link></button>
                 </div>
 
             </div>

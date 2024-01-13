@@ -43,6 +43,11 @@ table {
 tr {
 	background: var(--pure);
 }
+tr.total {
+	background: #7a7f7b;
+	color: var(--pure);
+	font-weight: bold;
+}
 th {
 	background: var(--primary);
 	color: var(--pure);
@@ -68,12 +73,16 @@ td .name {
 
 .bottom_section {
 	margin-top: 1rem;
+	display: flex;
+	justify-content: space-between;
 }
 .next_prev {
 	display: flex;
 	gap: 0.6rem;
 }
-
+.details button a {
+	color: var(--pure);
+}
 
 @media only screen and (max-width: 600px) {
 	.meal_summary {

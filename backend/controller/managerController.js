@@ -95,9 +95,10 @@ const deleteMeal = async (req, res, next) => {
 }
 
 const getMealMonthSummary = async (req, res, next) => {
+    const id = req.params.id
     try {
         const users = await User.find()
-        const mealMonth = await SetMealMonth.find({ isActive: true })
+        const mealMonth = await SetMealMonth.find({ _id: id })
             .populate({
                 path: 'mealLists',
                 select: 'meals'
@@ -129,6 +130,7 @@ const getMealMonthSummary = async (req, res, next) => {
             individualDatas: [],
             totalCosts: mealMonth[0].expenses.reduce((a, b) => a + b.amount, 0),
             mealRate: () => this.totalCosts / this.totalMeals,
+            mealMonth: mealMonth[0]
         }
 
         users.map(user => {
@@ -146,6 +148,7 @@ const getMealMonthSummary = async (req, res, next) => {
         })
 
         summary.totalMeals = summary.individualDatas.reduce((a, b) => a + b.totalMeal, 0)
+        summary.totalDeposite = summary.individualDatas.reduce((a, b) => a + b.totalDiposite, 0)
         summary.mealRate = (summary.totalCosts / summary.totalMeals).toFixed(2)
 
         res.status(200).json(summary)

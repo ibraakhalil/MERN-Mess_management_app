@@ -12,6 +12,7 @@ import ManagerPanel from '../pages/ManagerPanel'
 import Admin from '../pages/Admin'
 import Setting from '../pages/Setting'
 import ComingSoon from '../pages/ComingSoon'
+import MealMonth from '../pages/MealMonth'
 
 function routes() {
     return (
@@ -19,6 +20,7 @@ function routes() {
             <Route exact path='/' element={<Home />} />
 
             <Route path='/manager' element={<ManagerPanel />} />
+            <Route path='/meal_month/:id' element={<MealMonth />} />
 
             <Route path='/auth/' element={<WhenLoggedOut />}>
                 <Route path='login' element={<Login />} />

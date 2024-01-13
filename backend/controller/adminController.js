@@ -10,7 +10,6 @@ const getAllUsers = async (req, res, next) => {
 
 const getRunningMealMonth = async (req, res, next) => {
     try {
-
         const runningManager = await SetMealMonth.find({ isActive: true })
             .populate({
                 path: 'expenses'

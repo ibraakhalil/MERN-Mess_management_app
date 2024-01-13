@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const { getAllUsers, getRunningMealMonth } = require('../controller/adminController')
-const { getProfile, getNotice, postNotice, updateProfile, setTemporaryMeal, getTemporaryMeal, removeMyTempMeal, deleteTempMeal } = require('../controller/userController')
+const { getProfile, getNotice, postNotice, updateProfile, setTemporaryMeal, getTemporaryMeal, removeMyTempMeal, deleteTempMeal, getMealMonth } = require('../controller/userController')
 const { isLoggedIn } = require('../utils/userAuthorization')
 const upload = require('../middleware/upload')
 const { getMealMonthSummary } = require('../controller/managerController')
@@ -12,7 +12,8 @@ router.post('/profile/edit/:userId', isLoggedIn, updateProfile)
 router.get('/getallusers', getAllUsers)
 
 router.get('/get-running-meal-month', getRunningMealMonth)
-router.get('/meal-month-summary', getMealMonthSummary)
+router.get('/meal-month-summary/:id', getMealMonthSummary)
+router.get('/meal_month/:id', getMealMonth)
 
 router.get('/notice', getNotice)
 router.post('/notice', isLoggedIn, postNotice)
