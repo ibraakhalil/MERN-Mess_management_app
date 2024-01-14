@@ -1,3 +1,7 @@
+p.not_set {
+	text-align: center;
+}
+
 .meal_summary {
 	background: var(--background);
 	padding: 1rem;
@@ -8,18 +12,21 @@
 
 .meal_summary .row1 {
 	display: grid;
-    grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(3, 1fr);
 }
+
 .meal_summary .row1 .item {
 	background: var(--smooth_p);
 	padding: 1rem;
 	border-radius: 7px;
 	color: var(--pure);
-    margin: 0 0.5rem;
+	margin: 0 0.5rem;
 }
+
 .meal_summary .row1 .item:nth-child(2) {
 	background: var(--smooth_s);
 }
+
 .meal_summary .item h3 {
 	text-transform: uppercase;
 	font-weight: 300;
@@ -27,6 +34,7 @@
 	color: #d9d9d9;
 	text-align: left;
 }
+
 .meal_summary .item h2 {
 	font-weight: 300;
 	font-size: 20px;
@@ -43,30 +51,36 @@ table {
 tr {
 	background: var(--pure);
 }
+
 tr.total {
 	background: #7a7f7b;
 	color: var(--pure);
 	font-weight: bold;
 }
+
 th {
 	background: var(--primary);
 	color: var(--pure);
 	padding: 7px;
 	text-align: center;
 }
+
 td {
 	padding: 7px;
 	text-align: center;
 }
+
 td div {
 	display: flex;
 	align-items: center;
 }
+
 td img {
 	width: 36px;
 	height: 36px;
 	margin-right: 8px;
 }
+
 td .name {
 	text-transform: capitalize;
 }
@@ -76,10 +90,12 @@ td .name {
 	display: flex;
 	justify-content: space-between;
 }
+
 .next_prev {
 	display: flex;
 	gap: 0.6rem;
 }
+
 .details button a {
 	color: var(--pure);
 }
@@ -88,16 +104,19 @@ td .name {
 	.meal_summary {
 		padding: 0.5rem;
 	}
+
 	.meal_summary .row1 {
 		display: flex;
 		gap: 8px;
 		flex-wrap: wrap;
 	}
+
 	.meal_summary .row1 .item {
 		margin: 0;
 		padding: 10px;
 		flex-grow: 1;
 	}
+
 	th {
 		font-size: 12px;
 		font-weight: 300;
@@ -105,30 +124,31 @@ td .name {
 		text-overflow: ellipsis;
 		padding: 3px 3px;
 	}
+
 	td {
 		padding: 0px;
 		font-size: 12px;
 	}
+
 	td div {
 		width: 100px;
 		padding: 7px 0;
 	}
+
 	td a {
 		display: flex;
 	}
+
 	td img {
 		width: 24px;
 		height: 24px;
 		margin-right: 3px;
 	}
+
 	td .name {
 		font-size: 12px;
 		white-space: nowrap;
 		text-overflow: ellipsis;
 		overflow: hidden;
 	}
-} 
-
-
-
-
+}

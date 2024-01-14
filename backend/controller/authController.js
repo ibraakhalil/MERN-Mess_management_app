@@ -11,6 +11,7 @@ const registerUser = async (req, res, next) => {
     if (!errors.isEmpty()) {
         return res.status(400).json({ error: errors.mapped() })
     }
+
     const newMember = new User({
         name, phone, email, address,
         password: '123456',

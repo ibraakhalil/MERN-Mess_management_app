@@ -22,14 +22,18 @@ function NoticeBoard() {
         <img src="/resource/flame.svg" alt="" />
       </div>}
       {!loading && <div className="notice">
-        <p>{notices[0]?.notice}</p>
-        <div className='notice_bottom'>
-          <p>{moment(notices[0]?.createdAt).fromNow()}</p>
-          <div>
-            <strong>{notices[0]?.role}</strong>
-            <p>{notices[0]?.name}</p>
+        {notices?.length < 1 && <p className='empty'>Notice Not Set Yet!</p>}
+        {notices?.length > 0 && <>
+          <p>{notices[0]?.notice}</p>
+          <div className='notice_bottom'>
+            <p>{moment(notices[0]?.createdAt).fromNow()}</p>
+            <div>
+              <strong>{notices[0]?.role}</strong>
+              <p>{notices[0]?.name}</p>
+            </div>
           </div>
-        </div>
+        </>}
+
       </div>}
       <div className='previous_notice'>
         {/* <button className='btn2'>Previous Notice →</button> */}

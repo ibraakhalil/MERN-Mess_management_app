@@ -15,7 +15,8 @@ function AddNewMember() {
     name: '',
     phone: '',
     email: '',
-    address: ''
+    address: '',
+    profession: ''
   }
 
   const formik = useFormik({

@@ -74,7 +74,9 @@ a {
 p {
     font-weight: 300;
 }
-
+p.not_set {
+	text-align: center;
+}
 select {
     cursor: pointer;
     text-transform: capitalize;

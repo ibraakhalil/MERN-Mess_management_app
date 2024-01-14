@@ -7,7 +7,7 @@ const init = {
     runningMealMonth: null,
     expenses: [],
     meals: [],
-    summary: []
+    summary: null
 }
 
 export const mangerReducer = (state = init, action) => {

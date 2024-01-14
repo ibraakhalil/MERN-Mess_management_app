@@ -20,7 +20,7 @@ const adminProtected = (req, res, next) => {
         return next()
     }
 
-    req.status(400).json({ error: "You'r not authenticate user!" })
+    req.status(400).json({ error: "You'r not Admin!" })
 }
 
 

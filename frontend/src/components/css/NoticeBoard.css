@@ -2,6 +2,7 @@
 	text-align: center;
 	padding: 1rem;
 }
+
 .loading img {
 	width: 80px;
 }
@@ -27,6 +28,11 @@
 	text-align: justify;
 	font-size: 14px;
 }
+
+.notice p.empty {
+	text-align: center;
+}
+
 .notice_bottom {
 	display: flex;
 	justify-content: space-between;
@@ -34,19 +40,18 @@
 	color: gray;
 	align-items: center;
 }
+
 .notice_bottom p {
 	text-transform: capitalize;
 	font-size: 12px;
 }
+
 .notice_bottom strong {
 	text-transform: capitalize;
 	font-size: 13px;
 }
+
 .previous_notice {
 	text-align: right;
 	padding: 1rem;
 }
-
-
-
-

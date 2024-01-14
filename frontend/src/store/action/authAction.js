@@ -3,14 +3,11 @@ import { decodeToken } from 'react-jwt'
 import setAuthHeaders from '../../utils/setAuthHeaders'
 import { API_URL, SET_USER, USER_ERROR } from '../constants/types'
 
-export const addMember = (user, navigator) => dispatch => {
-    Axios.post(`${API_URL}/api/admin/register`, user, {
-        headers: {
-            'Content-Type': `multipart/form-data;`
-        }
-    })
+export const addMember = (user, navigate, setLoading) => dispatch => {
+    Axios.post(`${API_URL}/api/admin/register`, user)
         .then(res => {
-            navigator()
+            console.log(res.data);
+            setLoading(false)
         })
         .catch(e => {
             dispatch(setError(e.response.data.error))
