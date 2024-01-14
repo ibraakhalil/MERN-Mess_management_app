@@ -129,7 +129,6 @@ const getMealMonthSummary = async (req, res, next) => {
         let summary = {
             individualDatas: [],
             totalCosts: mealMonth[0].expenses.reduce((a, b) => a + b.amount, 0),
-            mealRate: () => this.totalCosts / this.totalMeals,
             mealMonth: mealMonth[0]
         }
 
@@ -147,9 +146,9 @@ const getMealMonthSummary = async (req, res, next) => {
             summary.individualDatas.push(memberProccessData)
         })
 
-        summary.totalMeals = summary.individualDatas.reduce((a, b) => a + b.totalMeal, 0)
+        summary.totalMeals = summary.individualDatas.reduce((a, b) => a + b.totalMeal, 0) || 0
         summary.totalDeposite = summary.individualDatas.reduce((a, b) => a + b.totalDiposite, 0)
-        summary.mealRate = (summary.totalCosts / summary.totalMeals).toFixed(2)
+        summary.mealRate = (summary.totalCosts / (summary.totalMeals || 1)).toFixed(2)
 
         res.status(200).json(summary)
     } catch (e) {
