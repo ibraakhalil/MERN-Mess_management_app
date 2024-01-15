@@ -23,6 +23,8 @@ export function MealSummary({ id }) {
         console.log('Next');
     }
 
+    console.log(summary);
+
 
 
     return (

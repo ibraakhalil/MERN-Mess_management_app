@@ -36,7 +36,7 @@ function MealInfo() {
         temporaryMeal && dispatch(removeTempMeal(temporaryMeal._id, user._id))
     }
 
-    const time = [24 - date.getHours(), 59 - date.getMinutes()]
+    const time = [12 - date.getHours(), 59 - date.getMinutes()]
     const [remainingTime, setRemainingTime] = useState(time)
     setInterval(() => {
         return setRemainingTime(time)
@@ -44,20 +44,7 @@ function MealInfo() {
 
     return (
         <div className='meal_info'>
-            <ul>
-                <li>
-                    <h4>Total Meals</h4>
-                    <h3>24.5</h3>
-                </li>
-                <li>
-                    <h4>Personal Deposite</h4>
-                    <h3>1200</h3>
-                </li>
-                <li>
-                    <h4>Remaining Cash</h4>
-                    <h3>780 tk</h3>
-                </li>
-            </ul>
+
             <ul className='today_meal'>
                 <li>
                     <div className="top">
@@ -104,6 +91,16 @@ function MealInfo() {
                 <li className='total_meals'>
                     <h4>Personal Total Meals</h4>
                     <h3>24.5</h3>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <h4>Personal Deposite</h4>
+                    <h3>1200</h3>
+                </li>
+                <li>
+                    <h4>Remaining Cash</h4>
+                    <h3>780 tk</h3>
                 </li>
             </ul>
         </div>

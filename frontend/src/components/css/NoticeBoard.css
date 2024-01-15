@@ -18,6 +18,10 @@
 
 .notice_board .home_all_headers {
 	margin-top: 1rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 7px;
 }
 
 .notice {
@@ -54,4 +58,18 @@
 .previous_notice {
 	text-align: right;
 	padding: 1rem;
+}
+
+
+@media only screen and (max-width: 600px) {
+	.notice_board {
+		padding: 7px;
+		margin-top: 2rem;
+	}
+	.notice p {
+		font-size: 13px;
+	}
+	.previous_notice {
+		display: none;
+	}
 }

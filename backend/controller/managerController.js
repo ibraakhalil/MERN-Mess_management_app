@@ -133,7 +133,7 @@ const getMealMonthSummary = async (req, res, next) => {
         }
 
         users.map(user => {
-            const memberMeals = allMeals.filter(meal => user.name === meal.name)
+            const memberMeals = allMeals.filter(meal => user._id.toString() === meal._id.toString())
             const memberDeposites = deposites.filter(deposite => user.name === deposite.name)
             const memberProccessData = {
                 _id: user._id,

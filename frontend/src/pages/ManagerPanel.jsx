@@ -73,7 +73,8 @@ function ManagerPanel() {
                     <span>{moment(runningMealMonth.startDate).format('ll')}</span>
                   </p>
                 </div>
-              <Hamburger toggle={toggle} setToggle={setToggle}/>
+              <Hamburger toggle={toggle} setToggle={setToggle
+              }/>
               </div>
             </div>
             <div className="section">

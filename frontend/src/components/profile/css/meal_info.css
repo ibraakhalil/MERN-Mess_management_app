@@ -100,4 +100,11 @@
 }
 
 
+@media only screen and (max-width: 600px) {
+	.meal_info ul.today_meal {
+		grid-template-columns: 1fr;
+	}
+}
+
+
 

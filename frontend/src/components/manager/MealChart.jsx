@@ -10,6 +10,7 @@ function MealChart() {
   const [loading, setLoading] = useState(false)
   const dispatch = useDispatch()
   const { meals, runningMealMonth } = useSelector(state => state.manager)
+  const { user } = useSelector(state => state.auth.user)
   const sortedMeals = meals?.sort((a, b) => new Date(a.date) - new Date(b.date));
 
   useEffect(() => {
@@ -22,6 +23,7 @@ function MealChart() {
     item.classList.add("active")
   }
 
+  console.log(user);
   const handleClose = (e) => {
     let items = document.querySelectorAll('.meal_chart .item')
     items?.forEach(item => {
@@ -86,7 +88,7 @@ function MealChart() {
                         </ul>
                       )}
                     </div>
-                    {<button onClick={handleDeleteMeal} data-meal_id={list._id} className="btn2">Delete</button>}
+                    {(user?.manager || user?.admin) && <button onClick={handleDeleteMeal} data-meal_id={list._id} className="btn2">Delete</button>}
                   </div>
                   <div onClick={handleClose} className="close"><BsXLg /></div>
                 </div>

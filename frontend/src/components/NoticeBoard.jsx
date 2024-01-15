@@ -3,7 +3,7 @@ import './css/NoticeBoard.css'
 import { getNotice } from '../store/action/userAction'
 import { useDispatch, useSelector } from 'react-redux'
 import moment from 'moment'
-
+import { FaRegClipboard } from "react-icons/fa";
 
 function NoticeBoard() {
   const dispatch = useDispatch()
@@ -17,7 +17,7 @@ function NoticeBoard() {
 
   return (
     <div className='notice_board'>
-      <h1 className='home_all_headers'>Recent Notice</h1>
+      <h1 className='home_all_headers'><FaRegClipboard />Recent Notice</h1>
       {loading && <div className='loading'>
         <img src="/resource/flame.svg" alt="" />
       </div>}

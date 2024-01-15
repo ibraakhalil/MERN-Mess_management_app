@@ -18,9 +18,9 @@ const userSchema = new Schema({
     profession: String,
     address: String,
     profilePic: String,
-    social: {
+    links: {
         facebook: String,
-        x: String,
+        xdotcom: String,
         instragram: String,
         whatsapp: String,
         linkedin: String
