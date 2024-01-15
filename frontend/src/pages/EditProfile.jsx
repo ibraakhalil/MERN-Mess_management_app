@@ -11,10 +11,11 @@ function EditProfile() {
   const [selectedImg, setSelectedImg] = useState('')
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const { error, profile: { name, email, phone, address, profilePic } } = useSelector(state => state.user)
+  const { error, profile: { name, email, phone, address, profession, profilePic } } = useSelector(state => state.user)
   const [profileImg, setProfileImg] = useState('')
   const nameRef = useRef()
   const emailRef = useRef()
+  const professionRef = useRef()
   const addressRef = useRef()
 
 
@@ -25,6 +26,7 @@ function EditProfile() {
       name: nameRef.current.value,
       email: emailRef.current.value,
       address: addressRef.current.value,
+      profession: professionRef.current.value,
       profilePic: null
     }
 
@@ -90,6 +92,16 @@ function EditProfile() {
             </div>}
           </div>
 
+          <div className="form-group">
+            <label htmlFor="profession"> Profession </label>
+            <input
+              name="profession"
+              defaultValue={profession}
+              ref={professionRef} />
+            {error.profession && <div className="error-feedback">
+              <p>{error.profession}</p>
+            </div>}
+          </div>
           <div className="form-group">
             <label htmlFor="address"> Address </label>
             <input

@@ -23,7 +23,6 @@ function MealChart() {
     item.classList.add("active")
   }
 
-  console.log(user);
   const handleClose = (e) => {
     let items = document.querySelectorAll('.meal_chart .item')
     items?.forEach(item => {

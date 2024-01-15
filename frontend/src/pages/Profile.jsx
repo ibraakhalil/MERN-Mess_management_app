@@ -13,7 +13,8 @@ import { getMeal, getRunningMealMonth } from '../store/action/managerActions'
 
 function Profile() {
   const { userId } = useParams()
-  const { user: { profile }, manager: { runningMealMonth } } = useSelector(state => state)
+  const { profile } = useSelector(state => state.user)
+  const { runningMealMonth } = useSelector(state => state.manager)
   const [index, setIndex] = useState(0)
   const components = [<UserInfo profile={profile} />, <Overview />, <MealInfo />]
   const [loading, setLoading] = useState(true)
@@ -28,7 +29,6 @@ function Profile() {
   useEffect(() => {
     runningMealMonth && dispatch(getMeal(runningMealMonth._id, setLoading))
   }, [runningMealMonth])
-
 
 
 

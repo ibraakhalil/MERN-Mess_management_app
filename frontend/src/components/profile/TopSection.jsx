@@ -12,7 +12,7 @@ function TopSection({ profile }) {
                     <img src={profile.profilePic} alt="profile_pic" />
                     <div className="inner">
                         <h4>{profile.name}</h4>
-                        <p>{profile.address}</p>
+                        <p>{profile.profession}</p>
                         <div className="social">
                             <a href={`tel:${profile.phone}`}><FaPhoneSquare /></a>
                             {profile.links?.facebook && <Link to={'facebook.com'}><FaFacebookSquare /></Link>}

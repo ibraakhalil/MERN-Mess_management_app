@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllUsers } from '../store/action/userAction'
 import './css/MemberCard.css'
+import { Link } from 'react-router-dom'
 
 
 
@@ -25,7 +26,9 @@ function MemberCard() {
                     <div key={i} className="card">
                         <div className='role'>{member.role}</div>
                         <div className='img'>
-                            <img src={member.profilePic} alt="" />
+                            <Link to={`/user/profile/${member._id}`}>
+                                <img src={member.profilePic} alt="" />
+                            </Link>
                         </div>
                         <div className="info">
                             <h4>{member.name}</h4>

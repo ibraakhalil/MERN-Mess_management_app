@@ -11,7 +11,8 @@ import { deleteTempMeal, getTemporaryMeal } from '../../store/action/userAction'
 function Expense() {
   const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
-  let { user: { users, temporaryMeal }, manager: { runningMealMonth } } = useSelector(state => state)
+  let { users, temporaryMeal } = useSelector(state => state.user)
+  let { runningMealMonth } = useSelector(state => state.manager)
   const [show, setShow] = useState({ entry: false, delete: false })
   const [dateField, setDateField] = useState(new Date())
   const [entryLists, setEntryLists] = useState([])

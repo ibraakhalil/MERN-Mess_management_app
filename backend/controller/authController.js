@@ -6,14 +6,14 @@ const { validationResult } = require('express-validator')
 
 
 const registerUser = async (req, res, next) => {
-    const { name, phone, email, address } = req.body
+    const { name, phone, email, address, profession } = req.body
     const errors = validationResult(req).formatWith(e => e.msg)
     if (!errors.isEmpty()) {
         return res.status(400).json({ error: errors.mapped() })
     }
 
     const newMember = new User({
-        name, phone, email, address,
+        name, phone, email,profession, address,
         password: '123456',
         profilePic: '/resource/default_profilepic.png'
     })

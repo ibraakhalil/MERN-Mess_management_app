@@ -49,10 +49,18 @@
 	.profile_wrapper {
 		flex-direction: column;
 	}
+	.profile .details {
+		padding: 0;
+	}
 	.profile .details li {
 		display: grid;
-		grid-template-columns: 1fr 2fr;
+		grid-template-columns: 1fr;
+		padding: 12px;
+		font-size: 13px;
+		margin-bottom: 2px;
+		border-radius: 5px;
 	}
+	
 	.profile .details li strong {
 		width: 140px;
 	}

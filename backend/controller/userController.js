@@ -15,7 +15,10 @@ const getProfile = async (req, res, next) => {
     }
 }
 const updateProfile = async (req, res, next) => {
-    const { name, email, address, profilePic } = req.body
+    const { name, email, address, profession, profilePic } = req.body
+
+    console.log(req.body);
+
     const { userId } = req.params
     const opts = {
         overwrite: true,
@@ -29,7 +32,7 @@ const updateProfile = async (req, res, next) => {
             { _id: userId },
             {
                 $set: {
-                    name, email, address,
+                    name, email, address, profession,
                     profilePic: profilePic ? uploadResult.secure_url : user.profilePic
                 }
             },

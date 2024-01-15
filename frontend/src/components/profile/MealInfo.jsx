@@ -8,7 +8,9 @@ import { FaMinus } from "react-icons/fa";
 function MealInfo() {
     const [loading, setLoading] = useState(true)
     const dispatch = useDispatch()
-    const { auth: { user: { user } }, user: { temporaryMeal }, manager: { meals } } = useSelector(state => state)
+    const { user } = useSelector(state => state.auth.user)
+    const { temporaryMeal } = useSelector(state => state.user)
+    const { meals } = useSelector(state => state.manager)
     const date = new Date()
     const lunchRef = useRef()
     const dinnerRef = useRef()

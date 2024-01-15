@@ -13,8 +13,6 @@ function Summary({ id }) {
         dispatch(getMealMonthSummary(id, setLoading))
     }, [id])
 
-    console.log(summary);
-
 
     return (
         <div className='summary'>
