@@ -3,11 +3,12 @@ import './css/meal_info.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { getTemporaryMeal, removeTempMeal, setTemporaryMeal } from '../../store/action/userAction'
 import { FaMinus } from "react-icons/fa";
+import { useParams } from 'react-router-dom';
 
 
-function MealInfo() {
-    const [loading, setLoading] = useState(true)
+function MealInfo({ id }) {
     const dispatch = useDispatch()
+    const [loading, setLoading] = useState(true)
     const { user } = useSelector(state => state.auth.user)
     const { temporaryMeal } = useSelector(state => state.user)
     const { meals } = useSelector(state => state.manager)
@@ -46,9 +47,8 @@ function MealInfo() {
 
     return (
         <div className='meal_info'>
-
             <ul className='today_meal'>
-                <li>
+                {user?._id === id && <li>
                     <div className="top">
                         <h4>Today Meal</h4>
                         {(remainingTime[0] >= 0) && !mealToday && <div className='remaining_time'>
@@ -89,7 +89,7 @@ function MealInfo() {
                             </div>
                         </>}
                     </>}
-                </li>
+                </li>}
                 <li className='total_meals'>
                     <h4>Personal Total Meals</h4>
                     <h3>24.5</h3>

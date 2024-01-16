@@ -7,7 +7,6 @@ function Activity() {
     const memberpic = "https://i.postimg.cc/9X8gm5WX/handsome-young-man-with-new-stylish-haircut.jpg"
 
     const [loading, setLoading] = useState(true)
-
     const dispatch = useDispatch()
     const { users } = useSelector(state => state.user)
     useEffect(() => {

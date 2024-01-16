@@ -16,7 +16,7 @@ function Profile() {
   const { profile } = useSelector(state => state.user)
   const { runningMealMonth } = useSelector(state => state.manager)
   const [index, setIndex] = useState(0)
-  const components = [<UserInfo profile={profile} />, <Overview />, <MealInfo />]
+  const components = [<UserInfo profile={profile} />, <Overview />, <MealInfo id={userId} />]
   const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
 
@@ -31,11 +31,10 @@ function Profile() {
   }, [runningMealMonth])
 
 
-
   return (
     <div className='container'>
       <div className="profile">
-        <TopSection profile={profile} />
+        <TopSection profile={profile} id={userId} />
         <div className="profile_wrapper">
           <ProfileSidebar setIndex={setIndex} />
           <div className='component'>

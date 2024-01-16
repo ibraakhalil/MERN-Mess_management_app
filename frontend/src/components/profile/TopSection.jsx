@@ -3,8 +3,10 @@ import './css/top_section.css'
 import { Link } from 'react-router-dom'
 import { FaFacebookSquare, FaInstagramSquare, FaLinkedin, FaPen, FaPhoneSquare, FaWhatsappSquare } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
+import { useSelector } from 'react-redux';
 
-function TopSection({ profile }) {
+function TopSection({ profile, id }) {
+    const { user } = useSelector(state => state.auth.user)
     return (<>
         {profile && <div className="top_section">
             <div className="ts_wrapper">
@@ -23,13 +25,13 @@ function TopSection({ profile }) {
                         </div>
                     </div>
                 </div>
-                <div className="bottom">
+                {user?._id === id && <div className="bottom">
                     <button className='btn2'>
                         <Link to={`/user/profile/edit/${profile._id}`}>
                             <FaPen /> <span>Edit Profile</span>
                         </Link>
                     </button>
-                </div>
+                </div>}
             </div>
         </div>}
     </>)

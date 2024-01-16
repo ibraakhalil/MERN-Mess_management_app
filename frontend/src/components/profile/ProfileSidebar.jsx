@@ -20,10 +20,9 @@ function ProfileSidebar({ setIndex }) {
   return (
     <div className="profile_sidebar">
       <ul className='items'>
-        <li className='active' onClick={handleClick}> <FaInfoCircle /> Info</li>
+        <li className='active' onClick={handleClick}> <FaInfoCircle /> About</li>
         <li onClick={handleClick}> <FaBorderAll /> Overview</li>
         <li onClick={handleClick}> <FaBowlFood /> Meal </li>
-        <li onClick={handleClick}> <FaCog/> Setting</li>
       </ul>
     </div>
   )

@@ -14,7 +14,6 @@ function MealChart() {
   const sortedMeals = meals?.sort((a, b) => new Date(a.date) - new Date(b.date));
 
   useEffect(() => {
-    runningMealMonth && setLoading(true)
     runningMealMonth && dispatch(getMeal(runningMealMonth?._id, setLoading))
   }, [runningMealMonth, dispatch])
 
