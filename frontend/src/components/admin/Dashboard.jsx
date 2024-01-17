@@ -12,11 +12,6 @@ function Dashboard() {
           <h2>7</h2>
         </div>
         <div className="item">
-          <h3>Manager</h3>
-          <h2>Mobarak Hossen</h2>
-          <p>01765375648</p>
-        </div>
-        <div className="item">
           <h3>Total Cost</h3>
           <h2>1248 tk</h2>
         </div>

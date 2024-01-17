@@ -1,4 +1,3 @@
-
 .admin .all-member .wrapper {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
@@ -8,6 +7,8 @@
 .admin .all-member h1 {
 	border-bottom: 1px solid #e6e6e6;
 	margin-bottom: 1rem;
+	font-size: 22px;
+	font-weight: 400;
 }
 
 .admin .all-member .item {
@@ -16,6 +17,22 @@
 	padding: 1rem;
 	border-radius: 7px;
 	margin-bottom: 1rem;
+	position: relative;
+}
+
+.admin .all-member .item h4 {
+	text-transform: uppercase;
+}
+
+.admin .all-member .item p {
+	font-size: 14px;
+	color: gray;
+}
+
+.admin .all-member .item button {
+	position: absolute;
+	top: 12px;
+	right: 12px;
 }
 
 
@@ -25,12 +42,9 @@
 		flex-wrap: wrap;
 		gap: 1rem;
 	}
+
 	.admin .all-member .item {
 		flex-grow: 1;
 		margin-bottom: 0rem;
 	}
 }
-
-
-
-

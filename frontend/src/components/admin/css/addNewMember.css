@@ -80,3 +80,16 @@
 	position: absolute;
 	left: 5px;
 }
+
+@media only screen and (max-width: 600px) {
+	.new_member .form-group {
+		margin-bottom: 0;
+	}
+	.new_member form label {
+		margin-bottom: 3px;
+		font-size: 13px;
+	}
+	.new_member form input {
+		padding: 7px 10px;
+	}
+}

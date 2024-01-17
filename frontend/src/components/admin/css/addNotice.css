@@ -1,7 +1,7 @@
 .notice_form {
-	display: flex;
-	flex-direction: column;
-	align-items: baseline;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
 }
 
 .notice_form label {
@@ -21,3 +21,70 @@
 .notice_form button {
     margin-top: 1rem;
 }
+
+.latest_notice {
+    background: var(--pure);
+    padding: 7px;
+    margin-top: 1rem;
+}
+
+.notice_author {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-bottom: 0.5rem;
+}
+
+.notice_author > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.notice_author > div .action {
+    display: flex;
+    position: relative;
+    margin-left: 7px;
+}
+
+.action span {
+    padding: 3px;
+    cursor: pointer;
+    background: var(--background);
+    display: flex;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+.action > ul {
+    position: absolute;
+    width: 100px;
+    height: auto;
+    background: var(--background);
+    right: 0px;
+    top: 23px;
+    border-radius: 7px;
+    padding: 7px;
+    display: none;
+}
+.action.active > ul {
+    display: block;
+}
+.action > ul li {
+    padding: 5px 8px;
+    cursor: pointer;
+}
+.action > ul li:hover {
+    background: var(--pure);
+}
+
+.notice_author h4 {
+    text-transform: capitalize;
+}
+
+.latest_notice p {
+    color: gray;
+    font-size: 13px;
+}
+
+@media only screen and (max-width: 600px) {}

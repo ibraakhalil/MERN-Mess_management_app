@@ -20,12 +20,12 @@ function MessMember() {
             <div className="wrapper">
               {users.map((user, i) =>
                 <div className='item' key={i}>
-                  <img src="" alt="" />
                   <div>
-                    <h3>{user.name}</h3>
+                    <h4>{user.name}</h4>
                     <p>{user.phone}</p>
                     <p>{user.address}</p>
                   </div>
+                  <button>Delete</button>
                 </div>
               )}
             </div>
