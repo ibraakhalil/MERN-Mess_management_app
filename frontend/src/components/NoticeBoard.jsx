@@ -21,16 +21,17 @@ function NoticeBoard() {
       {loading && <div className='loading'>
         <img src="/resource/flame.svg" alt="" />
       </div>}
-      {!loading && <div className="notice">
+      <div className="background" style={{'backgroundImage': 'url(/resource/mike.png)'}}></div>
+      {!loading && <div className='notice'>
         {notices?.length < 1 && <p className='empty'>Notice Not Set Yet!</p>}
         {notices?.length > 0 && <>
-          <p>{notices[notices.length - 1]?.notice}</p>
+          <p className="notice-body">{notices[notices.length - 1]?.notice}</p>
           <div className='notice_bottom'>
-            <p>{moment(notices[notices.length - 1]?.createdAt).fromNow()}</p>
             <div>
               <strong>{notices[0]?.role}</strong>
               <p>{notices[0]?.name}</p>
             </div>
+            <p>{moment(notices[notices.length - 1]?.createdAt).fromNow()}</p>
           </div>
         </>}
 

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@200;300;400;500;700;800;900&display=swap');
+
 .loading {
 	text-align: center;
 	padding: 1rem;
@@ -14,6 +16,19 @@
 	margin-top: 3rem;
 	border-radius: 7px;
 	box-shadow: var(--box-shadow);
+	position: relative;
+	overflow: hidden;
+}
+.notice_board .background {
+	width: 320px;
+	aspect-ratio: 1;
+	background-position: center;
+	background-size: cover;
+	position: absolute;
+	top: -2rem;
+	left: -4rem;
+	z-index: 2;
+	opacity: 0.5;
 }
 
 .notice_board .home_all_headers {
@@ -22,17 +37,21 @@
 	justify-content: center;
 	align-items: center;
 	gap: 7px;
+	position: relative;
+	z-index: 10;
 }
 
 .notice {
 	padding: 1rem;
+	position: relative;
+	z-index: 10;
 }
 
-.notice p {
+p.notice-body {
 	text-align: justify;
-	font-size: 14px;
+	font-size: 16px;
+	font-family: Noto Serif Bengali;
 }
-
 .notice p.empty {
 	text-align: center;
 }
@@ -65,9 +84,6 @@
 	.notice_board {
 		padding: 7px;
 		margin-top: 2rem;
-	}
-	.notice p {
-		font-size: 13px;
 	}
 	.previous_notice {
 		display: none;
