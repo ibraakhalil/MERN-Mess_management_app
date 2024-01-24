@@ -9,6 +9,10 @@ const getProfile = async (req, res, next) => {
     const userId = req.params.userId
     try {
         const profile = await User.findOne({ _id: userId })
+            .populate({
+                path: 'managingMonth',
+                select: 'startDate'
+            })
         res.status(200).json(profile)
     } catch (e) {
         next(e)

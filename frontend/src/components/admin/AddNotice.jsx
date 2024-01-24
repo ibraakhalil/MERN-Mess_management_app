@@ -31,14 +31,14 @@ export function AddNotice({ role }) {
 
 
     return (
-        <div>
+        <div className='notice_entry'>
             <div className="notice_form">
                 <label htmlFor="notice">Write Your Notice</label>
-                <textarea name="notice" id="notice" ref={noticeRef} cols="20" rows="5"></textarea>
+                <textarea name="notice" ref={noticeRef} cols="20" rows="5"></textarea>
                 <button className="btn1" onClick={handlePublish} >Publish</button>
             </div>
             <div className="latest_notice">
-                {myNotices?.map((notice, i) => <div key={i} className='item'>
+                {myNotices?.reverse().map((notice, i) => <div key={i} className='item'>
                     <div className='notice_author'>
                         <h4>{notice.name}</h4>
                         <div>

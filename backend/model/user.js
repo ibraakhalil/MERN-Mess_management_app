@@ -18,6 +18,12 @@ const userSchema = new Schema({
     profession: String,
     address: String,
     profilePic: String,
+    managingMonth: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'SetMealMonth'
+        }
+    ],
     links: {
         facebook: String,
         xdotcom: String,

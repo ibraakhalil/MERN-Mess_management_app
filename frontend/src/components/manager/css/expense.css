@@ -38,41 +38,63 @@
 }
 
 
-.expense .list,
-.head {
-    display: flex;
-    justify-content: space-between;
-}
-
-.head {
-    background: var(--primary);
-    color: white;
-}
-
-.head li,
-.list li {
-    width: 100%;
-    padding: 3px;
-    padding-left: 1rem;
-}
-
-.list li {
-    font-size: 14px;
-    text-transform: capitalize;
-    border-bottom: 1px solid #eaeaea;
-    display: flex;
-}
-
-.list li span {
-	background: var(--primary);
-	width: 20px;
-	height: 20px;
+.expense .list, .head {
 	display: flex;
-	margin: 3px;
+	justify-content: space-between;
+	padding: 3px 7px;
+	background: var(--pure);
+	margin-top: 3px;
+}
+
+.expense .head {
+	background: var(--primary);
 	color: white;
-	justify-content: center;
+	padding: 0 7px;
+}
+.expense .head li {
+	width: 100%;
+}
+.expense .head li:last-child {
+	width: 15%;
+}
+
+.expense .list li {
+	font-size: 14px;
+	text-transform: capitalize;
+	display: flex;
+	width: 100%;
+}
+.expense .list li:last-child {
+	width: 15%;
+}
+.expense .list .expense_action {
+	position: relative;
+	cursor: pointer;
+	display: flex;
 	align-items: center;
-    cursor: pointer;
+}
+.expense .list .expense_action .action_btn {
+	border-radius: 5px;
+	padding: 5px;
+	display: none;
+	position: absolute;
+	top: 110%;
+	background: var(--pure);
+	box-shadow: var(--box-shadow);
+	right: 0;
+}
+.expense .list .expense_action.active .action_btn {
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+}
+.expense .list li span {
+	background: var(--background);
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	min-width: 120px;
+	padding: 3px 7px;
 }
 
 .expense-list .delete {

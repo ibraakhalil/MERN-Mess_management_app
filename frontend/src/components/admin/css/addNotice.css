@@ -1,3 +1,8 @@
+.notice_entry {
+	background: var(--pure);
+	padding: 1rem;
+	border-radius: 7px;
+}
 .notice_form {
     display: flex;
     flex-direction: column;
@@ -23,11 +28,15 @@
 }
 
 .latest_notice {
-    background: var(--pure);
-    padding: 7px;
-    margin-top: 1rem;
+	background: var(--pure);
+	margin-top: 1rem;
 }
-
+.latest_notice .item {
+	margin-bottom: 7px;
+	background: var(--background);
+	padding: 1rem;
+	border-radius: 7px;
+}
 .notice_author {
     display: flex;
     justify-content: space-between;
@@ -79,7 +88,8 @@
 }
 
 .notice_author h4 {
-    text-transform: capitalize;
+	text-transform: capitalize;
+	font-weight: 400;
 }
 
 .latest_notice p {

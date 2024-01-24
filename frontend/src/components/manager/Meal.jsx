@@ -70,7 +70,7 @@ function Meal({ id }) {
     <div className='meal'>
       <div className="top">
         <h3>Meal Chart</h3>
-        <button onClick={showEntryForm} className='btn2'> 
+        <button onClick={showEntryForm} className='btn1'> 
         {show.entry ? 'Hide Form' : 'Add Meal'}
         </button>
       </div>

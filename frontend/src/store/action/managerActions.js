@@ -60,7 +60,7 @@ export const postExpenses = (data) => dispatch => {
 export const deleteExpense = (expenseid) => dispatch => {
     axios.delete(`${API_URL}/manager/expenses/${expenseid}`)
         .then(res => {
-            dispatch(getExpense())
+            dispatch(getExpense(expenseid))
         })
         .catch(e => console.log(e.message))
 }

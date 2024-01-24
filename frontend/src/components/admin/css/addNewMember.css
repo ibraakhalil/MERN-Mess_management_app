@@ -2,8 +2,7 @@
 	margin: 0 auto;
 	border-radius: 7px;
 	overflow: hidden;
-	background-color: var(--background);
-	width: 90%;
+	background-color: var(--pure);
 }
 
 .new_member form .wrapper {

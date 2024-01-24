@@ -46,8 +46,8 @@ function Deposite({ id }) {
     <div className='deposite'>
       <div className="top">
         <h3>Deposites</h3>
-        <button onClick={showEntryForm}>
-          {show.entry ? 'Hide Form' : 'Add Deposite'}
+        <button className='btn1' onClick={showEntryForm}>
+          {show.entry ? 'Hide Form' : 'Add New'}
         </button>
       </div>
       {show.entry && <div className='new_entry'>

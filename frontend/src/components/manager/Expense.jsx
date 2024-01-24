@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './css/expense.css'
 import moment from 'moment'
-import { BsPlusSquareFill } from 'react-icons/bs'
+import { BsPlusSquareFill, BsThreeDotsVertical } from 'react-icons/bs'
 import { useSelector, useDispatch } from 'react-redux'
 import { deleteExpense, getExpense, postExpenses } from '../../store/action/managerActions'
 
@@ -37,7 +37,6 @@ function Expense({ id }) {
     dispatch(deleteExpense(show.id))
     setShow({ ...show, delete: false })
   }
-
 
   return (
     <div className='expense'>
@@ -76,17 +75,24 @@ function Expense({ id }) {
           <li>Name</li>
           <li>Type</li>
           <li>Expense</li>
-          <li style={{ width: '50%' }}>Actions</li>
+          <li></li>
         </ul>
-        {expenses.map((expense, i) =>
+        {expenses?.map((expense, i) =>
           <ul key={i} className="list">
             <li>{moment(expense.createdAt).format("ll")}</li>
             <li>{expense.name}</li>
             <li>{expense.type}</li>
-            <li style={{ textAlign: "center" }}>{expense.amount} tk</li>
-            <li style={{ width: '50%' }}>
-              <span onClick={() => setShow({ ...show, delete: true, id: expense._id })}>&#10006;</span>
-              <span>&#9998;</span>
+            <li>{expense.amount} tk</li>
+            <li onClick={(e) => e.currentTarget.classList.toggle('active')} className='expense_action'>
+              <BsThreeDotsVertical />
+              <div className='action_btn'>
+                <span onClick={() => setShow({ ...show, delete: true, id: expense._id })}>
+                  &#10006; Remove
+                </span>
+                <span>
+                  &#9998; Edit
+                </span>
+              </div>
             </li>
           </ul>
         )}

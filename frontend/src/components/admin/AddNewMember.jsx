@@ -40,6 +40,7 @@ function AddNewMember() {
               type="text"
               name="name"
               onChange={formik.handleChange}
+              placeholder='Member Name'
               required />
             {error.name && <div className="error-feedback">
               <p>{error.name}</p>
@@ -52,6 +53,7 @@ function AddNewMember() {
               type="text"
               name="phone"
               onChange={formik.handleChange}
+              placeholder='Member Phone Number'
               required />
             {error.phone && <div className="error-feedback">
               <p>{error.phone}</p>
@@ -63,7 +65,8 @@ function AddNewMember() {
             <input
               type="email"
               name="email"
-              onChange={formik.handleChange} />
+              onChange={formik.handleChange} 
+              placeholder='Member Email'/>
             {error.email && <div className="error-feedback">
               <p>{error.email}</p>
             </div>}
@@ -74,7 +77,8 @@ function AddNewMember() {
             <input
               type="text"
               name="profession"
-              onChange={formik.handleChange} />
+              onChange={formik.handleChange} 
+              placeholder='Profession'/>
             {error.profession && <div className="error-feedback">
               <p>{error.profession}</p>
             </div>}
@@ -85,7 +89,8 @@ function AddNewMember() {
             <input
               type="text"
               name="address"
-              onChange={formik.handleChange} />
+              onChange={formik.handleChange} 
+              placeholder='Type Address' />
             {error.address && <div className="error-feedback">
               <p>{error.address}</p>
             </div>}

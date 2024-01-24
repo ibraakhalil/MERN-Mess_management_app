@@ -180,7 +180,7 @@ const removeDeposite = async (req, res, next) => {
             await SetMealMonth.findOneAndUpdate(
                 { _id: id },
                 { $set: { 'deposites': mealMonth.deposites } }
-            ) 
+            )
             res.status(201).json('Item Successfully Removed')
         }
 
@@ -211,7 +211,8 @@ const closeRunningMealMonth = async (req, res, next) => {
                 $set: {
                     "manager": false,
                     'role': 'member'
-                }
+                },
+                $push: { 'managingMonth': id }
             },
             { new: true }
         )

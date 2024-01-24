@@ -85,6 +85,13 @@ p.notice-body {
 		padding: 7px;
 		margin-top: 2rem;
 	}
+	.notice_board .background {
+		width: 300px;
+		left: -5rem;
+	}
+	.notice {
+		padding: 10px;
+	}
 	.previous_notice {
 		display: none;
 	}

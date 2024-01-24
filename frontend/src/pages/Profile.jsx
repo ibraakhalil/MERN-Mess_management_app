@@ -30,7 +30,6 @@ function Profile() {
     runningMealMonth && dispatch(getMeal(runningMealMonth._id, setLoading))
   }, [runningMealMonth])
 
-
   return (
     <div className='container'>
       <div className="profile">

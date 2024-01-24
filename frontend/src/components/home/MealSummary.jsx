@@ -41,7 +41,7 @@ export function MealSummary({ id }) {
                             </div>
                             <div className="item">
                                 <h3>Month</h3>
-                                <h2>{months[summary?.mealMonth?.month - 1]}</h2>
+                                <h2>{months[summary?.mealMonth?.month - 1]}, {moment(summary?.mealMonth.startDate).format('YYYY')}</h2>
                             </div>
                             <div className="item">
                                 <h3>Meal Rate</h3>
