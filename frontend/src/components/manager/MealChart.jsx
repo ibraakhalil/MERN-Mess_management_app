@@ -6,16 +6,16 @@ import moment from 'moment'
 import { BsMoonStarsFill, BsSunFill, BsXLg } from 'react-icons/bs'
 
 
-function MealChart() {
+function MealChart({ id }) {
   const [loading, setLoading] = useState(false)
   const dispatch = useDispatch()
-  const { meals, runningMealMonth } = useSelector(state => state.manager)
+  const { meals } = useSelector(state => state.manager)
   const { user } = useSelector(state => state.auth.user)
   const sortedMeals = meals?.sort((a, b) => new Date(a.date) - new Date(b.date));
 
   useEffect(() => {
-    runningMealMonth && dispatch(getMeal(runningMealMonth?._id, setLoading))
-  }, [runningMealMonth, dispatch])
+    id && dispatch(getMeal(id, setLoading))
+  }, [id , dispatch])
 
   const handleClick = (e) => {
     let item = e.target.parentElement.parentElement

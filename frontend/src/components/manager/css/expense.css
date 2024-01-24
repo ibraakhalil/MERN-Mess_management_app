@@ -6,16 +6,24 @@
     box-shadow: var(--box-shadow);
 }
 
-.expense button {
+.expense .top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 2rem;
+}
+.expense .top h3 {
+	font-weight: 400;
+}
+.expense .top button {
 	display: flex;
 	align-items: center;
 	gap: 7px;
 }
 
-.expense h3 {
-    margin-bottom: 1rem;
+.expense .new_entry {
+	margin-bottom: 2rem;
 }
-
 .expense .new_entry .wrapper {
 	display: flex;
 	gap: 1rem;
@@ -29,10 +37,6 @@
 	width: 100%;
 }
 
-
-.expense-list {
-    margin-top: 3rem;
-}
 
 .expense .list,
 .head {
@@ -72,18 +76,18 @@
 }
 
 .expense-list .delete {
-	position: absolute;
+	position: fixed;
 	width: 100vw;
 	height: 100vh;
-	background: #0000001f;
-	border-radius: 7px;
+	background: #000000bf;
 	left: 0;
 	top: 0;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-    transform: scale(0);
-    transition: all 0.3s;
+	transform: scale(0);
+	transition: all 0.3s;
+	z-index: 100;
 }
 .expense-list .delete > div {
 	background: red;

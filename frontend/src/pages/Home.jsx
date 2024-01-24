@@ -25,7 +25,7 @@ function Home() {
       <MealSummary id={runningMealMonth?._id} />
 
       <h1 className='home_all_headers'>Meal Chart</h1>
-      <MealChart />
+      <MealChart id={runningMealMonth?._id}/>
 
       <h1 className='home_all_headers'>Member Information</h1>
       <MemberCard />

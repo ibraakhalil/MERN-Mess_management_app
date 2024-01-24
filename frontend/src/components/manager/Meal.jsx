@@ -8,11 +8,10 @@ import { postMeal } from '../../store/action/managerActions'
 import { deleteTempMeal, getTemporaryMeal } from '../../store/action/userAction'
 
 
-function Expense() {
+function Meal({ id }) {
   const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
   let { users, temporaryMeal } = useSelector(state => state.user)
-  let { runningMealMonth } = useSelector(state => state.manager)
   const [show, setShow] = useState({ entry: false, delete: false })
   const [dateField, setDateField] = useState(new Date())
   const [entryLists, setEntryLists] = useState([])
@@ -29,12 +28,7 @@ function Expense() {
     mapedUsersId && setEntryLists(temporaryMeal.meals)
   }, [dispatch])
 
-  const handleEntryShow = (e) => {
-    setShow({
-      ...show,
-      entry: true
-    })
-  }
+  const showEntryForm = (e) => setShow({ ...show, entry: !show.entry })
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -56,7 +50,7 @@ function Expense() {
   const handleSave = (e) => {
     let date = dateValue.current.value
     const newMeal = {
-      mealMonth: runningMealMonth._id,
+      mealMonth: id,
       date,
       totalLunch: 0,
       totalDinner: 0,
@@ -74,13 +68,17 @@ function Expense() {
 
   return (
     <div className='meal'>
-      <h3>New Entry</h3>
-      {!show.entry && <button onClick={handleEntryShow} className='btn2'> <BsPlusSquareFill /> Add New Meal</button>}
+      <div className="top">
+        <h3>Meal Chart</h3>
+        <button onClick={showEntryForm} className='btn2'> 
+        {show.entry ? 'Hide Form' : 'Add Meal'}
+        </button>
+      </div>
+
       {show.entry &&
         <div className='new_entry'>
           <form onSubmit={handleSubmit}>
             <div className='wrapper'>
-
               <div className='date_field'>
                 <input type="date" name='date' onChange={(e) => setDateField(e.target.value)} defaultValue={new Date().toISOString().slice(0, 10)} ref={dateValue} required />
               </div>
@@ -94,8 +92,8 @@ function Expense() {
               </div>
 
               <div className='meal_entry will_reset'>
-                <input type="number" name='launch' defaultValue={1} ref={launchValue} placeholder='Launch' required />
-                <input type="number" name='dinner' defaultValue={1} ref={dinnerValue} placeholder='Dinner' required />
+                <input type="number" step={.5} name='launch' defaultValue={1} ref={launchValue} placeholder='Launch' required />
+                <input type="number" step={.5} name='dinner' defaultValue={1} ref={dinnerValue} placeholder='Dinner' required />
               </div>
               <div>
                 <button className='btn1' type='submit' disabled={members.length > 0 ? false : true}>Add To List</button>
@@ -136,9 +134,9 @@ function Expense() {
           </div>
         </div>
       }
-      <MealChart />
+      <MealChart id={id} />
     </div>
   )
 }
 
-export default Expense
+export default Meal

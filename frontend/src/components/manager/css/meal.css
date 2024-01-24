@@ -5,19 +5,20 @@
     padding: 1rem;
     box-shadow: var(--box-shadow);
 }
-
-.meal h3 {
-    margin-bottom: 1rem;
-}
-.meal > button {
+.meal .top {
 	display: flex;
+	justify-content: space-between;
 	align-items: center;
-	gap: 0.4rem;
+	margin-bottom: 2rem;
+}
+.meal .top h3 {
+	font-weight: 400;
 }
 .meal .new_entry {
 	display: flex;
 	gap: 1rem;
 	flex-wrap: wrap;
+	margin-bottom: 2rem;
 }
 .meal .new_entry form {
 	width: 230px;
@@ -134,10 +135,6 @@
 .meal_entry input {
 	width: 50%;
 }
-.expense-list {
-    margin-top: 3rem;
-}
-
 .meal .list,
 .head {
     display: flex;
@@ -175,35 +172,7 @@
     cursor: pointer;
 }
 
-.expense-list .delete {
-	position: absolute;
-	width: 100vw;
-	height: 100vh;
-	background: #0000001f;
-	border-radius: 7px;
-	left: 0;
-	top: 0;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-    transform: scale(0);
-    transition: all 0.3s;
-}
-.expense-list .delete > div {
-	background: red;
-	border-radius: 12px;
-	overflow: hidden;
-	text-align: center;
-	padding: 2rem;
-}
 
-.expense-list .show {
-	transform: scale(1);
-}
-
-.expense-list .delete > div button {
-	margin: 1rem;
-}
 
 
 

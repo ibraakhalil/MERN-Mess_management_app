@@ -5,11 +5,12 @@ import { getNotice, postNotice } from '../../store/action/userAction'
 import moment from 'moment'
 import { BsThreeDotsVertical } from "react-icons/bs";
 
-export function AddNotice() {
+export function AddNotice({ role }) {
     const dispatch = useDispatch()
     const { user } = useSelector(state => state.auth)
     const { notices } = useSelector(state => state.user)
     const noticeRef = useRef()
+    const myNotices = notices?.filter(notice => notice.role.toLowerCase() === role)
 
     useEffect(() => {
         dispatch(getNotice())
@@ -18,7 +19,7 @@ export function AddNotice() {
 
     const handlePublish = (e) => {
         const notice = noticeRef.current.value
-        if(notice.length < 20) return console.log('notice must be 20 character');
+        if (notice.length < 20) return console.log('notice must be 20 character');
         const data = {
             authorId: user.user._id,
             name: user.user.name,
@@ -37,7 +38,7 @@ export function AddNotice() {
                 <button className="btn1" onClick={handlePublish} >Publish</button>
             </div>
             <div className="latest_notice">
-                {notices?.map((notice, i) => <div key={i} className='item'>
+                {myNotices?.map((notice, i) => <div key={i} className='item'>
                     <div className='notice_author'>
                         <h4>{notice.name}</h4>
                         <div>

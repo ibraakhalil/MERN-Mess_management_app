@@ -14,6 +14,7 @@ import { FaCog, FaPlusSquare } from "react-icons/fa";
 import ManagerSetting from '../components/manager/ManagerSetting'
 import { getTemporaryMeal } from '../store/action/userAction'
 import Hamburger from '../components/Hamburger'
+import { AddNotice } from '../components/admin/AddNotice'
 export const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 
@@ -36,7 +37,14 @@ function ManagerPanel() {
 
   const handleClick = (e) => {
     const lists = document.querySelectorAll(".section ul li")
-    const components = [<Summary id={runningMealMonth?._id} />, <Expense />, <Deposite />, <Meal />, <ManagerSetting />]
+    const components = [
+      <Summary id={runningMealMonth?._id} />,
+      <Expense id={runningMealMonth?._id} />,
+      <Deposite id={runningMealMonth?._id} />,
+      <Meal id={runningMealMonth?._id} />,
+      <AddNotice role={'manager'}/>,
+      <ManagerSetting />
+    ]
     lists.forEach((list, i) => {
       if (list === e.target) {
         setCompo(components[i])
@@ -73,8 +81,8 @@ function ManagerPanel() {
                     <span>{moment(runningMealMonth.startDate).format('ll')}</span>
                   </p>
                 </div>
-              <Hamburger toggle={toggle} setToggle={setToggle
-              }/>
+                <Hamburger toggle={toggle} setToggle={setToggle
+                } />
               </div>
             </div>
             <div className="section">
@@ -83,6 +91,7 @@ function ManagerPanel() {
                 <li onClick={handleClick}> <RiMoneyDollarCircleFill /> Market cost</li>
                 <li onClick={handleClick}> <GiReceiveMoney /> Deposite</li>
                 <li onClick={handleClick}> <FaPlusSquare />Insert Meal</li>
+                <li onClick={handleClick}> <FaPlusSquare />Add Notice</li>
                 <li onClick={handleClick}> <FaCog />Setting</li>
               </ul>
             </div>

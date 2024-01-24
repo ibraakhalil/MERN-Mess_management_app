@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 function ManagerSetting() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const {manager: {runningMealMonth}} = useSelector(state => state)
+    const { runningMealMonth } = useSelector(state => state.manager)
 
     const handleClose = (e) => {
         dispatch(closeRunningMealMonth(runningMealMonth._id, navigate))

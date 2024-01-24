@@ -9,7 +9,7 @@ import { AddNotice } from '../components/admin/AddNotice'
 
 
 function Admin() {
-  const components = [<Dashboard />, <MessMember />, <AddNewMember />, <SetMealMonth />, <AddNotice />]
+  const components = [<Dashboard />, <MessMember />, <AddNewMember />, <SetMealMonth />, <AddNotice role={'admin'}/>]
   const [component, setComponent] = useState(components[0])
 
   const componentIndex = (index) => {

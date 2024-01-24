@@ -1,0 +1,9 @@
+main.meal_month {
+	display: flex;
+	flex-direction: column;
+	gap: 3rem;
+}
+
+
+
+

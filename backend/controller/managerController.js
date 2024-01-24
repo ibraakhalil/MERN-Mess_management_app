@@ -4,8 +4,9 @@ const SetMealMonth = require('../model/setMealMonth')
 const User = require('../model/user')
 
 const getExpense = async (req, res, next) => {
+    const { id } = req.params
     try {
-        const expenses = await Expense.find()
+        const expenses = await Expense.find({ mealMonth: id })
         res.status(200).json(expenses)
 
     } catch (e) {
@@ -170,6 +171,26 @@ const addDeposite = async (req, res, next) => {
     }
 }
 
+const removeDeposite = async (req, res, next) => {
+    const { id, index } = req.params
+    try {
+        let mealMonth = await SetMealMonth.findById(id)
+        if (mealMonth) {
+            mealMonth.deposites.splice(index, 1)
+            await SetMealMonth.findOneAndUpdate(
+                { _id: id },
+                { $set: { 'deposites': mealMonth.deposites } }
+            ) 
+            res.status(201).json('Item Successfully Removed')
+        }
+
+        res.status(401).json('something went wrong')
+
+    } catch (e) {
+        next(e)
+    }
+}
+
 const closeRunningMealMonth = async (req, res, next) => {
     const { id } = req.params
     try {
@@ -201,4 +222,4 @@ const closeRunningMealMonth = async (req, res, next) => {
     }
 }
 
-module.exports = { getExpense, postExpense, deleteExpense, getMeal, postMeal, deleteMeal, getMealMonthSummary, addDeposite, closeRunningMealMonth }
+module.exports = { getExpense, postExpense, deleteExpense, getMeal, postMeal, deleteMeal, getMealMonthSummary, addDeposite, removeDeposite, closeRunningMealMonth }

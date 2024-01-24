@@ -2,18 +2,26 @@ import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import './css/mealMonth.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { getMealMonth } from '../store/action/userAction'
 import { MealSummary } from '../components/home/MealSummary'
+import MealChart from '../components/manager/MealChart'
+import Expense from '../components/manager/Expense'
+import Deposite from '../components/manager/Deposite'
 
 
 function MealMonth() {
     const dispatch = useDispatch()
     const { id } = useParams()
 
+
     return (
-        <main className='meal_month'>
-            <MealSummary id={id} />
-        </main>
+        <div className="container">
+            <main className='meal_month'>
+                <div><MealSummary id={id} /></div>
+                <div><MealChart id={id} /></div>
+                <div><Expense id={id} /></div>
+                <div><Deposite id={id} /></div>
+            </main>
+        </div>
     )
 }
 

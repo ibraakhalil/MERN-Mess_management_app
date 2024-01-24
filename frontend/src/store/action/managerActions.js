@@ -1,5 +1,6 @@
 import axios from "axios"
 import { API_URL, GET_EXPENSES, GET_MEAL, GET_MEAL_MONTH_SUMMARY, GET_RUNNING_MEAL_MONTH, POST_EXPENSES } from "../constants/types"
+import { getMealMonth } from "./userAction"
 
 
 export const getRunningMealMonth = (setLoading) => async dispatch => {
@@ -36,8 +37,8 @@ export const getMealMonthSummary = (id, setLoading) => dispatch => {
 }
 
 
-export const getExpense = () => dispatch => {
-    axios.get(`${API_URL}/manager/expenses`)
+export const getExpense = (id) => dispatch => {
+    axios.get(`${API_URL}/manager/expenses/${id}`)
         .then(res => {
             dispatch({
                 type: GET_EXPENSES,
@@ -99,8 +100,16 @@ export const addDeposite = (data) => dispatch => {
 
     axios.post(`${API_URL}/manager/deposite`, data)
         .then(res => {
-            console.log(res.data)
-            dispatch(getRunningMealMonth())
+            dispatch(getMealMonth(data.meal_month_id))
+        })
+        .catch(e => console.log(e.message))
+}
+
+export const removeDeposite = (id, i) => dispatch => {
+    axios.put(`${API_URL}/manager/deposite/remove/${id}/${i}`)
+        .then(res => {
+            console.log(res.data);
+            dispatch(getMealMonth(id))
         })
         .catch(e => console.log(e.message))
 }

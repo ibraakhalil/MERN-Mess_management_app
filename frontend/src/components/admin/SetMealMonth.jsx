@@ -14,7 +14,8 @@ function SetMealMonth() {
   const [loading, setLoading] = useState(true)
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const { user: { users }, manager: { runningMealMonth } } = useSelector(state => state)
+  const { users } = useSelector(state => state.user)
+  const { runningMealMonth } = useSelector(state => state.manager)
   const dateRef = useRef()
   const monthRef = useRef()
   const managerRef = useRef()
@@ -52,15 +53,18 @@ function SetMealMonth() {
           <div className='running_month'>
             <div className='top'>
               <h3>Running Month</h3>
-              <h1>{months[runningMealMonth.month - 1]}, 2023</h1>
+              <h3>{months[runningMealMonth.month - 1]}</h3>
             </div>
             <div className='details'>
-              <h1>{runningMealMonth.manager.name}</h1>
+              <div className="manager_info">
+                <h4>Manager</h4>
+                <h1>{runningMealMonth.manager.name}</h1>
+              </div>
               <div className="date">
                 <p> Start Date
                   <span>{moment(runningMealMonth.startDate).format('ll')}</span>
                 </p>
-                <p onClick={handleClose}>Close</p>
+                <button onClick={handleClose}>Close</button>
               </div>
             </div>
           </div>

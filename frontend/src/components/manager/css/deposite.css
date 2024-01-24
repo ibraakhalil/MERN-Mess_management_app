@@ -1,9 +1,24 @@
-
-.deposite .new_entry form {
-	background: var(--primary);
+.deposite {
+	background: var(--background);
 	padding: 1rem;
 	border-radius: 7px;
-    margin-bottom: 1rem;
+	box-shadow: var(--box-shadow);
+}
+
+.deposite .top {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 2rem;
+}
+.deposite .top h3 {
+	font-weight: 400;
+}
+.deposite .new_entry form {
+	background: var(--pure);
+	padding: 1rem;
+	border-radius: 7px;
+	margin-bottom: 2rem;
 }
 .deposite .new_entry form .wrapper {
 	display: flex;
@@ -13,26 +28,41 @@
 }
 .deposite .new_entry form select {
     flex-grow: 1.5;
+	background: var(--background);
 }
 .deposite .new_entry form input {
-    flex-grow: 1;
-    padding-left: 1rem;
+	flex-grow: 1;
+	background: var(--background);
+	padding: 7px;
+	padding-left: 1rem;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: textfield;
 }
 
-.deposite .new_entry .entry_lists .lists_wrapper {
+.deposite .entry_lists .lists_wrapper {
 	margin-bottom: 1rem;
 	display: flex;
 	flex-wrap: wrap;
+	gap: 5px;
 }
-.deposite .new_entry .entry_lists ul {
+.deposite .entry_lists ul {
 	display: flex;
-	background: var(--background);
-	border-radius: 2px;
-	padding: 3px 1rem;
-	margin: 4px 0.5rem;
+	background: var(--pure);
+	border-radius: 3px;
+	padding: 4px 1rem;
 	text-transform: capitalize;
 	font-size: 13px;
 	justify-content: space-between;
 	flex-grow: 1;
 	flex-basis: 400px;
+	align-items: center;
+}
+
+.deposite .entry_lists .remove {
+	display: flex;
+	cursor: pointer;
+}
+.deposite ul li svg {
+	font-size: 18px;
 }

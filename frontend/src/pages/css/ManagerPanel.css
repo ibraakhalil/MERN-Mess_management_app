@@ -41,13 +41,13 @@
 	border-bottom-left-radius: 0;
 }
 
-.manager_panel .top {
+.manager_panel .running_manager .top {
 	display: flex;
 	flex-direction: column;
 	margin-bottom: 12px;
 }
 
-.manager_panel .top small {
+.manager_panel .running_manager .top small {
 	color: #c2c2c2;
 	font-weight: 300;
 	font-size: 13px;
@@ -92,7 +92,7 @@
 	transition: all 0.2s;
 }
 
-.manager_panel li svg {
+.manager_panel .manager_sidebar li svg {
 	font-size: 18px;
 	margin-right: 9px;
 }

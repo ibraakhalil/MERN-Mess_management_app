@@ -14,9 +14,16 @@
 
 .new_member .form-header {
 	text-align: center;
-	margin-top: 0.5rem;
+	margin-top: 0;
+	background: var(--primary);
 }
-
+.new_member .form-header h2 {
+	font-size: 20px;
+	font-weight: 400;
+	margin-bottom: 1rem;
+	color: var(--pure);
+	padding: 10px 0;
+}
 .new_member form {
 	padding: 1rem;
 }
@@ -45,6 +52,7 @@
 .new_member form input {
 	padding: 10px 1rem;
 	width: 100%;
+	background: var(--background);
 }
 
 .new_member form .profile-pic {
@@ -82,6 +90,10 @@
 }
 
 @media only screen and (max-width: 600px) {
+	.new_member {
+		width: auto;
+		background-color: var(--pure);
+	}
 	.new_member .form-group {
 		margin-bottom: 0;
 	}

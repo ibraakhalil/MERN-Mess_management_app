@@ -6,21 +6,17 @@ import { useSelector, useDispatch } from 'react-redux'
 import { deleteExpense, getExpense, postExpenses } from '../../store/action/managerActions'
 
 
-function Expense() {
-  const { expenses, runningMealMonth } = useSelector(state => state.manager)
+function Expense({ id }) {
   const dispatch = useDispatch()
-  const [show, setShow] = useState({
-    entry: false,
-    delete: false
-  })
+  const { expenses } = useSelector(state => state.manager)
+  const [show, setShow] = useState({ entry: false, delete: false })
   const expenseValue = useRef()
   const nameValue = useRef()
   const typeValue = useRef()
 
   useEffect(() => {
-    dispatch(getExpense())
+    dispatch(getExpense(id))
   }, [dispatch])
-
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -28,21 +24,15 @@ function Expense() {
     let name = nameValue.current.value
     let amount = expenseValue.current.value
     let type = typeValue.current.value
-    let mealMonth = runningMealMonth._id
-    const data = {
-      mealMonth, name, amount, type
-    }
-
+    const data = { mealMonth: id, name, amount, type }
     dispatch(postExpenses(data))
     inputs.forEach((input) => input.value = "")
   }
 
-  const handleEntry = (e) => {
-    setShow({
-      ...show,
-      entry: true
-    })
+  const showEntryForm = (e) => {
+    setShow({ ...show, entry: !show.entry })
   }
+
   const handleDelete = (e) => {
     dispatch(deleteExpense(show.id))
     setShow({ ...show, delete: false })
@@ -51,15 +41,19 @@ function Expense() {
 
   return (
     <div className='expense'>
-      <h3>New Entry</h3>
-      {!show.entry && <button onClick={handleEntry} className='btn1'> <BsPlusSquareFill /> Add Expense</button>}
+      <div className="top">
+        <h3>Expenses</h3>
+        <button onClick={showEntryForm} className='btn1'>
+          {!show.entry ? 'Add Expenses' : 'Hide Form'}
+        </button>
+      </div>
       {show.entry && <form className='new_entry' onSubmit={handleSubmit}>
         <div className='wrapper'>
           <div>
-            <input type="text" name='name' ref={nameValue} placeholder='Name' required />
+            <input type="text" name='name' ref={nameValue} placeholder='Member Name' required />
           </div>
           <div>
-            <input type="text" name='type' ref={typeValue} placeholder='Type' required />
+            <input type="text" name='type' ref={typeValue} placeholder='Market Type' required />
           </div>
           <div>
             <input type="number" name='amount' ref={expenseValue} placeholder='Amount' required />
