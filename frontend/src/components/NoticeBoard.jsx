@@ -24,9 +24,9 @@ function NoticeBoard() {
       {!loading && <div className="notice">
         {notices?.length < 1 && <p className='empty'>Notice Not Set Yet!</p>}
         {notices?.length > 0 && <>
-          <p>{notices[0]?.notice}</p>
+          <p>{notices[notices.length - 1]?.notice}</p>
           <div className='notice_bottom'>
-            <p>{moment(notices[0]?.createdAt).fromNow()}</p>
+            <p>{moment(notices[notices.length - 1]?.createdAt).fromNow()}</p>
             <div>
               <strong>{notices[0]?.role}</strong>
               <p>{notices[0]?.name}</p>
