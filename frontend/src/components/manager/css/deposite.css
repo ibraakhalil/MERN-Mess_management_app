@@ -5,17 +5,7 @@
 	overflow: hidden;
 }
 
-.deposite .top {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	background: var(--primary);
-	padding: 12px 1rem;
-}
-.deposite .top h3 {
-	font-weight: 400;
-	color: var(--pure);
-}
+
 .deposite .new_entry form {
 	background: var(--pure);
 	padding: 1rem;

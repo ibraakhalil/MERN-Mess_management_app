@@ -15,7 +15,7 @@ function MealChart({ id }) {
 
   useEffect(() => {
     id && dispatch(getMeal(id, setLoading))
-  }, [id , dispatch])
+  }, [id, dispatch])
 
   const handleClick = (e) => {
     let item = e.target.parentElement.parentElement
@@ -41,7 +41,9 @@ function MealChart({ id }) {
         <img src='/resource/dna.svg' alt="" />
       </div>}
       {!loading && <>
-        {sortedMeals.length < 1 && <p className='not_set'>Empty</p>}
+        {sortedMeals.length < 1 && <div className='empty_msg'>
+          <img src="/resource/empty.png" alt="empty" />
+        </div>}
         {sortedMeals.length > 0 && <div className="wrapper">
           {sortedMeals.map((list, i) =>
             <Fragment key={i}>

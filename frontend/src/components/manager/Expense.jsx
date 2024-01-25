@@ -41,9 +41,9 @@ function Expense({ id }) {
   return (
     <div className='expense'>
       <div className="top">
-        <h3>Expenses</h3>
+        <h3>Market Cost</h3>
         <button onClick={showEntryForm} className='btn1'>
-          {!show.entry ? 'Add Expenses' : 'Hide Form'}
+          {!show.entry ? 'Add Expense' : 'Hide Form'}
         </button>
       </div>
       {show.entry && <form className='new_entry' onSubmit={handleSubmit}>
@@ -62,6 +62,9 @@ function Expense({ id }) {
       </form>}
 
       <div className="expense-list">
+        {expenses?.length == 0 && <div className='empty_msg'>
+          <img src="/resource/empty.png" alt="empty" />
+        </div>}
         <div className={`delete ${show.delete ? 'show' : ''}`}>
           <div>
             <h3>Are you want to delete this?</h3>
@@ -70,14 +73,14 @@ function Expense({ id }) {
           </div>
         </div>
 
-        <ul className="head">
-          <li>Date</li>
-          <li>Name</li>
-          <li>Type</li>
-          <li>Expense</li>
-          <li></li>
-        </ul>
-        {expenses?.map((expense, i) =>
+        {expenses?.map((expense, i) => <>
+          <ul className="head">
+            <li>Date</li>
+            <li>Name</li>
+            <li>Type</li>
+            <li>Expense</li>
+            <li></li>
+          </ul>
           <ul key={i} className="list">
             <li>{moment(expense.createdAt).format("ll")}</li>
             <li>{expense.name}</li>
@@ -94,7 +97,7 @@ function Expense({ id }) {
                 </span>
               </div>
             </li>
-          </ul>
+          </ul></>
         )}
       </div>
     </div>

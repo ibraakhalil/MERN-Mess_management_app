@@ -1,19 +1,7 @@
-
 .expense {
-    background: var(--background);
-    border-radius: 7px;
-    padding: 1rem;
-    box-shadow: var(--box-shadow);
-}
-
-.expense .top {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	margin-bottom: 2rem;
-}
-.expense .top h3 {
-	font-weight: 400;
+	background: var(--background);
+	border-radius: 7px;
+	box-shadow: var(--box-shadow);
 }
 .expense .top button {
 	display: flex;
@@ -38,6 +26,9 @@
 }
 
 
+.expense .expense-list {
+	padding: 1rem;
+}
 .expense .list, .head {
 	display: flex;
 	justify-content: space-between;

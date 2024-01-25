@@ -4,6 +4,21 @@ main.meal_month {
 	gap: 3rem;
 }
 
+.mealchart_main {
+	overflow: hidden;
+	border-radius: 7px;
+	box-shadow: var(--box-shadow);
+}
 
-
+.meal_month .top {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background: var(--primary);
+	padding: 12px 1rem;
+}
+.meal_month .top h3 {
+	font-weight: 400;
+	color: var(--pure);
+}
 

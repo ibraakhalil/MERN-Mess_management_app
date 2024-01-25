@@ -66,7 +66,9 @@ function Deposite({ id }) {
         </form>
       </div>}
       <div className="entry_lists">
-        {mealMonth?.deposites.length === 0 && <div className='empty_msg'>Empty</div>}
+        {mealMonth?.deposites.length === 0 && <div className='empty_msg'>
+          <img src="/resource/empty.png" alt="empty" />
+        </div>}
         <div className='lists_wrapper'>
           {mealMonth?.deposites.map((deposite, i) =>
             <ul key={i}>

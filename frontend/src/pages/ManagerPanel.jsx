@@ -68,12 +68,10 @@ function ManagerPanel() {
 
         {runningMealMonth?.isActive && <div className={`manager_panel ${toggle ? 'active' : ''}`}>
           <div className="manager_sidebar">
-            {/* <div className="sidebar_toggle"><FaPlusSquare /></div> */}
             <div className='running_manager'>
-              <div className='top'>
+              <div className='sidebar_top'>
                 <h1>{runningMealMonth.manager.name}</h1>
                 <small>Manager</small>
-                {/* <h1>{months[runningMealMonth.month - 1]}, 2023</h1> */}
               </div>
               <div className='details'>
                 <div className="date">

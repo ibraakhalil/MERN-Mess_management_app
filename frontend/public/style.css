@@ -91,6 +91,13 @@ select {
     width: 90%;
     margin: 0 auto;
 }
+.empty_msg {
+	width: 90px;
+	margin: 2rem auto;
+}
+.empty_msg img {
+	filter: drop-shadow(4px 7px 12px #00000045);
+}
 
 @media only screen and (max-width: 600px) {
     .container {

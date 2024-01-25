@@ -17,7 +17,10 @@ function MealMonth() {
         <div className="container">
             <main className='meal_month'>
                 <div><MealSummary id={id} /></div>
-                <div><MealChart id={id} /></div>
+                <div className='mealchart_main'>
+                    <div class="top"><h3>Meal Chart</h3><button class="btn1">Add Meal</button></div>
+                    <MealChart id={id} />
+                </div>
                 <div><Expense id={id} /></div>
                 <div><Deposite id={id} /></div>
             </main>

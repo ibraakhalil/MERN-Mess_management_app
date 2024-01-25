@@ -5,17 +5,7 @@
     box-shadow: var(--box-shadow);
 	overflow: hidden;
 }
-.meal .top {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	background: var(--primary);
-	padding: 12px 1rem;
-}
-.meal .top h3 {
-	font-weight: 400;
-	color: var(--pure);
-}
+
 .meal .new_entry {
 	display: flex;
 	gap: 1rem;
@@ -53,14 +43,6 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-}
-.empty_msg {
-	font-size: 20px;
-	text-align: center;
-	font-weight: 400;
-	margin-top: 2rem;
-	margin-bottom: 2rem;
-	color: var(--pure);
 }
 .new_entry .entry_lists .entry_header {
     margin-bottom: 0.7rem;
