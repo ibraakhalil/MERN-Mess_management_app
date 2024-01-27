@@ -12,6 +12,7 @@ function Deposite({ id }) {
   const [loading, setLoading] = useState(false)
   const dispatch = useDispatch()
   const { users, mealMonth } = useSelector(state => state.user)
+  const { user } = useSelector(state => state.auth.user)
   const memberValue = useRef()
   const amountValue = useRef()
 
@@ -46,9 +47,9 @@ function Deposite({ id }) {
     <div className='deposite'>
       <div className="top">
         <h3>Deposites</h3>
-        <button className='btn1' onClick={showEntryForm}>
+        {(user?.manager || user?.admin) && <button className='btn1' onClick={showEntryForm}>
           {show.entry ? 'Hide Form' : 'Add New'}
-        </button>
+        </button>}
       </div>
       {show.entry && <div className='new_entry'>
         <form>
@@ -72,14 +73,14 @@ function Deposite({ id }) {
         <div className='lists_wrapper'>
           {mealMonth?.deposites.map((deposite, i) =>
             <ul key={i}>
+              <li>{moment(deposite.date).format('ll')}</li>
               <li>{deposite.name}</li>
               <li>{deposite.amount} tk</li>
-              <li>{moment(deposite.date).format('ll')}</li>
-              <li>
+              {((user?._id === mealMonth?.manager._id) || user?.admin) &&<li>
                 <span onClick={handleRemove} data-index={i} className='remove'>
                   <BsTrashFill />
                 </span>
-              </li>
+              </li>}
             </ul>
           )}
         </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './css/expense.css'
 import moment from 'moment'
-import { BsPlusSquareFill, BsThreeDotsVertical } from 'react-icons/bs'
+import { BsThreeDotsVertical } from 'react-icons/bs'
 import { useSelector, useDispatch } from 'react-redux'
 import { deleteExpense, getExpense, postExpenses } from '../../store/action/managerActions'
 
@@ -9,6 +9,8 @@ import { deleteExpense, getExpense, postExpenses } from '../../store/action/mana
 function Expense({ id }) {
   const dispatch = useDispatch()
   const { expenses } = useSelector(state => state.manager)
+  const { user } = useSelector(state => state.auth.user)
+  const { mealMonth } = useSelector(state => state.user)
   const [show, setShow] = useState({ entry: false, delete: false })
   const expenseValue = useRef()
   const nameValue = useRef()
@@ -42,9 +44,9 @@ function Expense({ id }) {
     <div className='expense'>
       <div className="top">
         <h3>Market Cost</h3>
-        <button onClick={showEntryForm} className='btn1'>
+        {(user?.manager || user?.admin) && <button onClick={showEntryForm} className='btn1'>
           {!show.entry ? 'Add Expense' : 'Hide Form'}
-        </button>
+        </button>}
       </div>
       {show.entry && <form className='new_entry' onSubmit={handleSubmit}>
         <div className='wrapper'>
@@ -73,20 +75,20 @@ function Expense({ id }) {
           </div>
         </div>
 
-        {expenses?.map((expense, i) => <>
-          <ul className="head">
-            <li>Date</li>
-            <li>Name</li>
-            <li>Type</li>
-            <li>Expense</li>
-            <li></li>
-          </ul>
+        <ul className="head">
+          <li>Date</li>
+          <li>Name</li>
+          <li>Type</li>
+          <li>Expense</li>
+          <li></li>
+        </ul>
+        {expenses?.map((expense, i) =>
           <ul key={i} className="list">
             <li>{moment(expense.createdAt).format("ll")}</li>
             <li>{expense.name}</li>
             <li>{expense.type}</li>
             <li>{expense.amount} tk</li>
-            <li onClick={(e) => e.currentTarget.classList.toggle('active')} className='expense_action'>
+            {((user?._id === mealMonth?.manager._id) || user?.admin) && <li onClick={(e) => e.currentTarget.classList.toggle('active')} className='expense_action'>
               <BsThreeDotsVertical />
               <div className='action_btn'>
                 <span onClick={() => setShow({ ...show, delete: true, id: expense._id })}>
@@ -96,8 +98,8 @@ function Expense({ id }) {
                   &#9998; Edit
                 </span>
               </div>
-            </li>
-          </ul></>
+            </li>}
+          </ul>
         )}
       </div>
     </div>

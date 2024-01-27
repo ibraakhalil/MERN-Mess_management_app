@@ -41,18 +41,16 @@
 	gap: 5px;
 }
 .deposite .entry_lists ul {
-	display: flex;
+	display: grid;
 	background: var(--pure);
 	border-radius: 3px;
-	padding: 4px 1rem;
+	padding: 4px 7px;
 	text-transform: capitalize;
 	font-size: 13px;
-	justify-content: space-between;
-	flex-grow: 1;
-	flex-basis: 400px;
-	align-items: center;
+	grid-template-columns: 1fr 1fr 0.5fr 0.1fr;
+	gap: 10px;
+	width: 100%;
 }
-
 .deposite .entry_lists .remove {
 	display: flex;
 	cursor: pointer;

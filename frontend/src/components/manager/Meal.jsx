@@ -11,7 +11,8 @@ import { deleteTempMeal, getTemporaryMeal } from '../../store/action/userAction'
 function Meal({ id }) {
   const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
-  let { users, temporaryMeal } = useSelector(state => state.user)
+  let { users, temporaryMeal, mealMonth } = useSelector(state => state.user)
+  const { user } = useSelector(state => state.auth.user)
   const [show, setShow] = useState({ entry: false, delete: false })
   const [dateField, setDateField] = useState(new Date())
   const [entryLists, setEntryLists] = useState([])
@@ -70,9 +71,9 @@ function Meal({ id }) {
     <div className='meal'>
       <div className="top">
         <h3>Meal Chart</h3>
-        <button onClick={showEntryForm} className='btn1'> 
+        {((user?._id === mealMonth?.manager._id )|| user?.admin) && <button onClick={showEntryForm} className='btn1'> 
         {show.entry ? 'Hide Form' : 'Add Meal'}
-        </button>
+        </button>}
       </div>
 
       {show.entry &&

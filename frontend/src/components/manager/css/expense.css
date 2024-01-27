@@ -2,6 +2,7 @@
 	background: var(--background);
 	border-radius: 7px;
 	box-shadow: var(--box-shadow);
+	overflow: hidden;
 }
 .expense .top button {
 	display: flex;
@@ -10,15 +11,19 @@
 }
 
 .expense .new_entry {
-	margin-bottom: 2rem;
+	padding: 1rem;
 }
 .expense .new_entry .wrapper {
 	display: flex;
 	gap: 1rem;
 	justify-content: space-between;
 	align-items: center;
+	flex-wrap: wrap;
 }
-
+.expense .new_entry .wrapper > div {
+	flex: 1;
+	flex-basis: 200px;
+}
 .expense .new_entry input {
 	padding: 9px 5px;
 	padding-left: 10px;

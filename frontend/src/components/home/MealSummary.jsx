@@ -17,13 +17,6 @@ export function MealSummary({ id }) {
         id && dispatch(getMealMonthSummary(id, setLoading))
     }, [id])
 
-    const handlePrev = (e) => {
-        console.log('previous');
-    }
-    const handleNext = (e) => {
-        console.log('Next');
-    }
-
 
     return (
         <>
@@ -87,16 +80,6 @@ export function MealSummary({ id }) {
                             </tr>
                         </tbody>
                     </table>
-                    <div className='bottom_section'>
-                        <div className='next_prev'>
-                            <button className='btn2' onClick={handlePrev}>Previous</button>
-                            <button className='btn2' onClick={handleNext}>Next</button>
-                        </div>
-                        <div className="details">
-                            <button className='btn1'><Link to={`/meal_month/${summary?.mealMonth?._id}`}>Details</Link></button>
-                        </div>
-
-                    </div>
                 </>}
             </div>}
         </>

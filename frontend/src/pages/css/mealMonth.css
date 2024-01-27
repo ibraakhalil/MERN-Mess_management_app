@@ -17,8 +17,18 @@ main.meal_month {
 	background: var(--primary);
 	padding: 12px 1rem;
 }
+
 .meal_month .top h3 {
 	font-weight: 400;
 	color: var(--pure);
 }
 
+.exp_depo_wrapper {
+	display: flex;
+	gap: 2rem;
+	flex-wrap: wrap;
+}
+
+.exp_depo_wrapper>div {
+	flex: 1 330px;
+}
