@@ -1,6 +1,6 @@
 .login,
 .register {
-	width: 450px;
+	width: 420px;
 	margin: 0 auto;
 	border-radius: 7px;
 	margin-top: 3rem;
@@ -30,6 +30,15 @@
 	margin-bottom: 1rem;
 	position: relative;
 }
+.forgot_pass {
+	display: flex;
+	justify-content: flex-end;
+}
+.forgot_pass p {
+	font-size: 14px;
+	color: var(--marin);
+	cursor: pointer;
+}
 
 .auth form label {
 	margin-bottom: 0.5rem;
@@ -38,8 +47,13 @@
 }
 
 .auth form input {
-	padding: 10px 1rem;
+	padding: 12px 1rem;
 	width: 100%;
+}
+.login.auth form input {
+	background: #f3f7ff;
+	box-shadow: inset 5px 5px 5px #e4e8f0, inset -5px -5px 5px #ffffff;
+	color: #656565;
 }
 
 .auth .upload_pic {

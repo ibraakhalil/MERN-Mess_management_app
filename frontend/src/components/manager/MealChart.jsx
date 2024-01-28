@@ -22,6 +22,7 @@ function MealChart({ id }) {
     item.classList.add("active")
   }
 
+
   const handleClose = (e) => {
     let items = document.querySelectorAll('.meal_chart .item')
     items?.forEach(item => {
@@ -47,7 +48,7 @@ function MealChart({ id }) {
         {sortedMeals.length > 0 && <div className="wrapper">
           {sortedMeals.map((list, i) =>
             <Fragment key={i}>
-              <div className="item">
+              <div className={`item ${list.meals.filter(item => item._id === user?._id)?.length > 0 ? 'has_meal' : ''}`}>
                 <div className="date">
                   <h1 onClick={handleClick} >{moment(list.date).format("DD")}
                     <span>{moment(list.date).format("MMM")}</span>

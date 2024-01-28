@@ -26,17 +26,19 @@ function MemberCard() {
                     <div key={i} className="card">
                         <div className='role'>{member.role}</div>
                         <div className='img'>
-                            <Link to={`/user/profile/${member._id}`}>
-                                <img src={member.profilePic} alt="" />
-                            </Link>
+                            <img src={member.profilePic} alt="" />
                         </div>
                         <div className="info">
                             <h4>{member.name}</h4>
                             <p className='address'>{member.address}</p>
                         </div>
                         <div className='card_btn'>
-                            <button className='btn2'>Message</button>
-                            <button className=''>Follow</button>
+                            <Link to={`/user/profile/${member._id}`}>
+                                <button className='btn2'>Profile</button>
+                            </Link>
+                            <Link to={'/comingsoon'}>
+                                <button>Message</button>
+                            </Link>
                         </div>
                     </div>
                 )}

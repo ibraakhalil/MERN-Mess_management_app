@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import './css/summary.css'
-import Activity from '../Activity'
 import { useDispatch, useSelector } from 'react-redux'
 import { getMealMonthSummary } from '../../store/action/managerActions'
 
@@ -32,24 +31,10 @@ function Summary({ id }) {
             </div>
             <div className="row2">
                 <div className="item">
-                    <div className='members_headers'>
-                        <h3>Meal Members</h3>
-                        <button className='btn1'>Add One</button>
-                    </div>
-                    <ul>
-                        <li>Name</li>
-                        <li>Deposite</li>
-                        <li>Meal</li>
-                    </ul>
-                    <Activity />
-                </div>
-
-                <div className="item">
                     <h3>Meal Member</h3>
                     <h2>{summary?.individualDatas?.length}</h2>
                 </div>
             </div>
-
         </div>
     )
 }

@@ -11,6 +11,7 @@ import { IoDocuments } from "react-icons/io5";
 import { GiReceiveMoney } from "react-icons/gi";
 import { RiMoneyDollarCircleFill } from "react-icons/ri";
 import { FaCog, FaPlusSquare } from "react-icons/fa";
+import { MdAddAlert } from "react-icons/md";
 import ManagerSetting from '../components/manager/ManagerSetting'
 import { getTemporaryMeal } from '../store/action/userAction'
 import Hamburger from '../components/Hamburger'
@@ -89,7 +90,7 @@ function ManagerPanel() {
                 <li onClick={handleClick}> <RiMoneyDollarCircleFill /> Market cost</li>
                 <li onClick={handleClick}> <GiReceiveMoney /> Deposite</li>
                 <li onClick={handleClick}> <FaPlusSquare />Insert Meal</li>
-                <li onClick={handleClick}> <FaPlusSquare />Add Notice</li>
+                <li onClick={handleClick}> <MdAddAlert />Add Notice</li>
                 <li onClick={handleClick}> <FaCog />Setting</li>
               </ul>
             </div>

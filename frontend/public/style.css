@@ -10,7 +10,7 @@
 	--background: #f3f7ff;
 	--marin: #4b4453;
 	--danger: #ff2200;
-	--box-shadow: 7px 7px 7px #a2a0a031;
+	--box-shadow: 3px 7px 7px #a2a0a031;
 }
 
 
@@ -88,6 +88,7 @@ select {
     border-radius: 5px;
 }
 .container {
+    max-width: 1050px;
     width: 90%;
     margin: 0 auto;
 }

@@ -69,3 +69,9 @@
 	font-size: 12px;
 	font-weight: 300;
 }
+.mess-members .card_btn .message a {
+	color: var(--pure);
+}
+.mess-members .card_btn .profile_link a {
+	color: var(--dark);
+}

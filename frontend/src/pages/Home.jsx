@@ -33,10 +33,10 @@ function Home() {
       <h1 className='home_all_headers'>Meal Month Summary</h1>
       <MealSummary id={runningMealMonth?._id} />
       <div className='bottom_section'>
-        <div className='next_prev'>
-          {/* <button className='btn2' onClick={handlePrev}>Previous</button>
-          <button className='btn2' onClick={handleNext}>Next</button> */}
-        </div>
+        {/* <div className='next_prev'>
+          <button className='btn2' onClick={handlePrev}>Previous</button>
+          <button className='btn2' onClick={handleNext}>Next</button>
+        </div> */}
         <div className="details">
           <button className='btn1'><Link to={`/meal_month/${summary?.mealMonth?._id}`}>Details</Link></button>
         </div>

@@ -88,7 +88,7 @@ td .name {
 .bottom_section {
 	margin-top: 1rem;
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-end;
 }
 
 .next_prev {

@@ -76,7 +76,7 @@ function EditProfile() {
                 required />
               <p className='phone'>{phone}</p>
               <div className="warning">
-                <p>&#9888; Maximum photo size is 50 KB</p>
+                <p>&#9888; Photo size Must be less than 50 KB</p>
               </div>
             </div>
           </div>

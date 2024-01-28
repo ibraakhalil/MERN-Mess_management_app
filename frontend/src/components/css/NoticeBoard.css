@@ -49,7 +49,7 @@
 
 p.notice-body {
 	text-align: justify;
-	font-size: 16px;
+	font-size: 18px;
 	font-family: Noto Serif Bengali;
 }
 .notice p.empty {
@@ -91,6 +91,9 @@ p.notice-body {
 	}
 	.notice {
 		padding: 10px;
+	}
+	p.notice-body {
+		font-size: 17px;
 	}
 	.previous_notice {
 		display: none;

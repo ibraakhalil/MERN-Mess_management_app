@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getTemporaryMeal, removeTempMeal, setTemporaryMeal } from '../../store/action/userAction'
 import { FaMinus } from "react-icons/fa";
 import { useParams } from 'react-router-dom';
+import { getMealMonthSummary } from '../../store/action/managerActions';
 
 
 function MealInfo({ id }) {
@@ -11,17 +12,19 @@ function MealInfo({ id }) {
     const [loading, setLoading] = useState(true)
     const { user } = useSelector(state => state.auth.user)
     const { temporaryMeal } = useSelector(state => state.user)
-    const { meals } = useSelector(state => state.manager)
+    const { meals, runningMealMonth, summary } = useSelector(state => state.manager)
     const date = new Date()
     const lunchRef = useRef()
     const dinnerRef = useRef()
     const dateRef = useRef()
     const tempMeal = temporaryMeal?.meals.filter(item => item._id === user._id) || []
     const mealToday = meals.filter(meal => new Date(meal.date).toDateString() === date.toDateString())[0]?.meals.filter(meal => meal._id === user._id)[0]
-
+    const personalMealData = summary?.individualDatas.filter(data => data._id === id)[0]
+    const remainingCash = Math.ceil(personalMealData?.totalDiposite - (personalMealData?.totalMeal * summary?.mealRate))
 
     useEffect(() => {
         !mealToday && dispatch(getTemporaryMeal(setLoading))
+        dispatch(getMealMonthSummary(runningMealMonth._id, setLoading))
     }, [dispatch])
 
     const handleSave = (e) => {
@@ -39,7 +42,7 @@ function MealInfo({ id }) {
         temporaryMeal && dispatch(removeTempMeal(temporaryMeal._id, user._id))
     }
 
-    const time = [12 - date.getHours(), 59 - date.getMinutes()]
+    const time = [24 - date.getHours(), 59 - date.getMinutes()]
     const [remainingTime, setRemainingTime] = useState(time)
     setInterval(() => {
         return setRemainingTime(time)
@@ -47,9 +50,12 @@ function MealInfo({ id }) {
 
     return (
         <div className='meal_info'>
+            <div className="top">
+                <h3>Running Month</h3>
+            </div>
             <ul className='today_meal'>
                 {user?._id === id && <li>
-                    <div className="top">
+                    <div className="heading">
                         <h4>Today Meal</h4>
                         {(remainingTime[0] >= 0) && !mealToday && <div className='remaining_time'>
                             <p>Time Remaining {remainingTime[0]}:{remainingTime[1]}</p>
@@ -90,21 +96,27 @@ function MealInfo({ id }) {
                         </>}
                     </>}
                 </li>}
+            </ul>
+            <ul className='personal_meal_details'>
+                <li className={`remaining_cash ${remainingCash < 0 ? 'danger' : ''}`}>
+                    <h4>Remaining Cash</h4>
+                    <h3>{remainingCash} tk</h3>
+                </li>
                 <li className='total_meals'>
                     <h4>Personal Total Meals</h4>
-                    <h3>24.5</h3>
+                    <h3>{personalMealData?.totalMeal}</h3>
                 </li>
-            </ul>
-            <ul>
                 <li>
                     <h4>Personal Deposite</h4>
-                    <h3>1200</h3>
-                </li>
-                <li>
-                    <h4>Remaining Cash</h4>
-                    <h3>780 tk</h3>
+                    <h3>{personalMealData?.totalDiposite} tk</h3>
                 </li>
             </ul>
+            <div className="top">
+                <h3>Last Month</h3>
+            </div>
+            <div className='empty_msg'>
+                <img src="/resource/empty.png" alt="empty" />
+            </div>
         </div>
     )
 }

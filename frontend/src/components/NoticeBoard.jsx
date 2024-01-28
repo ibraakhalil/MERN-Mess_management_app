@@ -15,6 +15,7 @@ function NoticeBoard() {
   }, [dispatch])
 
 
+
   return (
     <div className='notice_board'>
       <h1 className='home_all_headers'><FaRegClipboard />Recent Notice</h1>
@@ -28,8 +29,8 @@ function NoticeBoard() {
           <p className="notice-body">{notices[notices.length - 1]?.notice}</p>
           <div className='notice_bottom'>
             <div>
-              <strong>{notices[0]?.role}</strong>
-              <p>{notices[0]?.name}</p>
+              <strong>{notices[notices.length - 1]?.role}</strong>
+              <p>{notices[notices.length - 1]?.name}</p>
             </div>
             <p>{moment(notices[notices.length - 1]?.createdAt).fromNow()}</p>
           </div>

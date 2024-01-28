@@ -74,14 +74,6 @@ function Expense({ id }) {
             <button onClick={(e) => setShow({ ...show, delete: false })}>No</button>
           </div>
         </div>
-
-        <ul className="head">
-          <li>Date</li>
-          <li>Name</li>
-          <li>Type</li>
-          <li>Expense</li>
-          <li></li>
-        </ul>
         {expenses?.map((expense, i) =>
           <ul key={i} className="list">
             <li>{moment(expense.createdAt).format("ll")}</li>

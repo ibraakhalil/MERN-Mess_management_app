@@ -16,7 +16,9 @@
 	border-radius: 7px;
 	cursor: pointer;
 }
-
+.meal_chart .item.has_meal {
+	background: var(--secondary);
+}
 .meal_chart .item .date h1 {
 	color: var(--background);
 	text-align: center;

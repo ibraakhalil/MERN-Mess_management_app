@@ -34,24 +34,12 @@
 .expense .expense-list {
 	padding: 1rem;
 }
-.expense .list, .head {
+.expense .list {
 	display: flex;
 	justify-content: space-between;
 	padding: 3px 7px;
 	background: var(--pure);
 	margin-top: 3px;
-}
-
-.expense .head {
-	background: var(--primary);
-	color: white;
-	padding: 0 7px;
-}
-.expense .head li {
-	width: 100%;
-}
-.expense .head li:last-child {
-	width: 15%;
 }
 
 .expense .list li {

@@ -30,19 +30,20 @@ function Login() {
         </div>
         <form onSubmit={formik.handleSubmit}>
           <div className="form-group">
-            <label htmlFor="phone">Phone: </label>
-            <input type="text" name="phone" onChange={formik.handleChange} required />
+            <label htmlFor="phone">Phone </label>
+            <input type="text" name="phone" onChange={formik.handleChange} placeholder='Type your phone number' required />
             {error.phone && <div className="error-feedback">
               <p>{error.phone}</p>
             </div>}
           </div>
           <div className="form-group">
-            <label htmlFor="password">Password : </label>
-            <input type="password" name="password" onChange={formik.handleChange} required />
+            <label htmlFor="password">Password</label>
+            <input type="password" name="password" onChange={formik.handleChange} placeholder='Type your password' required />
             {error.password && <div className="error-feedback">
               <p>{error.password}</p>
             </div>}
           </div>
+          <div className='forgot_pass'><p>Forgot Password?</p></div>
           <button className='btn2' type="submit">{loading ? 'Login...' : 'Login'}</button>
         </form>
       </div>
