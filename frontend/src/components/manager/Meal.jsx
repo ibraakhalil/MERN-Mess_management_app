@@ -5,7 +5,7 @@ import MealChart from './MealChart'
 import { useDispatch, useSelector } from 'react-redux'
 import { BsMoonStarsFill, BsPlusSquareFill, BsSmartwatch, BsSunFill, BsTrashFill } from 'react-icons/bs'
 import { postMeal } from '../../store/action/managerActions'
-import { deleteTempMeal, getTemporaryMeal } from '../../store/action/userAction'
+import { deleteTempMeal, getMealMonth, getTemporaryMeal } from '../../store/action/userAction'
 
 
 function Meal({ id }) {
@@ -24,6 +24,7 @@ function Meal({ id }) {
 
   useEffect(() => {
     dispatch(getTemporaryMeal(setLoading))
+    dispatch(getMealMonth(id))
     const mapedUsersId = temporaryMeal?.meals.map(item => item._id)
     mapedUsersId && setMembers(members.filter((user) => !mapedUsersId.includes(user._id)))
     mapedUsersId && setEntryLists(temporaryMeal.meals)
@@ -71,8 +72,8 @@ function Meal({ id }) {
     <div className='meal'>
       <div className="top">
         <h3>Meal Chart</h3>
-        {((user?._id === mealMonth?.manager._id )|| user?.admin) && <button onClick={showEntryForm} className='btn1'> 
-        {show.entry ? 'Hide Form' : 'Add Meal'}
+        {((user?._id === mealMonth?.manager._id) || user?.admin) && <button onClick={showEntryForm} className='btn1'>
+          {show.entry ? 'Hide Form' : 'Add Meal'}
         </button>}
       </div>
 

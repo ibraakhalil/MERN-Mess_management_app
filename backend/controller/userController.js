@@ -73,9 +73,7 @@ const getMealMonth = async (req, res, next) => {
     const id = req.params.id
     try {
         const mealMonth = await SetMealMonth.findById(id)
-
         res.status(201).json(mealMonth)
-
     } catch (e) {
         next(e)
     }
