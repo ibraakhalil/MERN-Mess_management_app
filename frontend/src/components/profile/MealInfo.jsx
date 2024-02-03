@@ -3,15 +3,16 @@ import './css/meal_info.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { getTemporaryMeal, removeTempMeal, setTemporaryMeal } from '../../store/action/userAction'
 import { FaMinus } from "react-icons/fa";
-import { useParams } from 'react-router-dom';
 import { getMealMonthSummary } from '../../store/action/managerActions';
+import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 
 function MealInfo({ id }) {
     const dispatch = useDispatch()
     const [loading, setLoading] = useState(true)
     const { user } = useSelector(state => state.auth.user)
-    const { temporaryMeal } = useSelector(state => state.user)
+    const { temporaryMeal, allMealMonths } = useSelector(state => state.user)
     const { meals, runningMealMonth, summary } = useSelector(state => state.manager)
     const date = new Date()
     const lunchRef = useRef()
@@ -111,11 +112,16 @@ function MealInfo({ id }) {
                     <h3>{personalMealData?.totalDiposite} tk</h3>
                 </li>
             </ul>
-            <div className="top">
-                <h3>Last Month</h3>
-            </div>
-            <div className='empty_msg'>
-                <img src="/resource/empty.png" alt="empty" />
+            <div className="latest_months">
+                <h3>Latest Meal Months</h3>
+                {allMealMonths.length < 1 && <div className='empty_msg'>
+                    <img src="/resource/empty.png" alt="empty" />
+                </div>}
+                {allMealMonths?.map(month => <li key={month._id}>
+                    <p>{month?.manager.name}</p>
+                    <p>{moment(month.startDate).format('ll')}</p>
+                    <Link to={`/meal_month/${month._id}`} className='btn2'>Details</Link>
+                </li>)}
             </div>
         </div>
     )

@@ -1,5 +1,5 @@
 import Axios from 'axios'
-import { API_URL, GET_MEAL_MONTH, GET_NOTICE, GET_TEMPORARY_MEAL, SET_PROFILE } from '../constants/types'
+import { API_URL, GET_ALL_MEAL_MONTH, GET_MEAL_MONTH, GET_NOTICE, GET_TEMPORARY_MEAL, SET_PROFILE } from '../constants/types'
 import { setError } from './authAction'
 import { GET_ALL_USERS } from '../constants/types'
 import axios from 'axios'
@@ -37,6 +37,16 @@ export const editProfile = (data, id, navigate, setLoading) => dispatch => {
         .catch(e => console.log(e.message))
 }
 
+export const getAllMealMonth = () => dispatch => {
+    axios.get(`${API_URL}/api/user/meal_month`)
+        .then(res => {
+            dispatch({
+                type: GET_ALL_MEAL_MONTH,
+                payload: res.data
+            })
+        })
+        .catch(e => console.log(e.message))
+}
 export const getMealMonth = (id) => dispatch => {
     axios.get(`${API_URL}/api/user/meal_month/${id}`)
         .then(res => {

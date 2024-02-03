@@ -69,6 +69,15 @@ const postNotice = async (req, res, next) => {
     }
 }
 
+const getAllMealMonth = async (req, res, next) => {
+    try {
+        const allMonth = await SetMealMonth.find()
+        res.status(201).json(allMonth)
+    } catch (e) {
+        next(e)
+    }
+}
+
 const getMealMonth = async (req, res, next) => {
     const id = req.params.id
     try {
@@ -142,4 +151,4 @@ const deleteTempMeal = async (req, res, next) => {
     }
 }
 
-module.exports = { getProfile, updateProfile, getNotice, postNotice, getMealMonth, getTemporaryMeal, setTemporaryMeal, removeMyTempMeal, deleteTempMeal }
+module.exports = { getProfile, updateProfile, getNotice, postNotice, getAllMealMonth, getMealMonth, getTemporaryMeal, setTemporaryMeal, removeMyTempMeal, deleteTempMeal }

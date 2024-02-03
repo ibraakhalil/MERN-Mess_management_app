@@ -1,4 +1,4 @@
-import { GET_ALL_USERS, GET_MEAL_MONTH, GET_NOTICE, GET_TEMPORARY_MEAL, SET_PROFILE } from "../constants/types"
+import { GET_ALL_MEAL_MONTH, GET_ALL_USERS, GET_MEAL_MONTH, GET_NOTICE, GET_TEMPORARY_MEAL, SET_PROFILE } from "../constants/types"
 
 
 
@@ -8,6 +8,7 @@ const init = {
     profile: {},
     users: [],
     error: {},
+    allMealMonths: [],
     mealMonth: null,
     temporaryMeal: null
 }
@@ -37,6 +38,12 @@ export const userReducer = (state = init, action) => {
                 ...state,
                 isLoading: false,
                 mealMonth: action.payload
+            }
+        case GET_ALL_MEAL_MONTH:
+            return {
+                ...state,
+                isLoading: false,
+                allMealMonths: action.payload
             }
         case GET_TEMPORARY_MEAL:
             return {

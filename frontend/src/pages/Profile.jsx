@@ -3,7 +3,7 @@ import './css/profile.css'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { getProfile, getTemporaryMeal } from '../store/action/userAction'
+import { getAllMealMonth, getProfile, getTemporaryMeal } from '../store/action/userAction'
 import TopSection from '../components/profile/TopSection'
 import ProfileSidebar from '../components/profile/ProfileSidebar'
 import UserInfo from '../components/profile/UserInfo'
@@ -24,6 +24,7 @@ function Profile() {
     dispatch(getProfile(userId, setLoading))
     dispatch(getTemporaryMeal())
     dispatch(getRunningMealMonth(setLoading))
+    dispatch(getAllMealMonth())
   }, [dispatch, userId])
 
   useEffect(() => {
