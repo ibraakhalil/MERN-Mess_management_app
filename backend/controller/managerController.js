@@ -88,7 +88,7 @@ const deleteMeal = async (req, res, next) => {
         )
         res.status(201).json({
             message: "Delete Success",
-            mealMonth_id: upadatedMealMonth._id
+            id: upadatedMealMonth._id
         })
     } catch (e) {
         next(e)

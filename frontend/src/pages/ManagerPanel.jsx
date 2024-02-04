@@ -10,10 +10,9 @@ import moment from 'moment'
 import { IoDocuments } from "react-icons/io5";
 import { GiReceiveMoney } from "react-icons/gi";
 import { RiMoneyDollarCircleFill } from "react-icons/ri";
-import { FaCog, FaPlusSquare } from "react-icons/fa";
-import { MdAddAlert } from "react-icons/md";
+import { FaCog, FaPlusSquare, FaThumbtack } from "react-icons/fa";
 import ManagerSetting from '../components/manager/ManagerSetting'
-import { getAllUsers, getMealMonth, getTemporaryMeal } from '../store/action/userAction'
+import { getAllUsers, getTemporaryMeal } from '../store/action/userAction'
 import Hamburger from '../components/Hamburger'
 import { AddNotice } from '../components/admin/AddNotice'
 export const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -93,7 +92,7 @@ function ManagerPanel() {
                 <li onClick={handleClick}> <FaPlusSquare />Add Meal</li>
                 <li onClick={handleClick}> <RiMoneyDollarCircleFill /> Market cost</li>
                 <li onClick={handleClick}> <GiReceiveMoney /> Deposite</li>
-                <li onClick={handleClick}> <MdAddAlert />Add Notice</li>
+                <li onClick={handleClick}> <FaThumbtack /> Add Notice</li>
                 <li onClick={handleClick}> <FaCog />Setting</li>
               </ul>
             </div>

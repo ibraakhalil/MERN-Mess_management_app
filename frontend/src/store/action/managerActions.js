@@ -88,10 +88,10 @@ export const postMeal = (data, setLoading) => dispatch => {
             console.log(e.message)
         })
 }
-export const deleteMeal = (mealId) => dispatch => {
+export const deleteMeal = (mealId, setLoading) => dispatch => {
     axios.delete(`${API_URL}/manager/meal/${mealId}`)
         .then(res => {
-            dispatch(getMeal(res.data.mealMonth_id))
+            dispatch(getMeal(res.data.id, setLoading))
         })
         .catch(e => e.message)
 }

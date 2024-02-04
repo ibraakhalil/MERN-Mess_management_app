@@ -78,10 +78,17 @@
 	background: var(--background);
 	padding: 7px;
 	border-radius: 7px;
-	margin-bottom: 1rem;
+	margin: 1rem 0;
 }
 .meal_chart .modal_header h1 {
-	margin-bottom: 10px;
+	margin-bottom: 16px;
+	font-weight: 500;
+	font-size: 24px;
+}
+.meal_chart .modal_header h1 p {
+	font-size: 14px;
+	font-weight: 300;
+	color: var(--marin);
 }
 .modal_header > div {
 	display: grid;

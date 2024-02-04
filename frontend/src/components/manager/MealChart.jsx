@@ -32,7 +32,7 @@ function MealChart({ id }) {
 
   const handleDeleteMeal = (e) => {
     const meal_id = e.target.dataset.meal_id
-    dispatch(deleteMeal(meal_id))
+    dispatch(deleteMeal(meal_id, setLoading))
     handleClose()
   }
 
@@ -67,7 +67,10 @@ function MealChart({ id }) {
                 <div className="modal">
                   <div className='modal_items'>
                     <div className='modal_header'>
-                      <h1>{moment(list.date).format('ll')}</h1>
+                      <h1>
+                        <p>{moment(list.date).format('dddd')}</p>
+                        {moment(list.date).format('ll')}
+                      </h1>
                       <div>
                         <p>Day Total <span>{list.totalDinner + list.totalLunch}</span></p>
                         <p>Lunch <span>{list.totalLunch}</span></p>
@@ -75,7 +78,10 @@ function MealChart({ id }) {
                       </div>
                     </div>
                     <div className='modal_wrapper'>
-                      {list.meals.map((meal, i) =>
+                      {list.meals.length < 1 && <div className='empty_msg'>
+                        <img src="/resource/empty.png" alt="empty" />
+                      </div>}
+                      {list.meals.length > 0 && list.meals.map((meal, i) =>
                         <ul key={i}>
                           <li>{meal.name}</li>
                           <li className='count'>

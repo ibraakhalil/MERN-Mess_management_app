@@ -10,9 +10,11 @@ import { deleteTempMeal, getMealMonth, getTemporaryMeal } from '../../store/acti
 
 function Meal({ id }) {
   const [loading, setLoading] = useState(true)
+  const [mealValues, setMealValues] = useState({ lunch: 0, dinner: 0 })
   const dispatch = useDispatch()
   let { users, temporaryMeal, mealMonth } = useSelector(state => state.user)
   const { user } = useSelector(state => state.auth.user)
+  const { meals } = useSelector(state => state.manager)
   const [show, setShow] = useState({ entry: false, delete: false })
   const [dateField, setDateField] = useState(new Date())
   const [entryLists, setEntryLists] = useState([])
@@ -34,37 +36,49 @@ function Meal({ id }) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    let inputs = document.querySelectorAll('.meal .new_entry form .will_reset input')
     let memberId = memberValue.current.value
     let filteredMember = users.filter((user) => user._id === memberId)[0]
+    let lunch = launchValue.current.value
+    let dinner = dinnerValue.current.value
     const memberData = {
       _id: filteredMember._id,
       name: filteredMember.name,
-      lunch: launchValue.current.value,
-      dinner: dinnerValue.current.value
+      lunch: lunch > 0 ? lunch : 0,
+      dinner: dinner > 0 ? dinner : 0
     }
-
     setEntryLists([...entryLists, memberData])
     setMembers(members.filter((user) => user._id !== memberId))
-    inputs.forEach((input) => input.value = 0)
+    setMealValues({ lunch: 0, dinner: 0 })
   }
 
   const handleSave = (e) => {
-    let date = dateValue.current.value
     const newMeal = {
       mealMonth: id,
-      date,
       totalLunch: 0,
       totalDinner: 0,
-      meals: entryLists
+      date: dateValue.current.value,
+      meals: entryLists.filter(entry => entry.lunch > 0 || entry.dinner > 0)
     }
     newMeal.meals.forEach(item => newMeal.totalLunch += Number(item.lunch))
     newMeal.meals.forEach(item => newMeal.totalDinner += Number(item.dinner))
+    const isDateExist = meals?.filter(item => item.date === new Date(newMeal.date).toISOString()).length > 0
 
-    dispatch(postMeal(newMeal, setLoading))
-    temporaryMeal && dispatch(deleteTempMeal(temporaryMeal._id))
-    setEntryLists([])
-    setMembers(users)
+    if (isDateExist) {
+      console.log('Date already Taken!');
+    } else {
+      dispatch(postMeal(newMeal, setLoading))
+      temporaryMeal && dispatch(deleteTempMeal(temporaryMeal._id))
+      setEntryLists([])
+      setMembers(users)
+      setMealValues({ lunch: 0, dinner: 0 })
+    }
+  }
+
+  const handleDateChange = (e) => {
+    const p = document.querySelector('.date_field p')
+    const isDateExist = meals?.filter(item => item.date === new Date(e.target.value).toISOString()).length > 0
+    setDateField(e.target.value)
+    p.style.display = isDateExist ? 'block' : 'none'
   }
 
 
@@ -82,7 +96,8 @@ function Meal({ id }) {
           <form onSubmit={handleSubmit}>
             <div className='wrapper'>
               <div className='date_field'>
-                <input type="date" name='date' onChange={(e) => setDateField(e.target.value)} defaultValue={new Date().toISOString().slice(0, 10)} ref={dateValue} required />
+                <input type="date" name='date' onChange={handleDateChange} defaultValue={new Date().toISOString().slice(0, 10)} ref={dateValue} required />
+                <p>Date already taken!</p>
               </div>
 
               <div className='will_reset'>
@@ -94,8 +109,16 @@ function Meal({ id }) {
               </div>
 
               <div className='meal_entry will_reset'>
-                <input type="number" step={.5} name='launch' defaultValue={1} ref={launchValue} placeholder='Launch' required />
-                <input type="number" step={.5} name='dinner' defaultValue={1} ref={dinnerValue} placeholder='Dinner' required />
+                <div className='lunch'>
+                  <span onClick={() => setMealValues({ ...mealValues, lunch: mealValues.lunch - 1 })}>-</span>
+                  <input type="number" step={.5} name='launch' readOnly value={mealValues.lunch} ref={launchValue} placeholder='Launch' required />
+                  <span onClick={() => setMealValues({ ...mealValues, lunch: mealValues.lunch + 1 })}>+</span>
+                </div>
+                <div className='dinner'>
+                  <span onClick={() => setMealValues({ ...mealValues, dinner: mealValues.dinner - 1 })}>-</span>
+                  <input type="number" step={.5} name='dinner' readOnly value={mealValues.dinner} ref={dinnerValue} placeholder='Dinner' required />
+                  <span onClick={() => setMealValues({ ...mealValues, dinner: mealValues.dinner + 1 })}>+</span>
+                </div>
               </div>
               <div>
                 <button className='btn1' type='submit' disabled={members.length > 0 ? false : true}>Add To List</button>
@@ -106,7 +129,9 @@ function Meal({ id }) {
             <div className='entry_header'>
               <h2><BsSmartwatch /> {moment(dateField).format('ll')}</h2>
             </div>
-            {entryLists.length === 0 && <div className='empty_msg'>Empty List</div>}
+            {entryLists.length === 0 && <div className='empty_msg'>
+              <img src="/resource/empty.png" alt="empty" />
+            </div>}
             <div className='lists_wrapper'>
               {entryLists.map((item, i) =>
                 <ul key={i}>

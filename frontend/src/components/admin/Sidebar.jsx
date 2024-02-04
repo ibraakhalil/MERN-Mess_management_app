@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './css/sidebar.css'
-import { FaCog, FaMicrosoft, FaRegCalendarPlus, FaThumbtack, FaUserPlus, FaUsers } from 'react-icons/fa'
+import { FaMicrosoft, FaRegCalendarPlus, FaThumbtack, FaUserPlus, FaUsers } from 'react-icons/fa'
 import Hamburger from '../Hamburger'
 
 function Sidebar({ componentIndex }) {
