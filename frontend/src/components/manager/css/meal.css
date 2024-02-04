@@ -167,5 +167,20 @@
 	.meal .new_entry form {
 		flex-grow: 1;
 	}
+	.meal .new_entry .entry_lists ul {
+		grid-template-columns: 1fr 0.9fr 0.1fr;
+		gap: 2px;
+	}
+	.new_entry .entry_lists ul li {
+		align-items: center;
+	}
+	.new_entry .entry_lists ul li:nth-child(2) {
+		gap: 0.3rem;
+	}
+	.new_entry .entry_lists ul li:nth-child(2) p {
+		padding: 0px 7px;
+		width: auto;
+		gap: 5px;
+	}
 }
 

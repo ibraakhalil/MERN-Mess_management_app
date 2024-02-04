@@ -58,3 +58,12 @@
 .deposite ul li svg {
 	font-size: 18px;
 }
+
+
+
+@media only screen and (max-width: 600px) {
+	.deposite .entry_lists ul {
+		grid-template-columns: 0.8fr 1fr 0.5fr 0.1fr;
+		gap: 5px;
+	}
+}

@@ -13,7 +13,7 @@ import { RiMoneyDollarCircleFill } from "react-icons/ri";
 import { FaCog, FaPlusSquare } from "react-icons/fa";
 import { MdAddAlert } from "react-icons/md";
 import ManagerSetting from '../components/manager/ManagerSetting'
-import { getMealMonth, getTemporaryMeal } from '../store/action/userAction'
+import { getAllUsers, getMealMonth, getTemporaryMeal } from '../store/action/userAction'
 import Hamburger from '../components/Hamburger'
 import { AddNotice } from '../components/admin/AddNotice'
 export const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -23,12 +23,13 @@ function ManagerPanel() {
   const dispatch = useDispatch()
   const { runningMealMonth } = useSelector(state => state.manager)
   const [compo, setCompo] = useState(null)
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [toggle, setToggle] = useState(true)
 
   useEffect(() => {
     dispatch(getRunningMealMonth(setLoading))
     dispatch(getTemporaryMeal(setLoading))
+    dispatch(getAllUsers(setLoading))
   }, [dispatch])
 
   useEffect(() => {
@@ -40,10 +41,10 @@ function ManagerPanel() {
     const lists = document.querySelectorAll(".section ul li")
     const components = [
       <Summary id={runningMealMonth?._id} />,
+      <Meal id={runningMealMonth?._id} />,
       <Expense id={runningMealMonth?._id} />,
       <Deposite id={runningMealMonth?._id} />,
-      <Meal id={runningMealMonth?._id} />,
-      <AddNotice role={'manager'}/>,
+      <AddNotice role={'manager'} />,
       <ManagerSetting />
     ]
     lists.forEach((list, i) => {
@@ -58,7 +59,9 @@ function ManagerPanel() {
 
   return (
     <>
-      {loading && <div className='loading'>Loading...</div>}
+      {loading && <div className='loading'>
+        <img src="/resource/flame.svg" alt="Loading..." />
+      </div>}
       {!loading && <div className='container min_height'>
         {!runningMealMonth?.isActive &&
           <div className='manager_msg'>
@@ -87,9 +90,9 @@ function ManagerPanel() {
             <div className="section">
               <ul>
                 <li className='active' onClick={handleClick}> <IoDocuments /> Summary</li>
+                <li onClick={handleClick}> <FaPlusSquare />Add Meal</li>
                 <li onClick={handleClick}> <RiMoneyDollarCircleFill /> Market cost</li>
                 <li onClick={handleClick}> <GiReceiveMoney /> Deposite</li>
-                <li onClick={handleClick}> <FaPlusSquare />Insert Meal</li>
                 <li onClick={handleClick}> <MdAddAlert />Add Notice</li>
                 <li onClick={handleClick}> <FaCog />Setting</li>
               </ul>

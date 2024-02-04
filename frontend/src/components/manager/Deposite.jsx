@@ -75,7 +75,7 @@ function Deposite({ id }) {
             <ul key={i}>
               <li>{moment(deposite.date).format('ll')}</li>
               <li>{deposite.name}</li>
-              <li>{deposite.amount} tk</li>
+              <li>{deposite.amount}৳</li>
               {((user?._id === mealMonth?.manager._id) || user?.admin) &&<li>
                 <span onClick={handleRemove} data-index={i} className='remove'>
                   <BsTrashFill />

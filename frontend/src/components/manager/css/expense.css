@@ -47,6 +47,7 @@
 	text-transform: capitalize;
 	display: flex;
 	width: 100%;
+	align-items: center;
 }
 .expense .list li:last-child {
 	width: 15%;
@@ -117,6 +118,9 @@
 @media only screen and (max-width: 600px) {
 	.expense .new_entry .wrapper {
 		flex-wrap: wrap;
+	}
+	.expense .list li {
+		font-size: 13px;
 	}
 	.expense .new_entry .wrapper > div {
 		flex-grow: 1;

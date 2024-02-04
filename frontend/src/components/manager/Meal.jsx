@@ -87,7 +87,7 @@ function Meal({ id }) {
 
               <div className='will_reset'>
                 <select name="name" id="name_select" ref={memberValue}>
-                  {members.map((user, i) =>
+                  {members?.map((user, i) =>
                     <option key={i} value={user._id} >{user.name}</option>
                   )}
                 </select>
