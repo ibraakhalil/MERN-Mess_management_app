@@ -83,12 +83,16 @@
 	text-transform: capitalize;
 	font-size: 13px;
 	grid-template-columns: 1.2fr 2fr 0.1fr;
+	align-items: center;
+	gap: 3px;
 }
 .new_entry .entry_lists ul li {
 	display: flex;
 }
 .new_entry .entry_lists ul li .remove {
 	cursor: pointer;
+	display: flex;
+	color: var(--danger);
 }
 .new_entry .entry_lists ul li:nth-child(2) {
 	gap: 1rem;

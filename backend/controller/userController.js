@@ -68,11 +68,20 @@ const postNotice = async (req, res, next) => {
         next(e)
     }
 }
+const deleteNotice = async (req, res, next) => {
+    const id = req.params.id
+    try {
+        await Notice.findOneAndDelete({ _id: id })
+        res.status(201).json({ message: 'Notice Deleted Successfully' })
+    } catch (e) {
+        next(e)
+    }
+}
 
 const getAllMealMonth = async (req, res, next) => {
     try {
         const allMonth = await SetMealMonth.find()
-        res.status(201).json(allMonth)
+        res.status(201).json(allMonth.reverse())
     } catch (e) {
         next(e)
     }
@@ -151,4 +160,4 @@ const deleteTempMeal = async (req, res, next) => {
     }
 }
 
-module.exports = { getProfile, updateProfile, getNotice, postNotice, getAllMealMonth, getMealMonth, getTemporaryMeal, setTemporaryMeal, removeMyTempMeal, deleteTempMeal }
+module.exports = { getProfile, updateProfile, getNotice, postNotice, deleteNotice, getAllMealMonth, getMealMonth, getTemporaryMeal, setTemporaryMeal, removeMyTempMeal, deleteTempMeal }

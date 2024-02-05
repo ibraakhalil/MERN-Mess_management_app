@@ -50,7 +50,7 @@
 p.notice-body {
 	text-align: justify;
 	font-size: 18px;
-	font-family: Noto Serif Bengali;
+	font-family: Noto Serif Bengali, 'Poppins';
 }
 .notice p.empty {
 	text-align: center;
@@ -93,8 +93,9 @@ p.notice-body {
 		padding: 10px;
 	}
 	p.notice-body {
-		font-size: 17px;
-	}
+	font-size: 17px;
+	font-weight: 400;
+}
 	.previous_notice {
 		display: none;
 	}

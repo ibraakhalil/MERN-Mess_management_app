@@ -2,7 +2,6 @@
 	background: var(--background);
 	border-radius: 7px;
 	box-shadow: var(--box-shadow);
-	overflow: hidden;
 }
 .expense .top button {
 	display: flex;

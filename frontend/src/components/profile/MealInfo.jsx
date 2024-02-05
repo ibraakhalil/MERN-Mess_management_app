@@ -43,7 +43,7 @@ function MealInfo({ id }) {
         temporaryMeal && dispatch(removeTempMeal(temporaryMeal._id, user._id))
     }
 
-    const time = [24 - date.getHours(), 59 - date.getMinutes()]
+    const time = [12 - date.getHours(), 59 - date.getMinutes()]
     const [remainingTime, setRemainingTime] = useState(time)
     setInterval(() => {
         return setRemainingTime(time)
@@ -119,7 +119,7 @@ function MealInfo({ id }) {
                 </div>}
                 {allMealMonths?.map(month => <li key={month._id}>
                     <p>{month?.manager.name}</p>
-                    <p>{moment(month.startDate).format('ll')}</p>
+                    <p className={month?.isActive ? 'running' : ''}> {moment(month.startDate).format('MMMM, YY')}</p>
                     <Link to={`/meal_month/${month._id}`} className='btn2'>Details</Link>
                 </li>)}
             </div>

@@ -1,19 +1,23 @@
 import { useDispatch, useSelector } from 'react-redux'
 import './css/addNotice.css'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { getNotice, postNotice } from '../../store/action/userAction'
 import moment from 'moment'
 import { BsThreeDotsVertical } from "react-icons/bs";
+import axios from 'axios'
+import { API_URL } from '../../store/constants/types'
 
 export function AddNotice({ role }) {
+    const [loading, setLoading] = useState(true)
     const dispatch = useDispatch()
     const { user } = useSelector(state => state.auth)
     const { notices } = useSelector(state => state.user)
     const noticeRef = useRef()
     const myNotices = notices?.filter(notice => notice.role.toLowerCase() === role)
+    const textarea = document.querySelector('.notice_form textarea')
 
     useEffect(() => {
-        dispatch(getNotice())
+        dispatch(getNotice(setLoading))
     }, [dispatch])
 
 
@@ -27,7 +31,22 @@ export function AddNotice({ role }) {
             notice
         }
         dispatch(postNotice(data))
+        textarea.value = ''
     }
+
+    const deleteNotice = (id) => {
+        axios.delete(`${API_URL}/api/user/notice/${id}`)
+            .then(res => {
+                dispatch(getNotice(setLoading))
+            })
+            .catch(e => console.log(e.message))
+    }
+
+    const editNotice = (id, notice) => {
+        textarea.value = notice
+        deleteNotice(id)
+    }
+
 
 
     return (
@@ -48,8 +67,8 @@ export function AddNotice({ role }) {
                                     <BsThreeDotsVertical />
                                 </span>
                                 <ul>
-                                    <li>Edit</li>
-                                    <li>Delete</li>
+                                    <li onClick={() => editNotice(notice._id, notice.notice)}>Edit</li>
+                                    <li onClick={() => deleteNotice(notice._id)}>Delete</li>
                                 </ul>
                             </div>
                         </div>

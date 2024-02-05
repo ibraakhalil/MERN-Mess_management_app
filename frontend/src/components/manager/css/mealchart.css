@@ -137,6 +137,11 @@
 	justify-content: space-around;
 }
 
+.meal_chart .modal .action {
+	
+	display: flex;
+	gap: 1rem;
+}
 .meal_chart .modal .close {
 	position: absolute;
 	top: 10%;

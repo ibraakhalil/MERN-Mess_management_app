@@ -30,6 +30,12 @@ function MealChart({ id }) {
     })
   }
 
+  const handleEditMeal = (e) => {
+    const meal_id = e.target.dataset.meal_id
+    dispatch(deleteMeal(meal_id, setLoading))
+    handleClose()
+  }
+
   const handleDeleteMeal = (e) => {
     const meal_id = e.target.dataset.meal_id
     dispatch(deleteMeal(meal_id, setLoading))
@@ -95,7 +101,12 @@ function MealChart({ id }) {
                         </ul>
                       )}
                     </div>
-                    {(user?.manager || user?.admin) && <button onClick={handleDeleteMeal} data-meal_id={list._id} className="btn2">Delete</button>}
+                    {(user?.manager || user?.admin) && <div className='action'>
+                      <button onClick={handleEditMeal} data-meal_id={list._id} className="btn2">Edit</button>
+                      <button onClick={handleDeleteMeal} data-meal_id={list._id} className="btn2">Delete</button>
+                    </div>
+
+                    }
                   </div>
                   <div onClick={handleClose} className="close"><BsXLg /></div>
                 </div>

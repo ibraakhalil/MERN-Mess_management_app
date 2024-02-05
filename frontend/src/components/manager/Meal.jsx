@@ -110,14 +110,14 @@ function Meal({ id }) {
 
               <div className='meal_entry will_reset'>
                 <div className='lunch'>
-                  <span onClick={() => setMealValues({ ...mealValues, lunch: mealValues.lunch - 1 })}>-</span>
-                  <input type="number" step={.5} name='launch' readOnly value={mealValues.lunch} ref={launchValue} placeholder='Launch' required />
-                  <span onClick={() => setMealValues({ ...mealValues, lunch: mealValues.lunch + 1 })}>+</span>
+                  <span onClick={() => setMealValues({ ...mealValues, lunch: mealValues.lunch - 0.5 })}>-</span>
+                  <input type="number" name='launch' readOnly value={mealValues.lunch} ref={launchValue} placeholder='Launch' required />
+                  <span onClick={() => setMealValues({ ...mealValues, lunch: mealValues.lunch + 0.5 })}>+</span>
                 </div>
                 <div className='dinner'>
-                  <span onClick={() => setMealValues({ ...mealValues, dinner: mealValues.dinner - 1 })}>-</span>
-                  <input type="number" step={.5} name='dinner' readOnly value={mealValues.dinner} ref={dinnerValue} placeholder='Dinner' required />
-                  <span onClick={() => setMealValues({ ...mealValues, dinner: mealValues.dinner + 1 })}>+</span>
+                  <span onClick={() => setMealValues({ ...mealValues, dinner: mealValues.dinner - 0.5 })}>-</span>
+                  <input type="number" name='dinner' readOnly value={mealValues.dinner} ref={dinnerValue} placeholder='Dinner' required />
+                  <span onClick={() => setMealValues({ ...mealValues, dinner: mealValues.dinner + 0.5 })}>+</span>
                 </div>
               </div>
               <div>

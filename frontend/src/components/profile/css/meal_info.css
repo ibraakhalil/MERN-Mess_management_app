@@ -117,14 +117,28 @@
 
 
 .latest_months li {
-	display: flex;
-	justify-content: space-between;
+	display: grid;
 	background: var(--pure);
 	padding: 5px 1rem;
 	margin-bottom: 7px;
 	align-items: center;
 	font-size: 13px;
-    border-radius: 5px;
+	border-radius: 5px;
+	grid-template-columns: 1fr 1fr 0.4fr;
+	gap: 7px;
+	justify-items: start;
+	text-transform: capitalize;
+}
+.latest_months li a {
+	width: 60px;
+	text-align: center;
+	justify-self: end;
+}
+.latest_months li .running {
+	background: var(--secondary);
+	color: white;
+	border-radius: 3px;
+	padding: 0 7px;
 }
 
 .latest_months h3 {
