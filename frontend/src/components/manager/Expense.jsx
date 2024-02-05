@@ -79,7 +79,7 @@ function Expense({ id }) {
             <li>{moment(expense.createdAt).format("ll")}</li>
             <li>{expense.name}</li>
             <li>{expense.type}</li>
-            <li>{expense.amount} tk</li>
+            <li>{expense.amount}৳</li>
             {((user?._id === mealMonth?.manager._id) || user?.admin) && <li onClick={(e) => e.currentTarget.classList.toggle('active')} className='expense_action'>
               <BsThreeDotsVertical />
               <div className='action_btn'>

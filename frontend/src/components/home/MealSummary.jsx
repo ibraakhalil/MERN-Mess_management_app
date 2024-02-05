@@ -28,15 +28,15 @@ export function MealSummary({ id }) {
                 {summary && <>
                     <div className='top_head'>
                         <div className="row1">
-                            <div className="item">
+                            <div style={{backgroundImage:"url(/resource/manager.png)"}} className="item">
                                 <h3>Manager</h3>
                                 <h2>{summary?.mealMonth?.manager.name}</h2>
                             </div>
-                            <div className="item">
+                            <div style={{backgroundImage:"url(/resource/calendar.png)"}}  className="item month">
                                 <h3>Month</h3>
                                 <h2>{months[summary?.mealMonth?.month - 1]}, {moment(summary?.mealMonth.startDate).format('YYYY')}</h2>
                             </div>
-                            <div className="item">
+                            <div style={{backgroundImage:"url(/resource/money.png)"}}  className="item">
                                 <h3>Meal Rate</h3>
                                 <h2>{summary?.mealRate}</h2>
                             </div>

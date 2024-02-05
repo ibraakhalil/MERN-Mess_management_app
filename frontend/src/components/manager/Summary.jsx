@@ -18,7 +18,7 @@ function Summary({ id }) {
             <div className="row1">
                 <div className="item">
                     <h3>Meal Rate</h3>
-                    <h2>{summary?.mealRate || 0.00} tk</h2>
+                    <h2>{summary?.mealRate || 0.00}৳</h2>
                 </div>
                 <div className="item">
                     <h3>Total Meal</h3>
@@ -26,7 +26,7 @@ function Summary({ id }) {
                 </div>
                 <div className="item">
                     <h3>Total Cost</h3>
-                    <h2>{summary?.totalCosts} tk</h2>
+                    <h2>{summary?.totalCosts}৳</h2>
                 </div>
             </div>
             <div className="row2">

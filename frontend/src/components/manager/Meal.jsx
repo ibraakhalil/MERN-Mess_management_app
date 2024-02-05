@@ -46,7 +46,7 @@ function Meal({ id }) {
       lunch: lunch > 0 ? lunch : 0,
       dinner: dinner > 0 ? dinner : 0
     }
-    setEntryLists([...entryLists, memberData])
+    setEntryLists([memberData, ...entryLists])
     setMembers(members.filter((user) => user._id !== memberId))
     setMealValues({ lunch: 0, dinner: 0 })
   }
@@ -128,6 +128,9 @@ function Meal({ id }) {
           <div className="entry_lists">
             <div className='entry_header'>
               <h2><BsSmartwatch /> {moment(dateField).format('ll')}</h2>
+              <div style={{ textAlign: "right" }}>
+                {entryLists.length !== 0 && <button className='btn2' onClick={handleSave}>Save</button>}
+              </div>
             </div>
             {entryLists.length === 0 && <div className='empty_msg'>
               <img src="/resource/empty.png" alt="empty" />
@@ -154,9 +157,6 @@ function Meal({ id }) {
                   </li>
                 </ul>
               )}
-            </div>
-            <div style={{ textAlign: "right" }}>
-              {entryLists.length !== 0 && <button className='btn2' onClick={handleSave}>Save</button>}
             </div>
           </div>
         </div>

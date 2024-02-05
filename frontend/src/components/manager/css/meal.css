@@ -15,12 +15,16 @@
 }
 .meal .new_entry form {
 	width: 230px;
+	height: 280px;
 	background: var(--smooth_p);
 	padding: 1rem;
 	border-radius: 7px;
 }
 .date_field {
 	text-align: center;
+}
+.date_field input{
+	height: 40px;
 }
 .date_field p {
 	display: none;
@@ -35,9 +39,10 @@
 	width: 100%;
 }
 .meal .new_entry form .wrapper {
-	display: grid;
-	gap: 1rem;
-	flex-wrap: wrap;
+	display: flex;
+	height: 100%;
+	flex-direction: column;
+	justify-content: space-between;
 }
 .meal .new_entry form > input {
     padding: 9px 5px;
@@ -47,14 +52,17 @@
 	background: var(--smooth_p);
 	flex: 2 1;
 	border-radius: 7px;
-	height: auto;
+	height: 280px;
 	padding: 1rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 }
 .new_entry .entry_lists .entry_header {
-    margin-bottom: 0.7rem;
+	margin-bottom: 0.7rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 .new_entry .entry_lists .entry_header input[type="date"] {
     padding: 0 1rem;
@@ -72,7 +80,10 @@
 	color: var(--danger);
 }
 .new_entry .entry_lists .lists_wrapper {
-	margin-bottom: 1rem;
+	height: 100%;
+	overflow: auto;
+	scrollbar-width: thin;
+	border-radius: 4px;
 }
 .meal .new_entry .entry_lists ul {
 	display: grid;
@@ -206,6 +217,10 @@
 	}
 	.meal .new_entry form {
 		flex-grow: 1;
+		height: auto;
+	}
+	.meal .new_entry form .wrapper {
+		gap: 1rem;
 	}
 	.meal .new_entry .entry_lists ul {
 		grid-template-columns: 1fr 0.9fr 0.1fr;

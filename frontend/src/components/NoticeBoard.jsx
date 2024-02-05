@@ -37,9 +37,9 @@ function NoticeBoard() {
         </>}
 
       </div>}
-      <div className='previous_notice'>
-        {/* <button className='btn2'>Previous Notice →</button> */}
-      </div>
+      {/* <div className='previous_notice'>
+        <button className='btn2'>Previous Notice →</button>
+      </div> */}
     </div>
   )
 }

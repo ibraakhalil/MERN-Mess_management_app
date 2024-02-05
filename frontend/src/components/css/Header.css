@@ -115,7 +115,7 @@
 	align-items: center;
 	background-color: var(--pure);
 	color: var(--pure);
-	padding: 0 10px;
+	padding: 0 19px;
 }
 .header_dropdown li svg {
 	color: var(--dark);

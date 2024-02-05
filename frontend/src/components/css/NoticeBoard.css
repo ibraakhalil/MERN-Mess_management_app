@@ -15,7 +15,7 @@
 	padding: 1rem;
 	margin-top: 3rem;
 	border-radius: 7px;
-	box-shadow: var(--box-shadow);
+	box-shadow: var(--card_shadow);
 	position: relative;
 	overflow: hidden;
 }
@@ -51,6 +51,12 @@ p.notice-body {
 	text-align: justify;
 	font-size: 18px;
 	font-family: Noto Serif Bengali, 'Poppins';
+}
+.notice-body::first-letter {
+	font-size: 80px;
+	font-weight: 500;
+	float: left;
+	color: #2f2f2f;
 }
 .notice p.empty {
 	text-align: center;

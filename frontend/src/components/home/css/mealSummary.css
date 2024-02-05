@@ -13,17 +13,20 @@ p.not_set {
 .meal_summary .row1 {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
+	gap: 1.5rem;
 }
-
 .meal_summary .row1 .item {
 	background: var(--smooth_p);
 	padding: 1rem;
 	border-radius: 7px;
 	color: var(--pure);
-	margin: 0 0.5rem;
+	background-repeat: no-repeat !important;
+	background-size: 110px !important;
+	background-position: right -25px top -24px !important;
+	background-blend-mode: overlay;
 }
 
-.meal_summary .row1 .item:nth-child(2) {
+.meal_summary .row1 .item.month {
 	background: var(--smooth_s);
 }
 
@@ -79,6 +82,7 @@ td img {
 	width: 36px;
 	height: 36px;
 	margin-right: 8px;
+	border: 1px solid #3b39391a;
 }
 
 td .name {

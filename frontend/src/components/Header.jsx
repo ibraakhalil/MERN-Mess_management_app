@@ -20,7 +20,6 @@ function Header() {
         setDropdown(!dropdown)
     }
 
-
     return (
         <div className="header">
             <div className="container">
