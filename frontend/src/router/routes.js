@@ -9,6 +9,7 @@ import ManagerPanel from '../pages/ManagerPanel'
 import Admin from '../pages/Admin'
 import Setting from '../pages/Setting'
 import ComingSoon from '../pages/ComingSoon'
+import Discussion from '../pages/Discussion'
 import MealMonth from '../pages/MealMonth'
 import { AdminProtected, ProfileProtected, UserProtected, WhenLoggedOut } from './Protected'
 
@@ -18,6 +19,7 @@ function routes() {
             <Route exact path='/' element={<Home />} />
             <Route path='/meal_month/:id' element={<MealMonth />} />
             <Route path='/user/profile/:userId' element={<Profile />} />
+            <Route path='/user/discussion' element={<Discussion />} />
 
             <Route path='/auth/' element={<WhenLoggedOut />}>
                 <Route path='login' element={<Login />} />

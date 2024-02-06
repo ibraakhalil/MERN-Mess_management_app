@@ -45,7 +45,7 @@ function Header() {
                                     <Link onClick={() => setDropdown(false)} to='/comingsoon'><IoNotifications /></Link>
                                 </li>
                                 <li>
-                                    <Link onClick={() => setDropdown(false)} to='/comingsoon'><FaEnvelope /></Link>
+                                    <Link onClick={() => setDropdown(false)} to='/user/discussion'><FaEnvelope /></Link>
                                 </li>
                                 <li className={`user_details ${dropdown ? 'active' : ''}`} onClick={handleDropdown}>
                                     <img src={user.user?.profilePic} alt="user_pic" />
