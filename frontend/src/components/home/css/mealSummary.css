@@ -79,10 +79,11 @@ td div {
 }
 
 td img {
-	width: 36px;
+	border: 1px solid #3b39391a;
 	height: 36px;
 	margin-right: 8px;
-	border: 1px solid #3b39391a;
+	width: 36px;
+	border-radius: 3px;
 }
 
 td .name {
