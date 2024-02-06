@@ -71,7 +71,6 @@ function MealChart({ id }) {
                     </div>
                   </div>
                 </div>
-
                 <div className="modal">
                   <div className='modal_items'>
                     <div className='modal_header'>
