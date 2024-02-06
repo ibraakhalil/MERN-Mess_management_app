@@ -18,8 +18,7 @@ function MealChart({ id }) {
   }, [id, dispatch])
 
   const handleClick = (e) => {
-    let item = e.target.parentElement.parentElement
-    item.classList.add("active")
+    e.currentTarget.parentElement.classList.add("active")
   }
 
 
@@ -55,21 +54,24 @@ function MealChart({ id }) {
           {sortedMeals.map((list, i) =>
             <Fragment key={i}>
               <div className={`item ${list.meals.filter(item => item._id === user?._id)?.length > 0 ? 'has_meal' : ''}`}>
-                <div className="date">
-                  <h1 onClick={handleClick} >{moment(list.date).format("DD")}
-                    <span>{moment(list.date).format("MMM")}</span>
-                  </h1>
-                </div>
-                <div className="total_meal">
-                  <div>
-                    <p className='lunch'>
-                      <BsSunFill /> {list.totalLunch}
-                    </p>
-                    <p className='dinner'>
-                      <BsMoonStarsFill /> {list.totalDinner}
-                    </p>
+                <div onClick={handleClick} >
+                  <div className="date">
+                    <h1 >{moment(list.date).format("DD")}
+                      <span>{moment(list.date).format("MMM")}</span>
+                    </h1>
+                  </div>
+                  <div className="total_meal">
+                    <div>
+                      <p className='lunch'>
+                        <BsSunFill /> {list.totalLunch}
+                      </p>
+                      <p className='dinner'>
+                        <BsMoonStarsFill /> {list.totalDinner}
+                      </p>
+                    </div>
                   </div>
                 </div>
+
                 <div className="modal">
                   <div className='modal_items'>
                     <div className='modal_header'>

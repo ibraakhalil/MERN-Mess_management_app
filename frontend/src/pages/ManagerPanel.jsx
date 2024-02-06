@@ -13,7 +13,7 @@ import { RiMoneyDollarCircleFill } from "react-icons/ri";
 import { FaCog, FaPlusSquare, FaThumbtack } from "react-icons/fa";
 import ManagerSetting from '../components/manager/ManagerSetting'
 import { getAllUsers, getTemporaryMeal } from '../store/action/userAction'
-import Hamburger from '../components/Hamburger'
+import Hamburger from '../components/general/Hamburger'
 import { AddNotice } from '../components/admin/AddNotice'
 export const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 

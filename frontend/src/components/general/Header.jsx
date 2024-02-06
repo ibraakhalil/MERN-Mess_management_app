@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './css/Header.css'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { logOut } from '../store/action/authAction'
+import { logOut } from '../../store/action/authAction'
 import { FaAngleDown, FaEnvelope, FaPowerOff, FaUserTie } from "react-icons/fa6";
 import { IoNotifications } from "react-icons/io5";
 import { FaCog, FaShieldAlt, FaUser } from "react-icons/fa";
@@ -75,7 +75,7 @@ function Header() {
                                 }
                                 <li>
                                     <FaCog />
-                                    <NavLink onClick={() => setDropdown(false)} to='/comingsoon'>Setting</NavLink>
+                                    <NavLink onClick={() => setDropdown(false)} to='/setting'>Setting</NavLink>
                                 </li>
                                 <li>
                                     <FaPowerOff />

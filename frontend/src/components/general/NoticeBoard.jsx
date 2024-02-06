@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './css/NoticeBoard.css'
-import { getNotice } from '../store/action/userAction'
+import { getNotice } from '../../store/action/userAction'
 import { useDispatch, useSelector } from 'react-redux'
 import moment from 'moment'
 import { FaRegClipboard } from "react-icons/fa";

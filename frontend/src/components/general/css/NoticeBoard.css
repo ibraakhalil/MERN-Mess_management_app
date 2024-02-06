@@ -57,6 +57,8 @@ p.notice-body {
 	font-weight: 500;
 	float: left;
 	color: #2f2f2f;
+	letter-spacing: normal;
+	line-height: 0;
 }
 .notice p.empty {
 	text-align: center;

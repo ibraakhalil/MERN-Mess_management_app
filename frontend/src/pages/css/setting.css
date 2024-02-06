@@ -1,0 +1,52 @@
+.setting {
+	margin-top: 2rem;
+	background: var(--background);
+	border-radius: 7px;
+	overflow: hidden;
+	box-shadow: var(--card_shadow);
+	display: flex;
+	gap: 2rem;
+	position: relative;
+	height: calc(100vh - 220px);
+}
+.setting .component {
+	width: 100%;
+}
+
+.setting .component .top {
+	display: flex;
+	align-items: center;
+	border-bottom: 2px solid #fff;
+	margin-right: 2rem;
+	padding: 1rem 3px 7px;
+}
+
+.setting .component .top .open {
+	display: none;
+	padding: 4px;
+	background: var(--pure);
+	border-radius: 3px;
+	margin-right: 0.8rem;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+.setting .top h3 {
+	font-size: 16px;
+}
+
+.setting .component .empty {
+	text-align: center;
+	margin-top: 20%;
+	color: #b3b4c5;
+	padding-right: 2rem;
+}
+
+@media only screen and (max-width: 600px) {
+	.setting .component .top .open {
+		display: flex;
+	}
+	.setting .component {
+		padding: 0.5rem 1rem;
+	}
+}

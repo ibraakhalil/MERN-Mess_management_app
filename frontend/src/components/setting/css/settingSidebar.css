@@ -1,0 +1,68 @@
+
+/*************** Setting Sidbar *****************/
+
+.setting_sidebar {
+	min-width: 240px;
+	background: var(--background);
+	box-shadow: var(--card_shadow);
+	padding: 1rem;
+	height: 100%;
+	overflow: auto;
+	position: relative;
+	transition: all 0.3s;
+}
+.setting_sidebar.active {
+	transform: translateX(0%);
+}
+.setting_sidebar .close_icon {
+	position: absolute;
+	right: 12px;
+	top: 8px;
+	font-size: 20px;
+	cursor: pointer;
+	display: none;
+}
+.setting_sidebar.active .close_icon {
+	display: block;
+}
+.setting_sidebar > h3 {
+	text-align: center;
+	padding-bottom: 2rem;
+}
+.setting_sidebar .setting_wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 7px;
+}
+.setting_sidebar .item {
+	padding: 7px;
+	background: var(--pure);
+	border-radius: 7px;
+	box-shadow: var(--card_shadow);
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+.setting_sidebar .item.active {
+	border-left: 5px solid var(--primary);
+}
+.setting_sidebar .item .icon {
+	display: flex;
+	background: var(--background);
+	padding: 10px;
+	border-radius: 5px;
+	font-size: 20px;
+}
+.setting_sidebar .item > p {
+	font-size: 14px;
+	color: var(--dark);
+}
+
+
+@media only screen and (max-width: 600px) {
+    .setting_sidebar {
+		position: absolute;
+		transform: translateX(-110%);
+	}
+} 

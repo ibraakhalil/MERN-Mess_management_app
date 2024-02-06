@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './css/sidebar.css'
 import { FaMicrosoft, FaRegCalendarPlus, FaThumbtack, FaUserPlus, FaUsers } from 'react-icons/fa'
-import Hamburger from '../Hamburger'
+import Hamburger from '../general/Hamburger'
 
 function Sidebar({ componentIndex }) {
   const [toggle, setToggle] = useState(true)
