@@ -10,7 +10,7 @@ import { getMealMonthSummary } from '../../store/action/managerActions'
 // Dummy data for when no data is available
 const dummyData = {
     mealMonth: {
-        manager: { name: 'John Doe' },
+        manager: { name: 'Ibrhaim Khalil' },
         month: new Date().getMonth() + 1,
         startDate: new Date()
     },
