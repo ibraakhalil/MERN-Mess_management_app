@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import './css/Home.css'
 import NoticeBoard from '../components/general/NoticeBoard'
 import MemberCard from '../components/general/MemberCard'
@@ -7,46 +7,158 @@ import MealChart from '../components/manager/MealChart'
 import { useDispatch, useSelector } from 'react-redux'
 import { getRunningMealMonth } from '../store/action/managerActions'
 import { Link } from 'react-router-dom'
+import { FaUtensils, FaUsers, FaWallet, FaCalendarAlt, FaPlus, FaChartLine, FaClipboardList } from 'react-icons/fa'
+import { BsSunFill, BsMoonStarsFill, BsCloudSunFill } from 'react-icons/bs'
 
 
 function Home() {
-  const [loading, setLoading] = useState(false)
   const dispatch = useDispatch()
   const { runningMealMonth, summary } = useSelector(state => state.manager)
+  const { user } = useSelector(state => state.auth)
+  const { users } = useSelector(state => state.user)
 
   useEffect(() => {
-    dispatch(getRunningMealMonth(setLoading))
+    dispatch(getRunningMealMonth())
   }, [dispatch])
 
-  const handlePrev = (e) => {
-    console.log('previous');
+  // Get greeting based on time of day
+  const getGreeting = () => {
+    const hour = new Date().getHours()
+    if (hour < 12) return { text: 'Good Morning', icon: <BsSunFill /> }
+    if (hour < 17) return { text: 'Good Afternoon', icon: <BsCloudSunFill /> }
+    return { text: 'Good Evening', icon: <BsMoonStarsFill /> }
   }
-  const handleNext = (e) => {
-    console.log('Next');
-  }
+
+  const greeting = getGreeting()
+  const today = new Date().toLocaleDateString('en-US', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  })
 
 
   return (
-    <div className='home container'>
-      <NoticeBoard />
-
-      <h1 className='home_all_headers'>Meal Month Summary</h1>
-      <MealSummary id={runningMealMonth?._id} />
-      <div className='bottom_section'>
-        {/* <div className='next_prev'>
-          <button className='btn2' onClick={handlePrev}>Previous</button>
-          <button className='btn2' onClick={handleNext}>Next</button>
-        </div> */}
-        <div className="details">
-          <button className='btn1'><Link to={`/meal_month/${summary?.mealMonth?._id}`}>Details</Link></button>
+    <div className='home'>
+      {/* Hero Section */}
+      <section className="hero-section">
+        <div className="hero-background">
+          <div className="hero-shape shape-1"></div>
+          <div className="hero-shape shape-2"></div>
+          <div className="hero-shape shape-3"></div>
         </div>
-      </div>
+        <div className="container">
+          <div className="hero-content">
+            <div className="greeting">
+              <span className="greeting-icon">{greeting.icon}</span>
+              <h1>{greeting.text}, {user?.user?.name?.split(' ')[0] || 'Guest'}!</h1>
+              <p className="date">{today}</p>
+            </div>
 
-      <h1 className='home_all_headers'>Meal Chart</h1>
-      <MealChart id={runningMealMonth?._id} />
+            {/* Quick Stats */}
+            <div className="quick-stats">
+              <div className="stat-card">
+                <div className="stat-icon members">
+                  <FaUsers />
+                </div>
+                <div className="stat-info">
+                  <span className="stat-value">{users?.length || 0}</span>
+                  <span className="stat-label">Members</span>
+                </div>
+              </div>
 
-      <h1 className='home_all_headers'>Member Information</h1>
-      <MemberCard />
+              <div className="stat-card">
+                <div className="stat-icon meals">
+                  <FaUtensils />
+                </div>
+                <div className="stat-info">
+                  <span className="stat-value">{summary?.totalMeals || 0}</span>
+                  <span className="stat-label">Total Meals</span>
+                </div>
+              </div>
+
+              <div className="stat-card">
+                <div className="stat-icon rate">
+                  <FaWallet />
+                </div>
+                <div className="stat-info">
+                  <span className="stat-value">৳{summary?.mealRate || 0}</span>
+                  <span className="stat-label">Meal Rate</span>
+                </div>
+              </div>
+
+              <div className="stat-card">
+                <div className="stat-icon deposit">
+                  <FaChartLine />
+                </div>
+                <div className="stat-info">
+                  <span className="stat-value">৳{summary?.totalDeposite || 0}</span>
+                  <span className="stat-label">Total Deposit</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Quick Actions */}
+      {(user?.user?.manager || user?.user?.admin) && (
+        <section className="quick-actions container">
+          <Link to="/manager" className="action-btn primary">
+            <FaPlus />
+            <span>Add Meal</span>
+          </Link>
+          <Link to={`/meal_month/${summary?.mealMonth?._id}`} className="action-btn secondary">
+            <FaClipboardList />
+            <span>Full Details</span>
+          </Link>
+          <Link to="/manager" className="action-btn accent">
+            <FaWallet />
+            <span>Add Deposit</span>
+          </Link>
+        </section>
+      )}
+
+      {/* Notice Section */}
+      <section className="section-wrapper container">
+        <NoticeBoard />
+      </section>
+
+      {/* Meal Summary Section */}
+      <section className="section-wrapper container">
+        <div className="section-header">
+          <div className="section-title">
+            <FaCalendarAlt className="section-icon" />
+            <h2>Meal Month Summary</h2>
+          </div>
+          <Link to={`/meal_month/${summary?.mealMonth?._id}`} className="view-all-btn">
+            View Details →
+          </Link>
+        </div>
+        <MealSummary id={runningMealMonth?._id} />
+      </section>
+
+      {/* Meal Chart Section */}
+      <section className="section-wrapper container">
+        <div className="section-header">
+          <div className="section-title">
+            <FaUtensils className="section-icon" />
+            <h2>Meal Chart</h2>
+          </div>
+        </div>
+        <MealChart id={runningMealMonth?._id} />
+      </section>
+
+      {/* Members Section */}
+      <section className="section-wrapper container">
+        <div className="section-header">
+          <div className="section-title">
+            <FaUsers className="section-icon" />
+            <h2>Mess Members</h2>
+          </div>
+        </div>
+        <MemberCard />
+      </section>
     </div>
   )
 }

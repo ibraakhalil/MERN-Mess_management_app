@@ -1,63 +1,224 @@
+/* Meal Chart Container */
 .meal_chart {
-	padding: 1rem;
-	background: var(--background);
-	border-radius: 7px;
-	box-shadow: var(--card_shadow);
+	padding: 1.5rem;
+	background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	border-radius: 20px;
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	position: relative;
 }
+
+/* Demo Badge */
+.meal_chart.demo-mode .demo-badge {
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	background: linear-gradient(135deg, #ff9500 0%, #ff5e3a 100%);
+	color: #fff;
+	padding: 0.35rem 0.75rem;
+	border-radius: 20px;
+	font-size: 0.7rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	box-shadow: 0 2px 10px rgba(255, 149, 0, 0.3);
+	z-index: 10;
+}
+
 .header_text {
 	text-align: center;
 	padding-top: 1rem;
 }
+
+/* Chart Grid */
 .meal_chart .wrapper {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-	grid-gap: 1rem;
-}
-.meal_chart .item {
-	background: var(--primary);
-	border-radius: 7px;
-	cursor: pointer;
-	box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
-}
-.meal_chart .item.has_meal {
-	background: var(--secondary);
-}
-.meal_chart .item .date h1 {
-	color: var(--background);
-	text-align: center;
-}
-.meal_chart .item .date h1 span {
-	font-size: 16px;
-	font-weight: 300;
-	margin-left: 7px;
-	color: #ffe2e2;
+	grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+	gap: 0.75rem;
 }
 
+/* Day Item */
+.meal_chart .item {
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	border-radius: 14px;
+	cursor: pointer;
+	box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+	overflow: hidden;
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.meal_chart .item:hover {
+	transform: translateY(-3px) scale(1.02);
+	box-shadow: 0 8px 25px rgba(102, 126, 234, 0.35);
+}
+
+.meal_chart .item.has_meal {
+	background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+	box-shadow: 0 4px 15px rgba(17, 153, 142, 0.2);
+}
+
+.meal_chart .item.has_meal:hover {
+	box-shadow: 0 8px 25px rgba(17, 153, 142, 0.35);
+}
+
+/* Date Display */
+.meal_chart .item .date {
+	padding: 0.625rem;
+}
+
+.meal_chart .item .date h1 {
+	color: #fff;
+	text-align: center;
+	font-size: 1.75rem;
+	font-weight: 700;
+	line-height: 1.1;
+}
+
+.meal_chart .item .date h1 span {
+	font-size: 0.75rem;
+	font-weight: 400;
+	margin-left: 0;
+	color: rgba(255, 255, 255, 0.85);
+	display: block;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	margin-top: 2px;
+}
+
+/* Meal Count */
 .meal_chart .total_meal > div {
 	display: flex;
-	gap: 3px;
-	padding: 5px;
+	gap: 0.25rem;
+	padding: 0.375rem;
+	justify-content: center;
 }
 
 .meal_chart .total_meal > div p {
-	background: var(--dark);
-	padding: 0px 7px;
-	color: var(--pure);
-	border-radius: 3px;
+	background: rgba(0, 0, 0, 0.25);
+	padding: 0.25rem 0.5rem;
+	color: #fff;
+	border-radius: 6px;
 	display: flex;
 	align-items: center;
-	width: 60px;
-	justify-content: space-around;
-	font-size: 14px;
-}
-.meal_chart .total_meal > div p svg {
-	font-size: 16px;
-	margin-right: 5px;
+	justify-content: center;
+	font-size: 0.75rem;
+	font-weight: 500;
+	gap: 0.25rem;
+	flex: 1;
 }
 
+.meal_chart .total_meal > div p svg {
+	font-size: 0.7rem;
+}
+
+.meal_chart .total_meal > div p.lunch svg {
+	color: #ffd93d;
+}
+
+.meal_chart .total_meal > div p.dinner svg {
+	color: #a0d8ef;
+}
+
+/* React Portal Modal - Full Viewport Coverage */
+.meal-modal-overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.7);
+	backdrop-filter: blur(5px);
+	-webkit-backdrop-filter: blur(5px);
+	z-index: 9999;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	animation: fadeIn 0.2s ease;
+}
+
+.meal-modal-content {
+	position: relative;
+	background: #fff;
+	cursor: auto;
+	padding: 1.5rem;
+	border-radius: 20px;
+	box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+	max-width: 400px;
+	width: 90%;
+	max-height: 80vh;
+	overflow-y: auto;
+	animation: slideUp 0.3s ease;
+}
+
+.meal-modal-close {
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	font-size: 1rem;
+	color: #666;
+	cursor: pointer;
+	width: 32px;
+	height: 32px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(0, 0, 0, 0.05);
+	border: none;
+	border-radius: 50%;
+	transition: all 0.2s ease;
+	z-index: 10;
+}
+
+.meal-modal-close:hover {
+	background: rgba(0, 0, 0, 0.1);
+	color: #333;
+	transform: scale(1.1);
+}
+
+/* Modal Backdrop - Separate element for reliable click handling */
+.meal_chart .modal-backdrop {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.7);
+	backdrop-filter: blur(5px);
+	-webkit-backdrop-filter: blur(5px);
+	z-index: 1000;
+	cursor: pointer;
+	animation: fadeIn 0.2s ease;
+}
+
+/* Modal Container */
+.meal_chart .modal-container {
+	position: fixed;
+	inset: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1001;
+	pointer-events: none;
+}
+
+.meal_chart .modal-container .modal_items {
+	pointer-events: auto;
+	position: relative;
+	background: #fff;
+	cursor: auto;
+	padding: 1.5rem;
+	border-radius: 20px;
+	box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+	max-width: 400px;
+	width: 90%;
+	max-height: 80vh;
+	overflow-y: auto;
+	animation: slideUp 0.3s ease;
+}
+
+/* Legacy Modal - kept for backwards compatibility */
 .meal_chart .modal {
 	position: fixed;
-	background: #000000ba;
+	background: rgba(0, 0, 0, 0.7);
+	backdrop-filter: blur(5px);
+	-webkit-backdrop-filter: blur(5px);
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -65,105 +226,346 @@
 	display: none;
 	justify-content: center;
 	align-items: center;
-	cursor: crosshair;
-}
-.meal_chart .active .modal {
-	display: flex;
-	z-index: 100;
-}
-.meal_chart .modal .modal_items {
-	background: var(--pure);
-	cursor: auto;
-	padding: 1rem;
-	border-radius: 7px;
-}
-.modal_wrapper {
-	background: var(--background);
-	padding: 7px;
-	border-radius: 7px;
-	margin: 1rem 0;
-}
-.meal_chart .modal_header h1 {
-	margin-bottom: 16px;
-	font-weight: 500;
-	font-size: 24px;
-}
-.meal_chart .modal_header h1 p {
-	font-size: 14px;
-	font-weight: 300;
-	color: var(--marin);
-}
-.modal_header > div {
-	display: grid;
-	grid-template-columns: 2fr 1fr 1fr;
-	grid-gap: 5px;
-}
-.meal_chart .modal_header > div p {
-	background: var(--primary);
-	border-radius: 5px;
-	padding: 5px 10px;
-	color: var(--pure);
-	font-weight: 300;
-	font-size: 13px;
-	text-transform: uppercase;
-}
-.meal_chart .modal_header > div p span {
-	display: block;
-	font-weight: 600;
-	font-size: 24px;
-}
-.meal_chart .modal ul {
-	display: grid;
-	background: var(--pure);
-	border-radius: 5px;
-	padding: 4px 8px;
-	margin: 4px 0;
-	text-transform: capitalize;
-	font-size: 13px;
-	grid-template-columns: 1.2fr 0.1fr;
-}
-.meal_chart .modal ul li {
-	display: flex;
-}
-.meal_chart .modal ul li.count {
-	display: flex;
-	gap: 5px;
-}
-.meal_chart .modal ul li.count p {
-	background: #000;
-	padding: 0px 7px;
-	color: var(--pure);
-	border-radius: 3px;
-	display: flex;
-	align-items: center;
-	width: 60px;
-	justify-content: space-around;
+	cursor: pointer;
+	z-index: 1000;
 }
 
-.meal_chart .modal .action {
-	
+/* Modal is now rendered with .active class directly on the modal element */
+.meal_chart .modal.active {
 	display: flex;
-	gap: 1rem;
+	animation: fadeIn 0.2s ease;
 }
-.meal_chart .modal .close {
-	position: absolute;
-	top: 10%;
-	right: 10%;
-	font-size: 5vw;
-	color: var(--pure);
+
+/* Legacy Modal - kept for backwards compatibility */
+.meal_chart .modal {
+	position: fixed;
+	background: rgba(0, 0, 0, 0.7);
+	backdrop-filter: blur(5px);
+	-webkit-backdrop-filter: blur(5px);
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	z-index: 1000;
+}
+
+/* Modal is now rendered with .active class directly on the modal element */
+.meal_chart .modal.active {
+	display: flex;
+	animation: fadeIn 0.2s ease;
+}
+
+.meal_chart .modal .modal_items {
+	position: relative;
+	background: #fff;
+	cursor: auto;
+	padding: 1.5rem;
+	border-radius: 20px;
+	box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+	max-width: 400px;
+	width: 90%;
+	max-height: 80vh;
+	overflow-y: auto;
+	animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.modal_wrapper {
+	background: var(--background, #f5f5f5);
+	padding: 0.75rem;
+	border-radius: 12px;
+	margin: 1rem 0;
+	max-height: 250px;
+	overflow-y: auto;
+}
+
+/* Modal Header - Scoped to modal classes */
+.modal_header h1 {
+	margin-bottom: 0.5rem;
+	font-weight: 700;
+	font-size: 1.5rem;
+	color: var(--dark, #1a1a1a);
+	line-height: 1.2;
+}
+
+.modal_header h1 p {
+	font-size: 0.9rem;
+	font-weight: 500;
+	color: #666;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	margin-bottom: 0.25rem;
+}
+
+.modal_header > div {
+	display: flex;
+	gap: 0.75rem;
+	margin-top: 1rem;
+	padding-bottom: 1rem;
+	border-bottom: 1px solid #eee;
+}
+
+.modal_header > div p {
+	background: #f0f2f5;
+	border-radius: 12px;
+	padding: 0.75rem 1rem;
+	color: #4a5568;
+	font-weight: 600;
+	font-size: 0.75rem;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	flex: 1;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.25rem;
+}
+
+.modal_header > div p span {
+	display: block;
+	font-weight: 800;
+	font-size: 1.25rem;
+	color: #2d3748;
+}
+
+/* Highlight Day Total slightly differently */
+.modal_header > div p:first-child {
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	color: rgba(255, 255, 255, 0.9);
+}
+
+.modal_header > div p:first-child span {
+	color: #fff;
+}
+
+/* Modal List */
+.meal-modal-content ul {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background: #fff;
+	border-radius: 12px;
+	padding: 0.75rem 1rem;
+	margin: 0.5rem 0;
+	font-size: 0.95rem;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+	border: 1px solid #edf2f7;
+	transition: transform 0.2s ease;
+}
+
+.meal-modal-content ul:hover {
+	transform: translateX(4px);
+	border-color: #cbd5e0;
+}
+
+.meal-modal-content ul li {
+	font-weight: 600;
+	color: #2d3748;
+}
+
+.meal-modal-content ul li.count {
+	display: flex;
+	gap: 0.5rem;
+}
+
+.meal-modal-content ul li.count p {
+	padding: 0.35rem 0.75rem;
+	color: #1a202c;
+	border-radius: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 0.85rem;
+	font-weight: 700;
+	gap: 0.35rem;
+	min-width: 60px;
+}
+
+/* Lunch Badge */
+.meal-modal-content ul li.count p.lunch {
+	background: #fff9c4;
+	color: #f57f17;
+	border: 1px solid rgba(245, 127, 23, 0.2);
+}
+
+.meal-modal-content ul li.count p.lunch svg {
+	color: #fbc02d;
+}
+
+/* Dinner Badge */
+.meal-modal-content ul li.count p.dinner {
+	background: #e1f5fe;
+	color: #0288d1;
+	border: 1px solid rgba(2, 136, 209, 0.2);
+}
+
+.meal-modal-content ul li.count p.dinner svg {
+	color: #29b6f6;
+}
+
+/* Action Buttons */
+.meal-modal-content .action {
+	display: flex;
+	gap: 0.75rem;
+	margin-top: 1rem;
+	padding-top: 0.5rem;
+	border-top: 1px solid #eee;
+}
+
+.meal-modal-content .action button {
+	flex: 1;
+	padding: 0.75rem 1rem;
+	border-radius: 12px;
+	font-weight: 600;
+	font-size: 0.9rem;
+	transition: all 0.2s ease;
 	cursor: pointer;
 }
 
+.meal-modal-content .action button:first-child {
+	background: #e0f2f1;
+	color: #00897b;
+	border: 1px solid rgba(0, 137, 123, 0.2);
+}
 
+.meal-modal-content .action button:last-child {
+	background: #ffebee;
+	color: #e53935;
+	border: 1px solid rgba(229, 57, 53, 0.2);
+}
+
+.meal-modal-content .action button:hover {
+	transform: translateY(-2px);
+	filter: brightness(0.95);
+}
+
+/* Portal Modal Close Button */
+.meal-modal-close {
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	font-size: 1.1rem;
+	color: #718096;
+	cursor: pointer;
+	width: 36px;
+	height: 36px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #f7fafc;
+	border: 1px solid #edf2f7;
+	border-radius: 50%;
+	transition: all 0.2s ease;
+	z-index: 10;
+}
+
+.meal-modal-close:hover {
+	background: #e2e8f0;
+	color: #2d3748;
+	transform: rotate(90deg);
+}
+
+/* Deprecated - cleaning up old styles */
+/* Close Button - Now inside modal_items */
+.meal_chart .modal .close-btn {
+	display: none;
+}
+
+/* Legacy close button (outside modal) */
+.meal_chart .modal .close {
+	position: absolute;
+	top: 2rem;
+	right: 2rem;
+	font-size: 1.5rem;
+	color: #fff;
+	cursor: pointer;
+	width: 40px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(255, 255, 255, 0.1);
+	border-radius: 50%;
+	transition: all 0.2s ease;
+}
+
+.meal_chart .modal .close:hover {
+	background: rgba(255, 255, 255, 0.2);
+	transform: scale(1.1);
+}
+
+/* Empty State */
+.empty_msg {
+	text-align: center;
+	padding: 2rem;
+}
+
+.empty_msg img {
+	width: 120px;
+	opacity: 0.5;
+}
+
+/* Responsive */
+@media only screen and (max-width: 768px) {
+	.meal_chart {
+		padding: 1rem;
+		border-radius: 16px;
+	}
+
+	.meal_chart .wrapper {
+		grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+		gap: 0.5rem;
+	}
+
+	.meal_chart .item .date h1 {
+		font-size: 1.5rem;
+	}
+}
 
 @media only screen and (max-width: 600px) {
 	.meal_chart .modal {
 		width: 100vw;
 		height: 100vh;
-		align-items: baseline;
-		padding-top: 6rem;
+		align-items: flex-end;
+		padding: 0;
 	}
+
+	.meal_chart .modal .modal_items {
+		border-radius: 20px 20px 0 0;
+		width: 100%;
+		max-height: 85vh;
+	}
+
 	.meal_chart .modal .close {
-		top: 6%;
+		top: 1rem;
+		right: 1rem;
+	}
+
+	.modal_header > div {
+		grid-template-columns: 1fr 1fr 1fr;
 	}
 }

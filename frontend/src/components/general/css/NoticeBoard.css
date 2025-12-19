@@ -1,85 +1,135 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@200;300;400;500;700;800;900&display=swap');
 
+/* Loading State */
 .loading {
 	text-align: center;
-	padding: 1rem;
+	padding: 2rem;
 }
 
 .loading img {
-	width: 80px;
+	width: 60px;
+	opacity: 0.7;
 }
 
+/* Notice Board Card */
 .notice_board {
-	background: var(--background);
+	background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
 	margin: 0 auto;
-	padding: 1rem;
-	margin-top: 3rem;
-	border-radius: 7px;
-	box-shadow: var(--card_shadow);
+	padding: 1.5rem;
+	border-radius: 20px;
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+	border: 1px solid rgba(255, 255, 255, 0.3);
 	position: relative;
 	overflow: hidden;
+	transition: all 0.3s ease;
 }
+
+.notice_board:hover {
+	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+	transform: translateY(-2px);
+}
+
 .notice_board .background {
-	width: 320px;
+	width: 280px;
 	aspect-ratio: 1;
 	background-position: center;
 	background-size: cover;
 	position: absolute;
 	top: -2rem;
 	left: -4rem;
-	z-index: 2;
-	opacity: 0.5;
+	z-index: 1;
+	opacity: 0.15;
+	filter: blur(2px);
 }
 
+/* Header */
 .notice_board .home_all_headers {
-	margin-top: 1rem;
+	margin: 0 0 1.5rem 0;
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
-	gap: 7px;
+	gap: 0.75rem;
 	position: relative;
 	z-index: 10;
+	font-size: 1.25rem;
+	font-weight: 600;
+	color: var(--dark, #1a1a1a);
 }
 
+.notice_board .home_all_headers svg {
+	font-size: 1.5rem;
+	color: #667eea;
+}
+
+/* Notice Content */
 .notice {
-	padding: 1rem;
+	padding: 1rem 1.5rem;
 	position: relative;
 	z-index: 10;
+	background: rgba(255, 255, 255, 0.5);
+	border-radius: 12px;
+	border-left: 4px solid #667eea;
 }
 
 p.notice-body {
 	text-align: justify;
-	font-size: 18px;
-	font-family: Noto Serif Bengali, 'Poppins';
-}
-.notice-body::first-letter {
-	font-size: 80px;
-	font-weight: 500;
-	float: left;
-	color: #2f2f2f;
-	letter-spacing: normal;
-	line-height: 12px;
-}
-.notice p.empty {
-	text-align: center;
+	font-size: 1.1rem;
+	font-family: 'Noto Serif Bengali', 'Poppins', sans-serif;
+	color: var(--dark, #333);
+	line-height: 1.8;
 }
 
+.notice-body::first-letter {
+	font-size: 3.5rem;
+	font-weight: 600;
+	float: left;
+	color: #667eea;
+	letter-spacing: normal;
+	line-height: 0.8;
+	margin-right: 0.5rem;
+	margin-top: 0.25rem;
+}
+
+.notice p.empty {
+	text-align: center;
+	color: #999;
+	font-style: italic;
+	padding: 2rem;
+}
+
+/* Notice Footer */
 .notice_bottom {
 	display: flex;
 	justify-content: space-between;
-	margin-top: 2rem;
-	color: gray;
+	margin-top: 1.5rem;
+	padding-top: 1rem;
+	border-top: 1px solid rgba(0, 0, 0, 0.08);
 	align-items: center;
+}
+
+.notice_bottom div {
+	display: flex;
+	flex-direction: column;
 }
 
 .notice_bottom p {
 	text-transform: capitalize;
-	font-size: 12px;
+	font-size: 0.85rem;
+	color: #666;
 }
 
 .notice_bottom strong {
-	text-transform: capitalize;
-	font-size: 13px;
+	text-transform: uppercase;
+	font-size: 0.75rem;
+	letter-spacing: 0.5px;
+	color: #667eea;
+	background: rgba(102, 126, 234, 0.1);
+	padding: 2px 8px;
+	border-radius: 4px;
+	display: inline-block;
+	margin-bottom: 4px;
 }
 
 .previous_notice {
@@ -87,23 +137,43 @@ p.notice-body {
 	padding: 1rem;
 }
 
-
+/* Responsive */
 @media only screen and (max-width: 600px) {
 	.notice_board {
-		padding: 7px;
-		margin-top: 2rem;
+		padding: 1rem;
+		border-radius: 16px;
 	}
+
 	.notice_board .background {
-		width: 300px;
+		width: 200px;
 		left: -5rem;
+		opacity: 0.1;
 	}
+
+	.notice_board .home_all_headers {
+		font-size: 1.1rem;
+		margin-bottom: 1rem;
+	}
+
 	.notice {
-		padding: 10px;
+		padding: 0.75rem 1rem;
 	}
+
 	p.notice-body {
-	font-size: 17px;
-	font-weight: 400;
-}
+		font-size: 1rem;
+		line-height: 1.7;
+	}
+
+	.notice-body::first-letter {
+		font-size: 2.5rem;
+	}
+
+	.notice_bottom {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.5rem;
+	}
+
 	.previous_notice {
 		display: none;
 	}

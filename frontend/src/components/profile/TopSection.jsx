@@ -7,34 +7,40 @@ import { useSelector } from 'react-redux';
 
 function TopSection({ profile, id }) {
     const { user } = useSelector(state => state.auth.user)
-    return (<>
-        {profile && <div className="top_section">
-            <div className="ts_wrapper">
-                <div className='user_info'>
-                    <img src={profile.profilePic} alt="profile_pic" />
-                    <div className="inner">
-                        <h4>{profile.name}</h4>
-                        <p>{profile.profession}</p>
-                        <div className="social">
-                            <a href={`tel:${profile.phone}`}><FaPhoneSquare /></a>
-                            {profile.links?.facebook && <Link to={'facebook.com'}><FaFacebookSquare /></Link>}
-                            {profile.links?.xdotcom && <Link to={'x.com'}><FaSquareXTwitter /></Link>}
-                            {profile.links?.instragram && <Link to={'instragram.com'}><FaInstagramSquare /></Link>}
-                            {profile.links?.whatsapp && <Link to={'https://wa.me/9746646464'}><FaWhatsappSquare /></Link>}
-                            {profile.links?.linkedin && <Link to={'https://linkedin.com'}><FaLinkedin /></Link>}
-                        </div>
+
+    if (!profile) return null;
+
+    return (
+        <div className="top_section_modern">
+            <div className="profile_header_content">
+                <div className="profile_avatar">
+                    <img src={profile.profilePic || "/resource/default_avatar.png"} alt={profile.name} />
+                </div>
+
+                <div className="profile_info">
+                    <h1 className="profile_name">{profile.name}</h1>
+                    <p className="profile_role">{profile.profession || 'Member'}</p>
+
+                    <div className="profile_social_links">
+                        <a href={`tel:${profile.phone}`} title={profile.phone}><FaPhoneSquare /></a>
+                        {profile.links?.facebook && <a href={profile.links.facebook} target="_blank" rel="noopener noreferrer"><FaFacebookSquare /></a>}
+                        {profile.links?.xdotcom && <a href={profile.links.xdotcom} target="_blank" rel="noopener noreferrer"><FaSquareXTwitter /></a>}
+                        {profile.links?.instragram && <a href={profile.links.instragram} target="_blank" rel="noopener noreferrer"><FaInstagramSquare /></a>}
+                        {profile.links?.whatsapp && <a href={`https://wa.me/${profile.phone}`} target="_blank" rel="noopener noreferrer"><FaWhatsappSquare /></a>}
+                        {profile.links?.linkedin && <a href={profile.links.linkedin} target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>}
                     </div>
                 </div>
-                {user?._id === id && <div className="bottom">
-                    <button className='btn2'>
-                        <Link to={`/user/profile/edit/${profile._id}`}>
-                            <FaPen /> <span>Edit Profile</span>
+
+                {user?._id === id && (
+                    <div className="profile_actions">
+                        <Link to={`/user/profile/edit/${profile._id}`} className="edit_btn">
+                            <FaPen /> <span>Edit</span>
                         </Link>
-                    </button>
-                </div>}
+                    </div>
+                )}
             </div>
-        </div>}
-    </>)
+        </div>
+    )
 }
 
 export default TopSection
